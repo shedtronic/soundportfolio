@@ -1,4 +1,4 @@
 baseURL = 'https://super-haupia-9406c8.netlify.app/'
 languageCode = 'en-us'
 title = 'Sound Portfolio'
-theme = 'ananke'
+theme = 'blowfish'
