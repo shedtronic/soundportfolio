@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://super-haupia-9406c8.netlify.app/sitemap.xml
