@@ -6,7 +6,7 @@ theme = "blowfish"
 baseURL = "https://super-haupia-9406c8.netlify.app/"
 defaultContentLanguage = "en"
 # pluralizeListTitles = "true" # hugo function useful for non-english languages, find out more in  https://gohugo.io/getting-started/configuration/#pluralizelisttitles
-
+title = "Sound Portfolio"
 enableRobotsTXT = true
 summaryLength = 0
 

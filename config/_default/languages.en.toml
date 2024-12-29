@@ -2,7 +2,7 @@ disabled = false
 languageCode = "en"
 languageName = "English"
 weight = 1
-title = "Blowfish"
+title = "Sound Portfolio"
 
 [params]
   displayName = "EN"
@@ -11,11 +11,11 @@ title = "Blowfish"
   dateFormat = "2 January 2006"
   # logo = "img/logo.png"
   # secondaryLogo = "img/secondary-logo.png"
-  # description = "My awesome website"
-  # copyright = "Copy, _right?_ :thinking_face:"
+   description = "an exploration of immersive audio, sound design, and interactive media for games, film, and new storytelling forms. Created by Mike Ballard, this portfolio showcases experimental projects, audio environments, and interactive soundscapes."
+   copyright = "Copy, _right?_ :thinking_face:"
 
 # [params.author]
-#   name = "Your name here"
+#   name = "Mike Ballard"
 #   email = "youremail@example.com"
 #   image = "img/blowfish_logo.png"
 #   imageQuality = 96
@@ -27,7 +27,7 @@ title = "Blowfish"
 #     { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
 #     { apple = "https://www.apple.com" },
 #     { blogger = "https://username.blogspot.com/" },
-#     { bluesky = "https://bsky.app/profile/username" },
+#     { bluesky = "https://bsky.app/profile/shedtronic" },
 #     { codepen = "https://codepen.io/username" },
 #     { dev = "https://dev.to/username" },
 #     { discord = "https://discord.gg/invitecode" },

@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blowfish</title>
-    <link>https://super-haupia-9406c8.netlify.app/</link>
-    <description>Recent content on Blowfish</description>
+    <title>Sound Portfolio</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Sound Portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© 2024 </copyright>
-    <lastBuildDate>Sun, 29 Dec 2024 18:39:22 +0000</lastBuildDate><atom:link href="https://super-haupia-9406c8.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Copy, _right?_ :thinking_face:</copyright>
+    <lastBuildDate>Sun, 29 Dec 2024 18:39:22 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Interactive Sound Design</title>
-      <link>https://super-haupia-9406c8.netlify.app/projects/project1/</link>
+      <link>http://localhost:1313/projects/project1/</link>
       <pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://super-haupia-9406c8.netlify.app/projects/project1/</guid>
+      <guid>http://localhost:1313/projects/project1/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>My First Post</title>
-      <link>https://super-haupia-9406c8.netlify.app/posts/my-first-post/</link>
+      <link>http://localhost:1313/posts/my-first-post/</link>
       <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
       
-      <guid>https://super-haupia-9406c8.netlify.app/posts/my-first-post/</guid>
+      <guid>http://localhost:1313/posts/my-first-post/</guid>
       <description></description>
       
     </item>
