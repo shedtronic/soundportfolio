@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Blowfish</title>
+    <link>https://super-haupia-9406c8.netlify.app/projects/</link>
+    <description>Recent content in Projects on Blowfish</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2024 </copyright>
+    <lastBuildDate>Sun, 29 Dec 2024 18:39:22 +0000</lastBuildDate><atom:link href="https://super-haupia-9406c8.netlify.app/projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Interactive Sound Design</title>
+      <link>https://super-haupia-9406c8.netlify.app/projects/project1/</link>
+      <pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://super-haupia-9406c8.netlify.app/projects/project1/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>
