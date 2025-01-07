@@ -1,0 +1,15 @@
+<div class="grid-container">
+    {{ range .Pages }}
+    <div class="grid-item">
+        <a href="{{ .RelPermalink }}">
+            {{ if .Params.thumbnail }}
+                <img src="/{{ .Params.thumbnail }}" alt="{{ .Title }}" width="100%">
+            {{ else }}
+                <img src="/images/placeholder.jpg" alt="Default project image" width="100%">
+            {{ end }}
+            <h2>{{ .Title }}</h2>
+            <p>{{ .Description | default .Summary }}</p>
+        </a>
+    </div>
+    {{ end }}
+</div>
