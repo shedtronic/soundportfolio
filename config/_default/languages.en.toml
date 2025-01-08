@@ -9,18 +9,19 @@ title = "Sound Portfolio"
   isoCode = "en"
   rtl = false
   dateFormat = "2 January 2006"
-  # logo = "img/logo.png"
+  # logo = "img/author.jpg"
   # secondaryLogo = "img/secondary-logo.png"
    description = "an exploration of immersive audio, sound design, and interactive media for games, film, and new storytelling forms. Created by Mike Ballard, this portfolio showcases experimental projects, audio environments, and interactive soundscapes."
-   copyright = "Copy, _right?_ :thinking_face:"
+   copyright = "Copyright &copy; { year } "
 
  [params.author]
    name = "Mike Ballard"
    email = "youremail@example.com"
-   image = "img/blowfish_logo.png"
+   image = "img/logo.jpg"
    imageQuality = 96
-   headline = "I'm only human"
-   bio = "A little bit about you"
+   headline = "Sound designer bridging the physical and the digital with the hauntological and the eerie"
+   bio = " I'm a musician, sound designer, and creative technologist exploring the boundaries between sound, space, and memory. With Horses of the Gods, I craft eerie, folk-infused atmospheres, blending acoustic instruments with field recordings and digital synthesis. My work often focuses on capturing the liminal and the hauntological - immersive audio experiences that evoke the forgotten, the in-between, and the strange."
+
    links = [
 #     { email = "mailto:hello@your_domain.com" },
     { link = "https://linktr.ee/shedtronic" },
@@ -55,7 +56,7 @@ title = "Sound Portfolio"
 #     { researchgate = "https://www.researchgate.net/profile/username" },
 #     { slack = "https://workspace.url/team/userid" },
 #     { snapchat = "https://snapchat.com/add/username" },
-     { soundcloud = "https://soundcloud.com/undesignuk" },
+     { soundcloud = "https://soundcloud.com/shedtronic" },
 #     { spotify = "https://open.spotify.com/user/userid" },
 #     { stack-overflow = "https://stackoverflow.com/users/userid/username" },
 #     { steam = "https://steamcommunity.com/profiles/userid" },

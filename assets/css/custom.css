@@ -1,0 +1,35 @@
+body {
+    background-color: #F4F4F4;
+    color: #121212;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  a {
+    color: #1C6DD0;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #0F4C81;
+    text-decoration: underline;
+  }
+  
+  h1, h2, h3 {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .card {
+    background-color: #E8E8E8;
+    border: 1px solid #D1D1D1;
+    padding: 20px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  footer {
+    color: #4B4B4B;
+    opacity: 0.8;
+  }
+  
+  footer:hover {
+    opacity: 1;
+  }

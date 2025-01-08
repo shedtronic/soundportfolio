@@ -2,7 +2,7 @@
 title = "Immersive Sound Design for Interactive Media"
 date = 2024-12-10
 description = "Creating dynamic soundscapes that blend seamlessly with interactive environments."
-thumbnail = "../sound1.jpg"
+thumbnail = "sound1.jpg"
 draft = false
 +++
 
@@ -43,7 +43,7 @@ Combining **foley recording, granular synthesis, and procedural audio techniques
 ---
 
 ### Gallery:  
-![Immersive Sound Design Setup](images/sound1.jpg)  
+![Immersive Sound Design Setup] 
 *Recording foley effects and layering textures for interactive environments.*  
 
 ---
