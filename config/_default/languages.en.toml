@@ -19,8 +19,8 @@ title = "Sound Portfolio"
    email = "youremail@example.com"
    image = "img/logo.jpg"
    imageQuality = 96
-   headline = "Sound designer bridging the physical and the digital with the hauntological and the eerie"
-   bio = " I'm a musician, sound designer, and creative technologist exploring the boundaries between sound, space, and memory. With Horses of the Gods, I craft eerie, folk-infused atmospheres, blending acoustic instruments with field recordings and digital synthesis. My work often focuses on capturing the liminal and the hauntological - immersive audio experiences that evoke the forgotten, the in-between, and the strange."
+   headline = "Sound designer bridging the physical and the digital through the hauntological and the eerie"
+   bio = " I'm a musician, sound designer, and creative technologist exploring the boundaries between sound, space, and memory. With the <a href="https://horsesofthegods.co.uk">Horses of the Gods</a>, I explore eerie, folk-infused atmospheres, blending acoustic instruments with field recordings and digital synthesis. In my sound design work, I am interested in capturing the liminal and the hauntological through immersive audio experiences that evoke the forgotten, the in-between, and the strange."
 
    links = [
 #     { email = "mailto:hello@your_domain.com" },
