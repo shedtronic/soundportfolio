@@ -1,35 +1,144 @@
+/* Ensure Global Text Contrast */
 body {
-    background-color: #F4F4F4;
-    color: #121212;
-    font-family: 'Inter', sans-serif;
-  }
-  
-  a {
-    color: #1C6DD0;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    color: #0F4C81;
-    text-decoration: underline;
-  }
-  
-  h1, h2, h3 {
-    font-family: 'Roboto', sans-serif;
-  }
-  
-  .card {
-    background-color: #E8E8E8;
-    border: 1px solid #D1D1D1;
-    padding: 20px;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  footer {
-    color: #4B4B4B;
-    opacity: 0.8;
-  }
-  
-  footer:hover {
-    opacity: 1;
-  }
+  color: #000000; /* Default text color set to black */
+  background-color: #F5F5F5; /* Light grey background */
+}
+
+a {
+  color: #000000 !important; /* Black links */
+}
+
+a:hover {
+  color: #555555; /* Dark grey on hover */
+  text-decoration: underline;
+}
+
+/* Links and accents */
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 2px solid #FFFFFF;
+}
+
+a:hover {
+  color: #E6E6E6; /* Slightly lighter grey on hover */
+  border-bottom: 2px solid #E6E6E6;
+}
+
+/* Headings */
+h1, h2, h3 {
+  color: #000000;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Navigation Menu */
+nav {
+  background-color: #1E1E1E; /* Same as background */
+border-bottom: 2px solid #000; /* Adjust the thickness and color of the line */
+  margin-bottom: 1rem; /* Add spacing below the line if needed */
+}
+
+nav a {
+  color: #FFFFFF !important;
+  padding: 10px 15px;
+}
+/* Add spacing and a full-width line below the navigation bar */
+nav {
+  position: relative; /* Ensure positioning for the nav */
+  margin-bottom: 20px; /* Space below the nav */
+}
+
+nav::after {
+  content: ""; /* This creates an empty element for the line */
+  position: absolute;
+  bottom: -20px; /* Position the line 20px below the nav */
+  left: 0;
+  width: 100%; /* Full page width */
+  height: 2px; /* Adjust thickness of the line */
+  background-color: #000; /* Change the line color as needed */
+}
+/* Remove bottom borders from navigation links and sub-pages */
+nav a {
+  border: none !important; /* Ensure no borders are applied */
+  text-decoration: none; /* Remove any underline */
+}
+
+/* Optional: Style the links for a cleaner appearance */
+nav a:hover {
+  background-color: transparent; /* Remove any hover background */
+  text-decoration: underline; /* Add underline on hover if desired */
+}
+
+/* If there are specific sub-page styles causing the issue, target them */
+nav ul li a {
+  border-bottom: none !important; /* Specifically remove bottom borders for list items */
+}
+
+nav a:hover {
+  color: #E6E6E6;
+  background-color: #333333; /* Slightly lighter grey */
+}
+
+/* Card Text Styles */
+.card {
+  background-color: #F5F5F5; /* Light grey background */
+  color: #000000; /* Dark text */
+  border: 1px solid #E0E0E0; /* Subtle border */
+  padding: 15px;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+.card-title {
+  color: #000000; /* Ensure title text is black */
+  font-weight: bold;
+}
+
+.card-text {
+  color: #333333; /* Dark grey for readability */
+}
+
+button, 
+input[type="submit"], 
+a.button {
+  background-color: #000000; /* Black background */
+  color: #FFFFFF; /* White text */
+  border: 1px solid #000000; /* Black border */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover, 
+input[type="submit"]:hover, 
+a.button:hover {
+  background-color: #FFFFFF; /* White background on hover */
+  color: #000000; /* Black text on hover */
+  border: 1px solid #FFFFFF; /* White border on hover */
+}
+
+footer {
+  background-color: #1E1E1E; /* Dark Grey */
+  color: #FFFFFF; /* White text */
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  width: 100%; /* Ensure it spans the full width */
+  left: 0;
+  bottom: 0;
+}
+
+footer a {
+  color: #FFFFFF; /* Footer links in white */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  color: #E6E6E6; /* Lighter grey on hover */
+}
