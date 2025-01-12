@@ -35,34 +35,40 @@ h1, h2, h3 {
 /* Navigation Menu */
 nav {
   background-color: #1E1E1E; /* Same as background */
-border-bottom: 2px solid #000; /* Adjust the thickness and color of the line */
-  margin-bottom: 1rem; /* Add spacing below the line if needed */
+
 }
 
 nav a {
   color: #FFFFFF !important;
   padding: 10px 15px;
 }
-/* Add spacing and a full-width line below the navigation bar */
-nav {
-  position: relative; /* Ensure positioning for the nav */
-  margin-bottom: 20px; /* Space below the nav */
-}
 
-nav::after {
-  content: ""; /* This creates an empty element for the line */
-  position: absolute;
-  bottom: -20px; /* Position the line 20px below the nav */
-  left: 0;
-  width: 100%; /* Full page width */
-  height: 2px; /* Adjust thickness of the line */
-  background-color: #000; /* Change the line color as needed */
-}
+
+
 /* Remove bottom borders from navigation links and sub-pages */
 nav a {
   border: none !important; /* Ensure no borders are applied */
   text-decoration: none; /* Remove any underline */
 }
+
+
+
+header::before {
+  content: "";
+  display: block;
+  position: relative; /* Makes the line independent of other elements */
+  top: 100%; /* Places the line just below the header */
+  left: 0; /* Aligns the line to the very left */
+  width: 100vw; /* Ensures the line spans the entire viewport width */
+  height: 1px; /* Thickness of the line */
+  background-color: black; /* Color of the line */
+  z-index: 1; /* Ensures it appears above other elements if necessary */
+}
+
+.medium-zoom-image{
+  margin-top: 20px; /* Adjust the value as needed */
+}
+
 
 /* Optional: Style the links for a cleaner appearance */
 nav a:hover {
@@ -74,6 +80,7 @@ nav a:hover {
 nav ul li a {
   border-bottom: none !important; /* Specifically remove bottom borders for list items */
 }
+
 
 nav a:hover {
   color: #E6E6E6;

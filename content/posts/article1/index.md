@@ -1,5 +1,5 @@
 +++
-title = 'My First Post'
+title = 'BlibBlob1'
 date = 2024-01-14T07:07:07+01:00
 draft = false
 +++
@@ -7,7 +7,7 @@ draft = false
 
 
 {{< alert "bluesky" >}}
-Don't forget to [follow me](https://bluesky.app/@shedtronic) on Bluesky.
+[Follow me](https://bsky.app/profile/shedtronic.bsky.social) on Bluesky.
 {{< /alert >}}
 
 
