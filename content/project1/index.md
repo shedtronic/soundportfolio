@@ -2,7 +2,6 @@
 title = "Immersive Sound Design for Interactive Media"
 date = 2024-12-10
 description = "Creating dynamic soundscapes that blend seamlessly with interactive environments."
-thumbnail = "sound1.jpg"
 draft = false
 +++
 

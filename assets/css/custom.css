@@ -103,7 +103,7 @@ nav a:hover {
 
 .card-title {
   color: #000000; /* Ensure title text is black */
-  font-weight: bold;
+  /*font-weight: bold;*/
 }
 
 .card-text {
@@ -130,8 +130,8 @@ a.button:hover {
 }
 
 footer {
-  background-color: #1E1E1E; /* Dark Grey */
-  color: #FFFFFF; /* White text */
+  
+  color: #000000; /* black text */
   text-align: center;
   padding: 10px 0;
   position: relative;
@@ -141,9 +141,35 @@ footer {
   margin-top: 10px;
 }
 
+#site-footer {
+  background:none;
+  color: #000000; /* White text */
+
+}
+
+
+.related-posts a, 
+.article-nav a, .pt-8 {
+    color: #ffffff; /* Light text color */
+    text-decoration: none; /* Optional, removes underline */
+}
+
+.related-posts a:hover,
+.article-nav a:hover {
+    color: #cccccc; /* Slightly darker on hover */
+}
+
+.related-posts {
+    background-color: #000000; /* Optional: Ensures consistent dark background */
+    padding: 10px; /* Optional: Adds spacing around links */
+}
+
+
+
+
 footer p {
 
-  
+  padding:10px;
   
 }
 
@@ -156,3 +182,7 @@ footer a {
 footer a:hover {
   color: #E6E6E6; /* Lighter grey on hover */
 }
+
+
+/*other styles*/
+
