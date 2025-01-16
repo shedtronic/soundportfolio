@@ -1,4 +1,6 @@
 /* Ensure Global Text Contrast */
+
+
 body {
   color: #000000; /* Default text color set to black */
   background-color: #F5F5F5; /* Light grey background */
@@ -186,3 +188,26 @@ footer a:hover {
 
 /*other styles*/
 
+
+
+/*.flex.flex-col.h-screen {
+  background-color: red !important;  Test visibility 
+}*/
+
+
+body[data-page-type="project"] {
+
+background-color:red;
+
+}
+
+.project-page header {
+  @apply bg-primary-500 text-white;
+  background-color:red;
+}
+
+
+#appearance-switcher-mobile {
+
+  display:none;
+}

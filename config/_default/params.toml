@@ -24,7 +24,7 @@ disableTextInHeader = false
  defaultBackgroundImage = "image.jpg" # used as default for background images 
  defaultFeaturedImage = "image.jpg" # used as default for featured images in all articles
 
- highlightCurrentMenuArea = true
+ highlightCurrentMenuArea = false
  smartTOC = true
  smartTOCHideUnfocusedChildren = true
 
@@ -38,14 +38,14 @@ forgejoDefaultServer = "https://v8.next.forgejo.org"
   showMenu = true
   showCopyright = true
   showThemeAttribution = false
-  showAppearanceSwitcher = false
+  showAppearanceSwitcher = true
   showScrollToTop = true
 
 [homepage]
   layout = "profile" # valid options: page, profile, hero, card, background, custom
   homepageImage = "IMAGE.jpg" # used in: hero, and card
   showRecent = true
-  showRecentItems = 5
+  showRecentItems = 6
   showMoreLink = true
   showMoreLinkDest = "/projects/"
   mainSections = ["posts", "projects"] 
@@ -82,7 +82,7 @@ forgejoDefaultServer = "https://v8.next.forgejo.org"
   showTaxonomies = true
   showAuthorsBadges = false
   showWordCount = true
-  sharingLinks = [ "linkedin", "bluesky", "mastodon", "reddit", "pinterest", "email"]
+  #sharingLinks = [ "linkedin", "bluesky", "mastodon", "reddit", "pinterest", "email"]
   showZenMode = false
 
 [list]
