@@ -12,6 +12,16 @@
     <lastBuildDate>Sun, 15 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/projects/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Arduino Mozzi Synthesis</title>
+      <link>http://localhost:1313/projects/project2/</link>
+      <pubDate>Sun, 15 Dec 2024 00:00:00 +0000</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/projects/project2/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project2/featured.jpg" />
+    </item>
+    
+    <item>
       <title>Fable Feast Folk Horror Collab</title>
       <link>http://localhost:1313/projects/project3/</link>
       <pubDate>Sun, 15 Dec 2024 00:00:00 +0000</pubDate>
@@ -22,23 +32,43 @@
     </item>
     
     <item>
-      <title>Spatial Audio Environments</title>
-      <link>http://localhost:1313/projects/project2/</link>
-      <pubDate>Sun, 15 Dec 2024 00:00:00 +0000</pubDate>
-      <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/projects/project2/</guid>
-      <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project2/featured.jpg" />
-    </item>
-    
-    <item>
-      <title>Immersive Sound Design for Interactive Media</title>
+      <title>Unreal MetaSound Exploration</title>
       <link>http://localhost:1313/projects/project1/</link>
       <pubDate>Tue, 10 Dec 2024 00:00:00 +0000</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
       <guid>http://localhost:1313/projects/project1/</guid>
       <description></description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project1/featured.jpg" />
+    </item>
+    
+    <item>
+      <title>Atari Punk Console/Light Oscillator</title>
+      <link>http://localhost:1313/projects/project5/</link>
+      <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/projects/project5/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project5/featured.jpg" />
+    </item>
+    
+    <item>
+      <title>Osci-Render Sound Design with Blender and OSC</title>
+      <link>http://localhost:1313/projects/project6/</link>
+      <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/projects/project6/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project6/featured.jpg" />
+    </item>
+    
+    <item>
+      <title>Sonic Pi</title>
+      <link>http://localhost:1313/projects/project7/</link>
+      <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/projects/project7/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project7/featured.jpg" />
     </item>
     
     <item>
@@ -49,6 +79,16 @@
       <guid>http://localhost:1313/projects/project4/</guid>
       <description></description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project4/featured.jpg" />
+    </item>
+    
+    <item>
+      <title>Touch Designer Sound Design and Visual Interaction</title>
+      <link>http://localhost:1313/projects/project8/</link>
+      <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/projects/project8/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project8/featured.jpg" />
     </item>
     
   </channel>

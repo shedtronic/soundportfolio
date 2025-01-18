@@ -1,7 +1,7 @@
 +++
-title = "Immersive Sound Design for Interactive Media"
+title = "Unreal MetaSound Exploration"
 date = 2024-12-10
-description = "Creating dynamic soundscapes that blend seamlessly with interactive environments."
+description = "Creating reactive soundscapes to interact within a game environment."
 draft = false
 +++
 
@@ -21,9 +21,9 @@ Combining **foley recording, granular synthesis, and procedural audio techniques
 ---
 
 ### Tools and Techniques:  
-- **DAWs:** Logic Pro, Reaper  
-- **Synthesis:** Arturia Pigments, Kontakt, and granular synthesis techniques  
-- **Game Engines:** Unity (FMOD), Unreal Engine (Wwise integration)  
+- **DAWs:** Logic Pro 
+- **Synthesis:** Arturia Minilab II, Kontakt, and granular synthesis techniques  
+- **Game Engines:** Unreal Engine (MetaSoundIntegration)  
 - **Field Recording:** Captured ambient soundscapes using **Zoom H6** and **hydrophones** for underwater environments  
 
 ---

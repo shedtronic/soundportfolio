@@ -20,7 +20,7 @@ title = "Sound Portfolio"
    image = "img/logo.jpg"
    imageQuality = 96
     headline = "Sound Designer Bridging Physical and Digital Realms with Hauntological and Eerie Soundscapes"
-    bio = "I'm a musician, sound designer, and creative technologist exploring the boundaries between sound, space, and memory. With the Horses of the Gods, I create eerie, folk-infused atmospheres, blending acoustic instruments with field recordings and digital synthesis. In my sound design work, I aim to capture the liminal and the hauntological through immersive audio experiences that evoke the forgotten, the in-between, and the strange. As a maker, I am known as Shedtronic, and my work spans creative technology, sound exploration, and experimental design. Below, you'll find links to my projects as a maker and creative technologist, showcasing my dedication to merging the physical and digital in innovative ways."
+    bio = "I'm a musician, sound designer, and creative technologist exploring the boundaries between sound, space, and memory. With the Horses of the Gods, I create eerie, folk-infused atmospheres, blending acoustic instruments with field recordings and digital synthesis. In my sound design work, I aim to capture the liminal and the hauntological through immersive audio experiences that evoke the forgotten, the in-between, and the strange. As a maker, I am known as Shedtronic, and my work spans creative technology, sound exploration, and experimental design. Below, you'll find links to my projects as a sound designer, maker and creative technologist, showcasing my dedication to merging the physical and digital in innovative ways."
 
    links = [
 #     { email = "mailto:hello@your_domain.com" },

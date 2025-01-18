@@ -12,6 +12,16 @@
     <lastBuildDate>Sun, 15 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Arduino Mozzi Synthesis</title>
+      <link>http://localhost:1313/projects/project2/</link>
+      <pubDate>Sun, 15 Dec 2024 00:00:00 +0000</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/projects/project2/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project2/featured.jpg" />
+    </item>
+    
+    <item>
       <title>Fable Feast Folk Horror Collab</title>
       <link>http://localhost:1313/projects/project3/</link>
       <pubDate>Sun, 15 Dec 2024 00:00:00 +0000</pubDate>
@@ -22,33 +32,13 @@
     </item>
     
     <item>
-      <title>Spatial Audio Environments</title>
-      <link>http://localhost:1313/projects/project2/</link>
-      <pubDate>Sun, 15 Dec 2024 00:00:00 +0000</pubDate>
-      <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/projects/project2/</guid>
-      <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project2/featured.jpg" />
-    </item>
-    
-    <item>
-      <title>Immersive Sound Design for Interactive Media</title>
+      <title>Unreal MetaSound Exploration</title>
       <link>http://localhost:1313/projects/project1/</link>
       <pubDate>Tue, 10 Dec 2024 00:00:00 +0000</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
       <guid>http://localhost:1313/projects/project1/</guid>
       <description></description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project1/featured.jpg" />
-    </item>
-    
-    <item>
-      <title>Arduino Mozzi Synth Experiment</title>
-      <link>http://localhost:1313/posts/article6/</link>
-      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
-      <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/posts/article6/</guid>
-      <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/article6/featured.jpg" />
     </item>
     
     <item>
@@ -62,53 +52,33 @@
     </item>
     
     <item>
-      <title>OsciRender Sound Design with Blender</title>
-      <link>http://localhost:1313/posts/article3/</link>
-      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
+      <title>Atari Punk Console/Light Oscillator</title>
+      <link>http://localhost:1313/projects/project5/</link>
+      <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/posts/article3/</guid>
+      <guid>http://localhost:1313/projects/project5/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/article3/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project5/featured.jpg" />
+    </item>
+    
+    <item>
+      <title>Osci-Render Sound Design with Blender and OSC</title>
+      <link>http://localhost:1313/projects/project6/</link>
+      <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/projects/project6/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project6/featured.jpg" />
     </item>
     
     <item>
       <title>Sonic Pi</title>
-      <link>http://localhost:1313/posts/article7/</link>
-      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
+      <link>http://localhost:1313/projects/project7/</link>
+      <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/posts/article7/</guid>
+      <guid>http://localhost:1313/projects/project7/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/article7/featured.jpg" />
-    </item>
-    
-    <item>
-      <title>Touch Designer Sound Project</title>
-      <link>http://localhost:1313/posts/article2/</link>
-      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
-      <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/posts/article2/</guid>
-      <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/article2/featured.jpg" />
-    </item>
-    
-    <item>
-      <title>Touch Designer Unreal Engine</title>
-      <link>http://localhost:1313/posts/article4/</link>
-      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
-      <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/posts/article4/</guid>
-      <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/article4/featured.jpg" />
-    </item>
-    
-    <item>
-      <title>Unreal MetaSound Exploration</title>
-      <link>http://localhost:1313/posts/article1/</link>
-      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
-      <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/posts/article1/</guid>
-      <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/article1/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project7/featured.jpg" />
     </item>
     
     <item>
@@ -119,6 +89,16 @@
       <guid>http://localhost:1313/projects/project4/</guid>
       <description></description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project4/featured.jpg" />
+    </item>
+    
+    <item>
+      <title>Touch Designer Sound Design and Visual Interaction</title>
+      <link>http://localhost:1313/projects/project8/</link>
+      <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/projects/project8/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project8/featured.jpg" />
     </item>
     
   </channel>

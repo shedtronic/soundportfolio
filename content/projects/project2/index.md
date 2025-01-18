@@ -1,7 +1,7 @@
 +++
-title = "Spatial Audio Environments"
+title = "Arduino Mozzi Synthesis"
 date = 2024-12-15
-description = "Crafting spatial audio landscapes for VR experiences and interactive media."
+description = "Prototyping an Arduino Synth with Mozzi C++ Libraries"
 draft = false
 +++
 

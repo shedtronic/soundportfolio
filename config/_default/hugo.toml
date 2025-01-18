@@ -18,7 +18,6 @@ enableEmoji = true
 # googleAnalytics = "G-XXXXXXXXX"
 
 
-
 [pagination]
   pagerSize = 100
 
