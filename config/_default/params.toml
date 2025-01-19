@@ -7,14 +7,14 @@
 
 colorScheme = "blowfish"
 defaultAppearance = "light" # valid options: light or dark
-autoSwitchAppearance = false
+autoSwitchAppearance = true
 
 enableSearch = false
 enableCodeCopy = false
 
 replyByEmail = false
 
-# mainSections = ["section1", "section2"]
+ mainSections = ["posts", "projects"]
 # robots = ""
 
 disableImageOptimization = false
@@ -48,7 +48,7 @@ forgejoDefaultServer = "https://v8.next.forgejo.org"
   showRecentItems = 6
   showMoreLink = true
   showMoreLinkDest = "/posts/"
-  mainSections = ["posts", "projects"] 
+  mainSections = ["posts"] 
   cardView = true
   cardViewScreenWidth = false
   layoutBackgroundBlur = false # only used when layout equals background
