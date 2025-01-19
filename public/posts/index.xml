@@ -28,7 +28,7 @@
       <author>youremail@example.com (Mike Ballard)</author>
       <guid>http://localhost:1313/posts/article8/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/article8/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/article8/featured.gif" />
     </item>
     
   </channel>
