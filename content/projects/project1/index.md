@@ -1,7 +1,7 @@
 +++
-title = "Unreal MetaSound Exploration"
+title = "Spectral Soundscapes: Unreal Engine’s MetaSound Unveiled"
 date = 2024-12-10
-description = "Creating reactive soundscapes to interact within a game environment."
+description = "Investigating the capabilities of Unreal Engine’s MetaSound to craft haunting and dynamic audio environments."
 draft = false
 +++
 

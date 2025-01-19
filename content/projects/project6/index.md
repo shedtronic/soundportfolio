@@ -1,7 +1,7 @@
 +++
-title = "Osci-Render Sound Design with Blender and OSC"
+title = "Oscilloscope Harmonics: Sound Design through Blender and OSC"
 date = 2020-10-31
-description = "Flowing OSC and Visual with Blender to make Oscilloscope Art"
+description = "Exploring the integration of Blender and Open Sound Control (OSC) through Osci-Render for dynamic sound visualisation"
 draft = false
 +++
 

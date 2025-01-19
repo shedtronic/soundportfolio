@@ -12,17 +12,7 @@
     <lastBuildDate>Sun, 15 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Arduino Mozzi Synthesis</title>
-      <link>http://localhost:1313/projects/project2/</link>
-      <pubDate>Sun, 15 Dec 2024 00:00:00 +0000</pubDate>
-      <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/projects/project2/</guid>
-      <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project2/featured.jpg" />
-    </item>
-    
-    <item>
-      <title>Fable Feast Folk Horror Collab</title>
+      <title>Eerie Narratives: The Fable Feast Collaboration</title>
       <link>http://localhost:1313/projects/project3/</link>
       <pubDate>Sun, 15 Dec 2024 00:00:00 +0000</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
@@ -32,7 +22,17 @@
     </item>
     
     <item>
-      <title>Unreal MetaSound Exploration</title>
+      <title>Oscillations of the Ether: Arduino Mozzi Explorations</title>
+      <link>http://localhost:1313/projects/project2/</link>
+      <pubDate>Sun, 15 Dec 2024 00:00:00 +0000</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/projects/project2/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project2/featured.jpg" />
+    </item>
+    
+    <item>
+      <title>Spectral Soundscapes: Unreal Engine’s MetaSound Unveiled</title>
       <link>http://localhost:1313/projects/project1/</link>
       <pubDate>Tue, 10 Dec 2024 00:00:00 +0000</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
@@ -62,17 +62,27 @@
     </item>
     
     <item>
-      <title>Atari Punk Console/Light Oscillator</title>
-      <link>http://localhost:1313/projects/project5/</link>
-      <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
+      <title>We Wish You Health</title>
+      <link>http://localhost:1313/posts/music1/</link>
+      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/projects/project5/</guid>
+      <guid>http://localhost:1313/posts/music1/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project5/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/music1/featured.jpg" />
     </item>
     
     <item>
-      <title>Osci-Render Sound Design with Blender and OSC</title>
+      <title>Generative Sonic Pi Sound Experiments</title>
+      <link>http://localhost:1313/projects/project7/</link>
+      <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/projects/project7/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project7/featured.jpg" />
+    </item>
+    
+    <item>
+      <title>Oscilloscope Harmonics: Sound Design through Blender and OSC</title>
       <link>http://localhost:1313/projects/project6/</link>
       <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
@@ -82,13 +92,13 @@
     </item>
     
     <item>
-      <title>Sonic Pi</title>
-      <link>http://localhost:1313/projects/project7/</link>
+      <title>The Atari Punk Light Oscillator</title>
+      <link>http://localhost:1313/projects/project5/</link>
       <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/projects/project7/</guid>
+      <guid>http://localhost:1313/projects/project5/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project7/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project5/featured.jpg" />
     </item>
     
     <item>

@@ -13,19 +13,19 @@
 [[main]]
   name = "Blog"
   pageRef = "posts"
-  weight = 10
+  weight = 12
 
 [[main]]
     identifier = "projects"
     name = "Projects"
     url = "/projects/"
-    weight = 2
+    weight = 10
 
-#[[main]]
-#    identifier = "posts"
-#    name = "Music"
-#    url = "music/"
-#    weight = 2
+[[main]]
+    identifier = "posts"
+    name = "Music"
+    url = "/categories/music/"
+    weight = 8
 
 #[[main]]
 #  name = "Parent"

@@ -1,7 +1,7 @@
 +++
-title = "Atari Punk Console/Light Oscillator"
+title = "The Atari Punk Light Oscillator"
 date = 2020-10-31
-description = "Prototyping an Atari Punk Console oscillator circuit to react tos"
+description = "Merging vintage sound synthesis with light modulation to produce unique audiovisual effects."
 draft = false
 +++
 
