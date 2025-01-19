@@ -20,6 +20,10 @@ By leveraging **binaural recording techniques, ambisonics, and dynamic sound pla
 
 ---
 
+### Video Demo:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gepgJSdJYcY?si=V-QEHO_CaKSfE7kL" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ### Tools and Techniques:  
 - **DAWs:** Logic Pro, Ableton Live  
 - **Spatial Audio Software:** Reaper (Ambisonic Toolkit), Dolby Atmos Renderer  
