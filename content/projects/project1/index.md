@@ -1,7 +1,7 @@
 +++
-title = "Spectral Soundscapes: Unreal Engine’s MetaSound Unveiled"
+title = "Uncanny Game Sound: MetaSound In Unreal Engine "
 date = 2024-12-10
-description = "Investigating the capabilities of Unreal Engine’s MetaSound to craft haunting and dynamic audio environments."
+description = "Investigating the capabilities of Unreal Engine's MetaSound to craft haunting and dynamic audio environments."
 draft = false
 +++
 
@@ -13,10 +13,10 @@ Combining **foley recording, granular synthesis, and procedural audio techniques
 ---
 
 ### Key Features:  
-- **Dynamic Layering** – Multiple audio layers triggered by user actions, creating a shifting and unpredictable soundscape.  
-- **Procedural Soundscapes** – Real-time sound generation that reacts to the environment, ensuring no two experiences sound the same.  
-- **Physical Interaction Audio** – Sounds adapt to player/object interaction, enhancing immersion in game environments.  
-- **Environmental Simulation** – Recreates natural sound environments, from rustling leaves to distant thunder, with organic transitions between zones.
+- **Dynamic Layering** - Multiple audio layers triggered by user actions, creating a shifting and unpredictable soundscape.  
+- **Procedural Soundscapes** - Real-time sound generation that reacts to the environment, ensuring no two experiences sound the same.  
+- **Physical Interaction Audio** - Sounds adapt to player/object interaction, enhancing immersion in game environments.  
+- **Environmental Simulation** - Recreates natural sound environments, from rustling leaves to distant thunder, with organic transitions between zones.
 
 ---
 
@@ -29,15 +29,15 @@ Combining **foley recording, granular synthesis, and procedural audio techniques
 ---
 
 ### Project Goals:  
-- **Enhance Narrative through Sound** – Use adaptive sound design to reinforce storytelling elements in games and films.  
-- **Build Immersive Environments** – Create layered, evolving soundscapes that ground users in **hyper-realistic worlds**.  
-- **Develop Audio-Driven Mechanics** – Experiment with using sound as a **gameplay mechanic**, where players navigate or solve puzzles through sound cues.  
+- **Enhance Narrative through Sound** - Use adaptive sound design to reinforce storytelling elements in games and films.  
+- **Build Immersive Environments** - Create layered, evolving soundscapes that ground users in **hyper-realistic worlds**.  
+- **Develop Audio-Driven Mechanics** - Experiment with using sound as a **gameplay mechanic**, where players navigate or solve puzzles through sound cues.  
 
 ---
 
 ### Interactive Audio Demo:  
-🎧 **Best Experienced with Headphones** –  
-🔗 [Explore Dynamic Soundscapes](#) *(Placeholder link – Upload audio demo to SoundCloud, Vimeo, or your site.)*  
+ **Best Experienced with Headphones** -  
+  [Explore Dynamic Soundscapes](#) *(Placeholder link - Upload audio demo to SoundCloud, Vimeo, or your site.)*  
 
 ---
 
@@ -48,9 +48,9 @@ Combining **foley recording, granular synthesis, and procedural audio techniques
 ---
 
 ### Real-World Application:  
-- **VR Experiences** – Designed audio environments for VR meditation apps and **360-degree video experiences**.  
-- **Game Development** – Integrated procedural soundscapes into indie games to drive player immersion.  
-- **Interactive Installations** – Collaborated on interactive art pieces where soundscapes evolved based on audience movement and input.  
+- **VR Experiences** - Designed audio environments for VR meditation apps and **360-degree video experiences**.  
+- **Game Development** - Integrated procedural soundscapes into indie games to drive player immersion.  
+- **Interactive Installations** - Collaborated on interactive art pieces where soundscapes evolved based on audience movement and input.  
 
 ---
 

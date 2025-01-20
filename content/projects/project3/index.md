@@ -1,5 +1,5 @@
 +++
-title = "Eerie Narratives: The Fable Feast Collaboration"
+title = "Eerie Narratives: The Fable Feast Soundtrack"
 date = 2024-12-15
 description = "A collaborative project during covid between creatives intertwining folk horror themes with immersive soundscapes to evoke unsettling narratives."
 draft = false
