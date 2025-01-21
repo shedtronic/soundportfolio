@@ -28,7 +28,7 @@
       <author>youremail@example.com (Mike Ballard)</author>
       <guid>http://localhost:1313/projects/project2/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project2/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project2/featured.gif" />
     </item>
     
     <item>
@@ -59,6 +59,16 @@
       <guid>http://localhost:1313/posts/article8/</guid>
       <description></description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/article8/featured.gif" />
+    </item>
+    
+    <item>
+      <title>Koochie - Regicide</title>
+      <link>http://localhost:1313/posts/music2/</link>
+      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/posts/music2/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/music2/featured.jpeg" />
     </item>
     
     <item>
