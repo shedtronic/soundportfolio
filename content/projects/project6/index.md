@@ -1,6 +1,6 @@
 +++
 title = "Oscilloscope Harmonics: Sound Design through Blender and OSC"
-date = 2020-10-31
+date = 2024-10-31
 description = "Exploring the integration of Blender and Open Sound Control (OSC) through Osci-Render for dynamic sound visualisation"
 draft = false
 +++

@@ -1,6 +1,6 @@
 +++
 title = "Generative Sonic Pi Sound Experiments"
-date = 2020-10-31
+date = 2022-10-31
 description = " Utilising Sonic Pi to compose algorithmic music, blending coding with creative expression."
 draft = false
 +++

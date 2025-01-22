@@ -1,6 +1,6 @@
 +++
 title = "Touch Designer Sound Design and Visual Interaction"
-date = 2020-10-31
+date = 2025-01-18
 description = "Using Touch Designer to create a visual synthesis patch"
 draft = false
 +++

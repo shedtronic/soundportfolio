@@ -1,6 +1,6 @@
 +++
 title = 'Koochie - Regicide'
-date = 2024-01-14T07:07:07+01:00
+date = 1995-06-03T07:07:07+01:00
 categories = ["Music"]
 tags = ["Punk", "Pop"]
 draft = false
