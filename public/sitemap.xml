@@ -63,12 +63,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://localhost:1313/posts/music1/</loc>
-    <lastmod>2024-01-14T07:07:07+01:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>http://localhost:1313/projects/project7/</loc>
     <lastmod>2020-10-31T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
@@ -89,6 +83,12 @@
   <url>
     <loc>http://localhost:1313/projects/project8/</loc>
     <lastmod>2020-10-31T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/posts/music1/</loc>
+    <lastmod>2020-05-14T07:07:07+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
