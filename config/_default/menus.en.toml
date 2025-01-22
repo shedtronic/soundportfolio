@@ -31,7 +31,7 @@
 [[main]]
   name = "Sound Design"
   pageRef = "posts"
-  url = "/categories/sound-design//"
+  url = "/categories/sound-design/"
   weight = 9
 
 #[[main]]

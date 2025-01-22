@@ -9,17 +9,7 @@
     <managingEditor>youremail@example.com (Mike Ballard)</managingEditor>
     <webMaster>youremail@example.com (Mike Ballard)</webMaster>
     <copyright>Copyright &amp;copy; 2025 </copyright>
-    <lastBuildDate>Sun, 14 Jan 2024 07:07:07 +0100</lastBuildDate><atom:link href="http://localhost:1313/categories/music/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>Koochie - Regicide</title>
-      <link>http://localhost:1313/posts/music2/</link>
-      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
-      <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/posts/music2/</guid>
-      <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/music2/featured.jpeg" />
-    </item>
+    <lastBuildDate>Thu, 14 May 2020 07:07:07 +0100</lastBuildDate><atom:link href="http://localhost:1313/categories/music/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Sow In - The Horses of the Gods</title>
@@ -29,6 +19,16 @@
       <guid>http://localhost:1313/posts/music1/</guid>
       <description></description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/music1/featured.jpg" />
+    </item>
+    
+    <item>
+      <title>Koochie - Regicide</title>
+      <link>http://localhost:1313/posts/music2/</link>
+      <pubDate>Sat, 03 Jun 1995 07:07:07 +0100</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/posts/music2/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/music2/featured.jpeg" />
     </item>
     
   </channel>

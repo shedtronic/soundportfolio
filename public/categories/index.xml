@@ -9,12 +9,32 @@
     <managingEditor>youremail@example.com (Mike Ballard)</managingEditor>
     <webMaster>youremail@example.com (Mike Ballard)</webMaster>
     <copyright>Copyright &amp;copy; 2025 </copyright>
-    <lastBuildDate>Sun, 14 Jan 2024 07:07:07 +0100</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 Jun 2020 07:07:07 +0100</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Sound Design</title>
+      <link>http://localhost:1313/categories/sound-design/</link>
+      <pubDate>Wed, 03 Jun 2020 07:07:07 +0100</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/categories/sound-design/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Music</title>
+      <link>http://localhost:1313/categories/music/</link>
+      <pubDate>Thu, 14 May 2020 07:07:07 +0100</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/categories/music/</guid>
+      <description></description>
+      
+    </item>
     
     <item>
       <title>Arduino</title>
       <link>http://localhost:1313/categories/arduino/</link>
-      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
+      <pubDate>Tue, 14 Jan 2020 07:07:07 +0100</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
       <guid>http://localhost:1313/categories/arduino/</guid>
       <description></description>
@@ -24,29 +44,9 @@
     <item>
       <title>Circuits</title>
       <link>http://localhost:1313/categories/circuits/</link>
-      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
+      <pubDate>Tue, 14 Mar 2017 07:07:07 +0100</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
       <guid>http://localhost:1313/categories/circuits/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
-      <title>Music</title>
-      <link>http://localhost:1313/categories/music/</link>
-      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
-      <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/categories/music/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
-      <title>Sound Design</title>
-      <link>http://localhost:1313/categories/sound-design/</link>
-      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
-      <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/categories/sound-design/</guid>
       <description></description>
       
     </item>

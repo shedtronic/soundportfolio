@@ -9,12 +9,22 @@
     <managingEditor>youremail@example.com (Mike Ballard)</managingEditor>
     <webMaster>youremail@example.com (Mike Ballard)</webMaster>
     <copyright>Copyright &amp;copy; 2025 </copyright>
-    <lastBuildDate>Sun, 14 Jan 2024 07:07:07 +0100</lastBuildDate><atom:link href="http://localhost:1313/categories/sound-design/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 Jun 2020 07:07:07 +0100</lastBuildDate><atom:link href="http://localhost:1313/categories/sound-design/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Fable Feast Cursed Verse Soundtrack Collab</title>
+      <link>http://localhost:1313/posts/soundtrack2/</link>
+      <pubDate>Wed, 03 Jun 2020 07:07:07 +0100</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/posts/soundtrack2/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/soundtrack2/featured.jpg" />
+    </item>
     
     <item>
       <title>Arduino Mozzi Synth Progress</title>
       <link>http://localhost:1313/posts/article6/</link>
-      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
+      <pubDate>Tue, 14 Jan 2020 07:07:07 +0100</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
       <guid>http://localhost:1313/posts/article6/</guid>
       <description></description>
@@ -24,21 +34,11 @@
     <item>
       <title>Atari Punk Console/Light Oscillator</title>
       <link>http://localhost:1313/posts/article8/</link>
-      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
+      <pubDate>Tue, 14 Mar 2017 07:07:07 +0100</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
       <guid>http://localhost:1313/posts/article8/</guid>
       <description></description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/article8/featured.gif" />
-    </item>
-    
-    <item>
-      <title>Fable Feast Cursed Verse Soundtrack Collab</title>
-      <link>http://localhost:1313/posts/soundtrack2/</link>
-      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
-      <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/posts/soundtrack2/</guid>
-      <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/soundtrack2/featured.jpg" />
     </item>
     
   </channel>
