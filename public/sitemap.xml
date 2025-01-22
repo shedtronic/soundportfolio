@@ -45,6 +45,18 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://localhost:1313/posts/soundtrack2/</loc>
+    <lastmod>2024-01-14T07:07:07+01:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/posts/music2/</loc>
+    <lastmod>2024-01-14T07:07:07+01:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://localhost:1313/posts/</loc>
     <lastmod>2024-01-14T07:07:07+01:00</lastmod>
     <changefreq>daily</changefreq>
@@ -69,12 +81,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://localhost:1313/projects/project5/</loc>
-    <lastmod>2020-10-31T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>http://localhost:1313/projects/project4/</loc>
     <lastmod>2020-10-31T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
@@ -83,6 +89,12 @@
   <url>
     <loc>http://localhost:1313/projects/project8/</loc>
     <lastmod>2020-10-31T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/projects/project5/</loc>
+    <lastmod>2017-05-31T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>

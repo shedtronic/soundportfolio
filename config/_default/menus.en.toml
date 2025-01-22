@@ -11,7 +11,7 @@
 # ordered by weight from lowest to highest.
 
 [[main]]
-  name = "Blog"
+  name = "Posts"
   pageRef = "posts"
   weight = 12
 
@@ -27,14 +27,12 @@
     url = "/categories/music/"
     weight = 8
 
-#[[main]]
-#  name = "Parent"
-#  weight = 20
-#[[main]]
-#  name = "example sub-menu 1"
-#  parent = "Parent"
-#  pageRef = "posts"
-#  weight = 20
+
+[[main]]
+  name = "Sound Design"
+  pageRef = "posts"
+  url = "/categories/sound-design//"
+  weight = 9
 
 #[[main]]
 #  name = "example sub-menu 2"

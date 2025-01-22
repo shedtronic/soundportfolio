@@ -1,8 +1,8 @@
 +++
 title = 'Atari Punk Console/Light Oscillator'
 date = 2024-01-14T07:07:07+01:00
-categories = ["Sound Design", "Arduino"]
-tags = ["Mozzi", "Synth"]
+categories = ["Sound Design", "Circuits"]
+tags = ["Atari Punk Console", "Synth"]
 draft = false
 +++
 ## Introduction
