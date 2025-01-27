@@ -55,17 +55,7 @@ nav a {
 
 
 
-header::before {
-  content: "";
-  display: block;
-  position: relative; /* Makes the line independent of other elements */
-  top: 100%; /* Places the line just below the header */
-  left: 0; /* Aligns the line to the very left */
-  width: 100vw; /* Ensures the line spans the entire viewport width */
-  height: 1px; /* Thickness of the line */
-  background-color: black; /* Color of the line */
-  z-index: 1; /* Ensures it appears above other elements if necessary */
-}
+
 
 .medium-zoom-image{
   margin-top: 20px; /* Adjust the value as needed */
@@ -206,3 +196,7 @@ background-color:red;
   background-color:red;
 }
 
+.main-menu {
+
+  background:#000000;
+}

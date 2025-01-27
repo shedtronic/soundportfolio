@@ -30,8 +30,8 @@
   
   
   
-  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.480975e317f547b6f9a4f941d6f668035fe98abfb272e56471052cf148ef1ea4c470a443606d5bd8eb560fd9ef2bd3c17bca0e9fb6f38424dd360dfc23f62005.css"
-    integrity="sha512-SAl14xf1R7b5pPlB1vZoA1/pir&#43;ycuVkcQUs8UjvHqTEcKRDYG1b2OtWD9nvK9PBe8oOn7bzhCTdNg38I/YgBQ==" />
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.b15f6133b9d531af44ed6f4cf949aa46ca63b5ce2caf290821dbe526deb0cb4060516a9c6fc9c468317d21b39663effb42a597a71e33fb2cd8dd17efff9aef6c.css"
+    integrity="sha512-sV9hM7nVMa9E7W9M&#43;UmqRspjtc4srykIIdvlJt6wy0BgUWqcb8nEaDF9IbOWY&#43;/7QqWXpx4z&#43;yzY3Rfv/5rvbA==" />
   
   
   <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
@@ -158,7 +158,11 @@
   </div>
   
   
-  <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
     class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
     
     <div class="flex flex-1 items-center justify-between">
@@ -397,6 +401,16 @@
 
 
 
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
 
   
   <div class="relative flex flex-col grow">
@@ -1162,7 +1176,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2020-10-31T00:00:00&#43;00:00">31 October 2020</time><span class="px-2 text-primary-500">&middot;</span><span>312 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  <time datetime="2020-10-31T00:00:00&#43;00:00">31 October 2020</time><span class="px-2 text-primary-500">&middot;</span><span>3 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -1279,7 +1293,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2020-06-03T00:00:00&#43;00:00">3 June 2020</time><span class="px-2 text-primary-500">&middot;</span><span>312 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  <time datetime="2020-06-03T00:00:00&#43;00:00">3 June 2020</time><span class="px-2 text-primary-500">&middot;</span><span>3 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   

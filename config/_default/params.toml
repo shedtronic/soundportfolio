@@ -19,20 +19,20 @@ replyByEmail = false
 
 disableImageOptimization = false
 disableTextInHeader = false
-# backgroundImageWidth = 1200
+#backgroundImageWidth = 1200
 
- defaultBackgroundImage = "image.jpg" # used as default for background images 
- defaultFeaturedImage = "image.jpg" # used as default for featured images in all articles
+defaultBackgroundImage = "image.jpg" # used as default for background images 
+defaultFeaturedImage = "image.jpg" # used as default for featured images in all articles
 
- highlightCurrentMenuArea = false
- smartTOC = true
- smartTOCHideUnfocusedChildren = true
+highlightCurrentMenuArea = false
+smartTOC = true
+smartTOCHideUnfocusedChildren = true
 
 giteaDefaultServer = "https://git.fsfe.org"
 forgejoDefaultServer = "https://v8.next.forgejo.org"
 
 [header]
-  layout = "basic" # valid options: basic, fixed, fixed-fill, fixed-gradient, fixed-fill-blur
+  layout = "fixed" # valid options: basic, fixed, fixed-fill, fixed-gradient, fixed-fill-blur
   
 [footer]
   showMenu = true
@@ -43,7 +43,7 @@ forgejoDefaultServer = "https://v8.next.forgejo.org"
 
 [homepage]
   layout = "profile" # valid options: page, profile, hero, card, background, custom
-  homepageImage = "IMAGE.jpg" # used in: hero, and card
+  homepageImage = "image.jpg" # used in: hero, and card
   showRecent = true
   showRecentItems = 6
   showMoreLink = true

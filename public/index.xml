@@ -52,6 +52,16 @@
     </item>
     
     <item>
+      <title>Unreal MetaSound Exploration</title>
+      <link>http://localhost:1313/posts/article1/</link>
+      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/posts/article1/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/article1/featured.jpg" />
+    </item>
+    
+    <item>
       <title>Generative Sonic Pi Sound Experiments</title>
       <link>http://localhost:1313/projects/project7/</link>
       <pubDate>Mon, 31 Oct 2022 00:00:00 +0000</pubDate>
