@@ -14,6 +14,6 @@ The quiet streets of the lockdown era provided a unique backdrop for our field r
 
 The final production, Hatton’s Cross, is available on Fable Feast’s YouTube channel. For the full experience, dim the lights, turn up the volume, and immerse yourself in the eerie world we helped create.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VRN3FsS-eDk?si=aw1Y0iki7TPlNJ28" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" src="https://www.youtube.com/embed/VRN3FsS-eDk?si=aw1Y0iki7TPlNJ28" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
