@@ -91,7 +91,7 @@ nav a:hover {
   color: #000000; /* Dark text */
   border: 1px solid #E0E0E0; /* Subtle border */
   padding: 15px;
-  border-radius: 5px;
+ 
   transition: box-shadow 0.3s ease;
 }
 
@@ -284,4 +284,29 @@ header h1{
       width:auto;
       
   }
+}
+
+
+@media (max-width: 768px) {
+  .featured-image {
+    width: 100%;
+    height: auto;
+    border:1px solid red;
+  }
+}
+
+
+
+.thumbnail img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Center the image */
+}
+
+.thumbnail {
+  overflow: hidden;
+  max-width: 100%; /* Prevent it from exceeding the container width */
+  height: auto;
+  text-align: center; /* Optional: Align the image center */
 }
