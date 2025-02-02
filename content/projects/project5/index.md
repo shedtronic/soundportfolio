@@ -11,7 +11,8 @@ draft = false
 Summary:
 This project explores the creation of an Atari Punk Console (APC) with a light-sensitive oscillator. By integrating light-dependent resistors (LDRs) into the classic APC design, this experiment investigates how light variations can influence sound synthesis. The project combines DIY electronics with creative sound design, showcasing the potential for interactive, light-driven sonic outputs.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/OZ75F2cR6MM?si=3dC3MR4jUlogeuon" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+{{< youtube OZ75F2cR6MM  >}}
+
 
 
 Background

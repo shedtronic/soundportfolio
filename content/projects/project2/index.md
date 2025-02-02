@@ -18,10 +18,13 @@ By leveraging **binaural recording techniques, ambisonics, and dynamic sound pla
 - **Interactive Audio Triggers** – Sound objects change based on user proximity, creating evolving soundscapes that respond to interaction.  
 - **Applications in VR** – Designed for VR platforms like **Oculus Quest 2 and Vive**, bringing audio to the forefront of immersive storytelling.
 
+### Video Demo:
+{{< youtube gepgJSdJYcY >}}
+
 ---
 
-### Video Demo:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gepgJSdJYcY?si=V-QEHO_CaKSfE7kL" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 
 
 ### Tools and Techniques:  

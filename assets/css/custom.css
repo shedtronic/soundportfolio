@@ -159,7 +159,7 @@ footer {
 
 .related-posts {
     background-color: #000000; /* Optional: Ensures consistent dark background */
-    /*padding: 10px;*/ /* Optional: Adds spacing around links */
+    padding: 10px; /* Optional: Adds spacing around links */
 }
 
 footer {
@@ -257,4 +257,31 @@ header h1{
 .homepage-header img .px-1 {
 
   color:#E0E0E0;
+}
+
+
+
+
+.featured-image {
+  width: 100%; /* Ensure it takes up the full width of the container */
+  max-width: var(--main-content-width, 100%); /* Optional: Set a max width matching main content */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove inline or floating effects */
+}
+
+.videocontainer {
+ 
+}
+
+.video-container iframe {
+  
+  
+}
+
+@media (max-width: 768px) {
+  .thumbnail {
+       /* Make height responsive on larger screens */
+      width:auto;
+      
+  }
 }

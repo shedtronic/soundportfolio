@@ -40,6 +40,12 @@ timeout = "60s"
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
+[privacy]
+  [privacy.vimeo]
+    disable = false
+    enableDNT = false
+    simple = false
+
 [related]
   threshold = 0
   toLower = false
