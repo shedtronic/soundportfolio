@@ -42,7 +42,7 @@ h1, h2, h3 {
 
 /* Navigation Menu */
 nav {
-  background-color: #1E1E1E; /* Same as background */
+  background-color: #000000; /* Same as background */
 
 }
 
@@ -71,7 +71,7 @@ nav a {
 /* Optional: Style the links for a cleaner appearance */
 nav a:hover {
   background-color: transparent; /* Remove any hover background */
-  text-decoration: underline; /* Add underline on hover if desired */
+  text-decoration: none; /* Add underline on hover if desired */
 }
 
 /* If there are specific sub-page styles causing the issue, target them */
@@ -82,16 +82,15 @@ nav ul li a {
 
 nav a:hover {
   color: #E6E6E6;
-  background-color: #333333; /* Slightly lighter grey */
+  background-color: #000000; /* Slightly lighter grey */
 }
 
 /* Card Text Styles */
 .card {
   background-color: #F5F5F5; /* Light grey background */
   color: #000000; /* Dark text */
-  border: 1px solid #E0E0E0; /* Subtle border */
+  /*border: 1px solid #E0E0E0;*/ /* Subtle border */
   padding: 15px;
- 
   transition: box-shadow 0.3s ease;
 }
 
@@ -101,7 +100,7 @@ nav a:hover {
 
 .card-title {
   color: #000000; /* Ensure title text is black */
-  /*font-weight: bold;*/
+  font-weight:lighter;
 }
 
 .card-text {
@@ -241,17 +240,26 @@ header {
 .homepage-header .mt-1.text-2xl i,
 .homepage-header .mt-1.text-2xl a {
     color: white !important; /* Ensure white is applied */
+    
 }
 
 
 header h1{
   margin-top:30px;
   color:#ffffff;
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),  /* Outer glow */
+    0 0 20px rgba(255, 255, 255, 0.6), 
+    0 0 30px rgba(255, 255, 255, 0.4); /* Inner glow */
 }
 
 .homepage-header h2{
   font-size:small;
   color:#ffffff;
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),  /* Outer glow */
+    0 0 20px rgba(255, 255, 255, 0.6), 
+    0 0 30px rgba(255, 255, 255, 0.4); /* Inner glow */
 }
 
 .homepage-header img .px-1 {
@@ -296,17 +304,3 @@ header h1{
 }
 
 
-
-.thumbnail img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto; /* Center the image */
-}
-
-.thumbnail {
-  overflow: hidden;
-  max-width: 100%; /* Prevent it from exceeding the container width */
-  height: auto;
-  text-align: center; /* Optional: Align the image center */
-}
