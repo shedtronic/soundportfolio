@@ -12,6 +12,11 @@ body {
   
 }
 
+#main-content  {
+
+  
+}
+
 a {
   color: #000000 !important; /* Black links */
 }
@@ -264,7 +269,7 @@ header h1{
 
 .homepage-header img .px-1 {
 
-  color:#E0E0E0;
+  /*color:#E0E0E0;*/
 }
 
 
