@@ -23,7 +23,7 @@ a {
 
 a:hover {
   color: #555555; /* Dark grey on hover */
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* Links and accents */
@@ -31,7 +31,7 @@ a {
   color: #FFFFFF;
   text-decoration: none;
   font-weight: bold;
-  border-bottom: 2px solid #FFFFFF;
+  
 }
 
 a:hover {
@@ -269,7 +269,7 @@ header h1{
 
 .homepage-header img .px-1 {
 
-  /*color:#E0E0E0;*/
+  color:#E0E0E0;
 }
 
 
