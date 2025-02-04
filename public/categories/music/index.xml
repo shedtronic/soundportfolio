@@ -2,33 +2,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Music on Sound Portfolio</title>
-    <link>http://localhost:1313/categories/music/</link>
+    <link>https://super-haupia-9406c8.netlify.app/categories/music/</link>
     <description>Recent content in Music on Sound Portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <managingEditor>youremail@example.com (Mike Ballard)</managingEditor>
     <webMaster>youremail@example.com (Mike Ballard)</webMaster>
     <copyright>Copyright &amp;copy; 2025 </copyright>
-    <lastBuildDate>Thu, 14 May 2020 07:07:07 +0100</lastBuildDate><atom:link href="http://localhost:1313/categories/music/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 May 2020 07:07:07 +0100</lastBuildDate><atom:link href="https://super-haupia-9406c8.netlify.app/categories/music/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Sow In - The Horses of the Gods</title>
-      <link>http://localhost:1313/posts/music1/</link>
+      <link>https://super-haupia-9406c8.netlify.app/posts/music1/</link>
       <pubDate>Thu, 14 May 2020 07:07:07 +0100</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/posts/music1/</guid>
+      <guid>https://super-haupia-9406c8.netlify.app/posts/music1/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/music1/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://super-haupia-9406c8.netlify.app/posts/music1/featured.jpg" />
     </item>
     
     <item>
       <title>Koochie - Regicide</title>
-      <link>http://localhost:1313/posts/music2/</link>
+      <link>https://super-haupia-9406c8.netlify.app/posts/music2/</link>
       <pubDate>Sat, 03 Jun 1995 07:07:07 +0100</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/posts/music2/</guid>
+      <guid>https://super-haupia-9406c8.netlify.app/posts/music2/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/music2/featured.jpeg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://super-haupia-9406c8.netlify.app/posts/music2/featured.jpeg" />
     </item>
     
   </channel>

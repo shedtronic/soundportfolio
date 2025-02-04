@@ -2,93 +2,93 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Sound Portfolio</title>
-    <link>http://localhost:1313/projects/</link>
+    <link>https://super-haupia-9406c8.netlify.app/projects/</link>
     <description>Recent content in Projects on Sound Portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <managingEditor>youremail@example.com (Mike Ballard)</managingEditor>
     <webMaster>youremail@example.com (Mike Ballard)</webMaster>
     <copyright>Copyright &amp;copy; 2025 </copyright>
-    <lastBuildDate>Sat, 18 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/projects/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://super-haupia-9406c8.netlify.app/projects/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Touch Designer Sound Design and Visual Interaction</title>
-      <link>http://localhost:1313/projects/project8/</link>
+      <link>https://super-haupia-9406c8.netlify.app/projects/project8/</link>
       <pubDate>Sat, 18 Jan 2025 00:00:00 +0000</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/projects/project8/</guid>
+      <guid>https://super-haupia-9406c8.netlify.app/projects/project8/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project8/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://super-haupia-9406c8.netlify.app/projects/project8/featured.jpg" />
     </item>
     
     <item>
       <title>Oscillating Patches: Arduino Mozzi Explorations</title>
-      <link>http://localhost:1313/projects/project2/</link>
+      <link>https://super-haupia-9406c8.netlify.app/projects/project2/</link>
       <pubDate>Sun, 15 Dec 2024 00:00:00 +0000</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/projects/project2/</guid>
+      <guid>https://super-haupia-9406c8.netlify.app/projects/project2/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project2/featured.gif" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://super-haupia-9406c8.netlify.app/projects/project2/featured.gif" />
     </item>
     
     <item>
       <title>Uncanny Game Sound: MetaSound In Unreal Engine </title>
-      <link>http://localhost:1313/projects/project1/</link>
+      <link>https://super-haupia-9406c8.netlify.app/projects/project1/</link>
       <pubDate>Tue, 10 Dec 2024 00:00:00 +0000</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/projects/project1/</guid>
+      <guid>https://super-haupia-9406c8.netlify.app/projects/project1/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project1/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://super-haupia-9406c8.netlify.app/projects/project1/featured.png" />
     </item>
     
     <item>
       <title>Oscilloscope Harmonics: Sound Design through Blender and OSC</title>
-      <link>http://localhost:1313/projects/project6/</link>
+      <link>https://super-haupia-9406c8.netlify.app/projects/project6/</link>
       <pubDate>Thu, 31 Oct 2024 00:00:00 +0000</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/projects/project6/</guid>
+      <guid>https://super-haupia-9406c8.netlify.app/projects/project6/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project6/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://super-haupia-9406c8.netlify.app/projects/project6/featured.jpg" />
     </item>
     
     <item>
       <title>Generative Sonic Pi Sound Experiments</title>
-      <link>http://localhost:1313/projects/project7/</link>
+      <link>https://super-haupia-9406c8.netlify.app/projects/project7/</link>
       <pubDate>Mon, 31 Oct 2022 00:00:00 +0000</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/projects/project7/</guid>
+      <guid>https://super-haupia-9406c8.netlify.app/projects/project7/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project7/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://super-haupia-9406c8.netlify.app/projects/project7/featured.jpg" />
     </item>
     
     <item>
       <title>The Horses of the Gods Debut Album Commercial Release</title>
-      <link>http://localhost:1313/projects/project4/</link>
+      <link>https://super-haupia-9406c8.netlify.app/projects/project4/</link>
       <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/projects/project4/</guid>
+      <guid>https://super-haupia-9406c8.netlify.app/projects/project4/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project4/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://super-haupia-9406c8.netlify.app/projects/project4/featured.jpg" />
     </item>
     
     <item>
       <title>Eerie Narratives: The Fable Feast Soundtrack</title>
-      <link>http://localhost:1313/projects/project3/</link>
+      <link>https://super-haupia-9406c8.netlify.app/projects/project3/</link>
       <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/projects/project3/</guid>
+      <guid>https://super-haupia-9406c8.netlify.app/projects/project3/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project3/featured.gif" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://super-haupia-9406c8.netlify.app/projects/project3/featured.gif" />
     </item>
     
     <item>
       <title>The Atari Punk Console/Light Oscillator</title>
-      <link>http://localhost:1313/projects/project5/</link>
+      <link>https://super-haupia-9406c8.netlify.app/projects/project5/</link>
       <pubDate>Wed, 31 May 2017 00:00:00 +0000</pubDate>
       <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/projects/project5/</guid>
+      <guid>https://super-haupia-9406c8.netlify.app/projects/project5/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/projects/project5/featured.gif" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://super-haupia-9406c8.netlify.app/projects/project5/featured.gif" />
     </item>
     
   </channel>
