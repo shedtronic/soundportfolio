@@ -13,6 +13,11 @@ summaryLength = 0
 buildDrafts = false
 buildFuture = false
 
+[params]
+  googleFonts = "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&display=swap"
+
+
+
 enableEmoji = true
 
 # googleAnalytics = "G-XXXXXXXXX"

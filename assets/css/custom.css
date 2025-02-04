@@ -4,18 +4,25 @@
 body {
   color: #000000; /* Default text color set to black */
   background-color: #F5F5F5; /* Light grey background */
+  font-family: 'Roboto', sans-serif; /* Default body font */
 }
 #main-content {
   border-style: solid;
   border-color: gray;
   border-width: 0px 1px 0px 1px; /* Top, Right, Bottom, Left */
-  
+  font-family: 'Roboto', sans-serif; /* Default body font */
 }
 
-#main-content  {
 
-  
+
+
+p, li {
+  font-family: 'Lora', serif; /* Alternate body font */
 }
+
+
+
+
 
 a {
   color: #000000 !important; /* Black links */
@@ -31,7 +38,7 @@ a {
   color: #FFFFFF;
   text-decoration: none;
   font-weight: bold;
-  
+  font-family: 'Roboto', sans-serif; /* Default body font */
 }
 
 a:hover {
@@ -43,25 +50,36 @@ a:hover {
 h1, h2, h3 {
   color: #000000;
   font-family: 'Roboto', sans-serif;
+  font-weight:100;
+
+}
+
+.text-xl {
+
+  font-weight:200;
+}
+
+section{
+
+  padding-left:5px;
+  padding-right:5px;
 }
 
 /* Navigation Menu */
 nav {
   background-color: #000000; /* Same as background */
-
-}
-
-nav a {
-  color: #FFFFFF !important;
-  padding: 10px 15px;
+  font-family: 'Playfair Display', serif; /* Chosen font */
 }
 
 
 
 /* Remove bottom borders from navigation links and sub-pages */
 nav a {
+  color: #FFFFFF !important;
+  padding: 10px 15px;
   border: none !important; /* Ensure no borders are applied */
   text-decoration: none; /* Remove any underline */
+  
 }
 
 
