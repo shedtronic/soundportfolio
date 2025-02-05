@@ -221,13 +221,13 @@ footer a:hover {
 
 body[data-page-type="project"] {
 
-background-color:red;
+
 
 }
 
 .project-page header {
   @apply bg-primary-500 text-white;
-  background-color:red;
+  
 }
 
 .main-menu {
@@ -278,7 +278,7 @@ header h1{
 
 .homepage-header h2{
   font-size:small;
-  color:#ffffff;
+  color:#ffffff !important;
   text-shadow: 
     0 0 10px rgba(255, 255, 255, 0.8),  /* Outer glow */
     0 0 20px rgba(255, 255, 255, 0.6), 
