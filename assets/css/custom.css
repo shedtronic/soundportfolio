@@ -100,6 +100,8 @@ nav a:hover {
 /* If there are specific sub-page styles causing the issue, target them */
 nav ul li a {
   border-bottom: none !important; /* Specifically remove bottom borders for list items */
+  
+  
 }
 
 
@@ -160,7 +162,11 @@ footer {
   width: 100%; /* Ensure it spans the full width */
   left: 0;
   bottom: 0;
-  margin-top: 10px;
+  
+  
+  border-style: solid;
+  border-color: gray;
+  border-width: 0px 1px 0px 1px; /* Top, Right, Bottom, Left */
 }
 
 #site-footer {
@@ -187,10 +193,7 @@ footer {
 }
 
 footer {
-
-  border-style: solid;
-  border-color: gray;
-  border-width: 0px 1px 0px 1px; /* Top, Right, Bottom, Left */
+  
   
 }
 
@@ -292,7 +295,10 @@ header h1{
   color:#E0E0E0;
 }
 
+.text-2xl, .text-4xl {
 
+  padding-left:5px;
+}
 
 
 .featured-image {
@@ -334,7 +340,7 @@ header h1{
   .featured-image {
     width: 100%;
     height: auto;
-    border:1px solid red;
+    
   }
 }
 
