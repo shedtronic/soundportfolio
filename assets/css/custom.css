@@ -115,6 +115,8 @@ nav a:hover {
   /*border: 1px solid #E0E0E0;*/ /* Subtle border */
   padding: 15px;
   transition: box-shadow 0.3s ease;
+
+  border-rasius:0px;
 }
 
 .card:hover {
