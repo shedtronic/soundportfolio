@@ -29,8 +29,8 @@
 
 
 [[main]]
+  identifier = "posts"
   name = "Sound Design"
-  pageRef = "posts"
   url = "/categories/sound-design/"
   weight = 9
 
