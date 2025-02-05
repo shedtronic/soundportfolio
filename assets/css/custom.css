@@ -311,6 +311,14 @@ header h1{
   
 }
 
+.thumnail-card{
+
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: none;
+  border-color: initial;
+}
+
 @media (max-width: 768px) {
   .thumbnail {
        /* Make height responsive on larger screens */
@@ -318,6 +326,8 @@ header h1{
       
   }
 }
+
+
 
 
 @media (max-width: 768px) {
@@ -328,4 +338,13 @@ header h1{
   }
 }
 
+.rounded-md{
 
+  border-radius:5px;
+}
+
+
+.border-2 {
+
+  border-width:1px;
+}
