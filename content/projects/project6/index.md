@@ -6,50 +6,22 @@ draft = false
 +++
 
 ### Project Overview  
-**Spatial Audio Environments** explores the intersection of sound, space, and interaction in virtual and augmented reality settings. This project aims to create immersive audio landscapes that react to user movement, delivering a rich, 360-degree auditory experience.  
+This project is exploring the relationship between oscilloscope art and sound design. I am interested in ways to manipulate visuals using oscilloscope art using a program called OsciRender and sound. I eventually want to experiment with interactions using OsciRender, OSC protocol to allow ways to send sound from the DAW to Osci Render to allow audiences to participate with visuals but that will be explored once I have the connections I need. 
+So I am going to begin with just manipulating OsciRender with Blender as they have good integration and you can bring in 3D animation into the artwork, but later I want to hook up Touch Designer to to this project to allow for more creative control, allowing introduction of glitch visuals and sound through OSC from Logic or Ableton.
 
-By leveraging **binaural recording techniques, ambisonics, and dynamic sound placement**, this project pushes the boundaries of how audio can drive immersion in virtual worlds.
 
----
+Oscilloscope art has a distinct aesthetic that blends retro-futurism, glitch aesthetics, and scientific visualisation. The idea of using sound as a direct manipulator of shape and motion is fascinating - sound literally becoming the visual element.
 
-### Key Features:  
-- **3D Audio Design** – Sound is rendered in full 360 degrees, responding to head tracking and environmental shifts.  
-- **Ambisonic Encoding** – Uses ambisonic audio to provide a sense of height, depth, and width, placing users at the center of a responsive soundscape.  
-- **Interactive Audio Triggers** – Sound objects change based on user proximity, creating evolving soundscapes that respond to interaction.  
-- **Applications in VR** – Designed for VR platforms like **Oculus Quest 2 and Vive**, bringing audio to the forefront of immersive storytelling.
+Phase 1: Exploring OsciRender in Blender
 
----
+To start, I will focus on manipulating OsciRender within Blender, since the two integrate well. Blender's animation and shading systems allow for 3D movement and distortions, adding another dimension to the traditionally 2D oscilloscope visuals. This phase will focus on:
+	.	Learning OsciRender's waveform rendering techniques
+	.	Creating simple animated shapes using Blender's modifiers
+	.	Experimenting with sound-generated waveforms to drive movement
 
-### Tools and Techniques:  
-- **DAWs:** Logic Pro, Ableton Live  
-- **Spatial Audio Software:** Reaper (Ambisonic Toolkit), Dolby Atmos Renderer  
-- **Engines:** Unity (Spatializer Plugin), Unreal Engine (MetaSound)  
-- **Hardware:** Binaural microphones, field recorders, and VR headset tracking systems  
+Phase 2: Expanding to TouchDesigner and OSC
 
----
-
-### Project Goals:  
-- To develop **responsive audio landscapes** for VR storytelling and virtual exhibitions.  
-- Enhance **emotional engagement** by crafting soundscapes that evolve alongside user interaction.  
-- Experiment with **acoustic ecology concepts** to replicate natural environments and create abstract audio-driven worlds.
-
----
-
-### Listen & Experience:  
-🎧 **Headphones Recommended** – Experience a sample ambisonic soundscape demo:  
-🔗 [Listen to Spatial Demo](#) *(Placeholder link – upload an audio file to SoundCloud or Vimeo and link here)*  
-
----
-
-### Gallery:  
-![Spatial Audio Visualization](images/sound2.jpg)  
-*Binaural microphone setup used for recording the initial spatial audio assets.*
-
----
-
-### Outcome:  
-This project has been showcased at several interactive media festivals and used in **indie VR game prototypes**, focusing on enriching player immersion through **sound-first design.**
-
----
-
-Let me know if you’d like additional sections, such as **technical breakdowns, project timelines, or behind-the-scenes photos.**
+Once I have a solid foundation in OsciRender and Blender, I will begin experimenting with TouchDesigner, an environment that excels at real-time visual manipulation. The goal is to integrate OSC (Open Sound Control) into the workflow, allowing dynamic interaction between sound and visuals in real time. Potential avenues for exploration include:
+	.	Using OSC to send data from a DAW (Logic Pro/Ableton) to TouchDesigner
+	.	Introducing glitch aesthetics and generative visual distortions
+	.	Developing interactive elements where an audience can influence the visuals through sound
