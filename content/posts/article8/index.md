@@ -1,6 +1,6 @@
 +++
 title = 'Atari Punk Console/Light Oscillator'
-date = 2017-03-14T07:07:07+01:00
+date = 2020-03-14T07:07:07+01:00
 categories = ["Sound Design", "Circuits"]
 tags = ["Atari Punk Console", "Synth"]
 draft = false

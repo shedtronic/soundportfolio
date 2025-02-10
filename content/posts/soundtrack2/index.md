@@ -1,6 +1,6 @@
 +++
 title = 'Fable Feast Cursed Verse Soundtrack Collab'
-date = 2020-06-03T07:07:07+01:00
+date = 2025-02-03T07:07:07+01:00
 categories = ["Sound Design"]
 tags = ["Folk", "Horror"]
 draft = false

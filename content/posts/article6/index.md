@@ -1,6 +1,6 @@
 +++
 title = 'Arduino Mozzi Synth Progress'
-date = 2020-01-14T07:07:07+01:00
+date = 2025-01-14T07:07:07+01:00
 categories = ["Sound Design", "Arduino"]
 tags = ["Mozzi", "Synth"]
 draft = false
