@@ -80,11 +80,25 @@ nav {
 
 /* Remove bottom borders from navigation links and sub-pages */
 nav a {
-  color: #FFFFFF !important;
+  color: #ffffff !important;
   padding: 10px 15px;
   border: none !important; /* Ensure no borders are applied */
   text-decoration: none; /* Remove any underline */
   
+}
+
+
+
+/* Ensure contrast for mobile menu when open */
+@media (max-width: 768px) {
+  .mobile-menu {
+    background: rgba(0, 0, 0, 0.9); /* Dark background */
+    color: #ffffff !important;
+  }
+  
+  .mobile-menu a {
+    color: #ffffff !important;  /* White text for better contrast */
+  }
 }
 
 
@@ -347,7 +361,31 @@ header h1{
     height: auto;
     
   }
+  body.home nav a p {
+    color: #ffffff !important; /* Black text for homepage only */
+  }
+
+  /* Ensure dropdown menu items also appear correctly */
+  body.home nav ul,
+  body.home nav ul li a,
+  body.home nav ul li p {
+    color: #ffffff !important; /* Black text on the homepage mobile menu */
+   
+  }
+  
 }
+
+
+
+@media (prefers-color-scheme: dark) {
+  nav a p {
+    color: #ffffff !important; /* White text in dark mode */
+  }
+}
+
+
+
+
 
 .rounded-md{
 
