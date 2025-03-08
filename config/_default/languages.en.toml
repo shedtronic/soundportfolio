@@ -25,6 +25,7 @@ title = "Sound Portfolio"
    links = [
       { soundcloud = "https://soundcloud.com/shedtronic" },
       { youtube = "https://www.youtube.com/@shedtronic" },
+      { spotify = "https://open.spotify.com/artist/3hd3jY357TOCmwGrpDAUeC" },
 #     { email = "mailto:hello@your_domain.com" },
       { link = "https://linktr.ee/shedtronic" },
 #     { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
@@ -60,12 +61,12 @@ title = "Sound Portfolio"
 #     { slack = "https://workspace.url/team/userid" },
 #     { snapchat = "https://snapchat.com/add/username" },
       
-     { spotify = "https://open.spotify.com/artist/3hd3jY357TOCmwGrpDAUeC" },
+     
 #     { stack-overflow = "https://stackoverflow.com/users/userid/username" },
 #     { steam = "https://steamcommunity.com/profiles/userid" },
 #     { telegram = "https://t.me/username" },
 #     { threads = "https://www.threads.net/@shedtronic" },
-      { tiktok = "https://tiktok.com/@shedtronic" },
+#     { tiktok = "https://tiktok.com/@shedtronic" },
 #     { tumblr = "https://username.tumblr.com" },
 #     { twitch = "https://twitch.tv/username" },
 #     { twitter = "https://twitter.com/username" },
