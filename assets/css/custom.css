@@ -397,3 +397,38 @@ header h1{
 
   border-width:1px;
 }
+
+
+.showreel-container {
+  width: 100%;
+  background-color: #000000; /* Black background */
+  padding: 20px 0; /* Space above and below the video */
+  display: flex;
+  justify-content: center; /* Center the video horizontally */
+}
+
+.showreel-container iframe {
+  width: 100%;
+  max-width: 800px; /* Limit maximum size */
+  aspect-ratio: 16 / 9; /* Maintain video aspect ratio */
+  border: none;
+}
+
+
+.download-link-container {
+  margin-top: 10px;
+}
+
+.download-link {
+  color: #ffffff; /* White text */
+  background-color: #888888; /* Dark grey button */
+  padding: 10px 20px;
+  border-radius: 0px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  margin-left: 10px;
+}
+
+.download-link:hover {
+  background-color: #cccccc; /* Lighter grey on hover */
+}
