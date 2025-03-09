@@ -6,50 +6,13 @@ draft = false
 +++
 
 ### Project Overview  
-**Spatial Audio Environments** explores the intersection of sound, space, and interaction in virtual and augmented reality settings. This project aims to create immersive audio landscapes that react to user movement, delivering a rich, 360-degree auditory experience.  
 
-By leveraging **binaural recording techniques, ambisonics, and dynamic sound placement**, this project pushes the boundaries of how audio can drive immersion in virtual worlds.
+I have been inspired for a long time by different visual programming systems. I got the bug when I discovered Max-Msp years ago and tinkered with that for a while before moving to Processing and then P5.js. So when I found out about Touch Designer it was like the best of both worlds, something that had a node based interface with the programming and interfacing capabilities of something link Processing.
+Its early days for me but as I am very interested in not only visuals and live projections for The Horses of the Gods, I am also looking at ways to integrate sound reactive visuals for performance. 
+The project I am working on is to make reactive visuals to a soundtrack I have produced already but I think I can take this much further. 
 
----
+The potential for creating live, reactive visuals that respond to sound in real-time is both exciting and a bit of a learning curve. The idea of using OSC or MIDI to bridge the two platforms opens up a lot of possibilities, not just for performance but also for installations and experimental projects.
 
-### Key Features:  
-- **3D Audio Design** – Sound is rendered in full 360 degrees, responding to head tracking and environmental shifts.  
-- **Ambisonic Encoding** – Uses ambisonic audio to provide a sense of height, depth, and width, placing users at the center of a responsive soundscape.  
-- **Interactive Audio Triggers** – Sound objects change based on user proximity, creating evolving soundscapes that respond to interaction.  
-- **Applications in VR** – Designed for VR platforms like **Oculus Quest 2 and Vive**, bringing audio to the forefront of immersive storytelling.
+To challenge myself, I'm planning to set up a system where visuals react dynamically to audio generated in Ableton Live and eventually Unreal Engine. This will involve mapping MIDI or audio analysis data to elements in TouchDesigner, creating a feedback loop where sound influences visuals and vice versa. I also want to experiment with generating ambient sounds directly within TouchDesigner, using audio CHOPs, and blending those with more complex audio from my DAW.
 
----
-
-### Tools and Techniques:  
-- **DAWs:** Logic Pro, Ableton Live  
-- **Spatial Audio Software:** Reaper (Ambisonic Toolkit), Dolby Atmos Renderer  
-- **Engines:** Unity (Spatializer Plugin), Unreal Engine (MetaSound)  
-- **Hardware:** Binaural microphones, field recorders, and VR headset tracking systems  
-
----
-
-### Project Goals:  
-- To develop **responsive audio landscapes** for VR storytelling and virtual exhibitions.  
-- Enhance **emotional engagement** by crafting soundscapes that evolve alongside user interaction.  
-- Experiment with **acoustic ecology concepts** to replicate natural environments and create abstract audio-driven worlds.
-
----
-
-### Listen & Experience:  
-🎧 **Headphones Recommended** – Experience a sample ambisonic soundscape demo:  
-🔗 [Listen to Spatial Demo](#) *(Placeholder link – upload an audio file to SoundCloud or Vimeo and link here)*  
-
----
-
-### Gallery:  
-![Spatial Audio Visualization](images/sound2.jpg)  
-*Binaural microphone setup used for recording the initial spatial audio assets.*
-
----
-
-### Outcome:  
-This project has been showcased at several interactive media festivals and used in **indie VR game prototypes**, focusing on enriching player immersion through **sound-first design.**
-
----
-
-Let me know if you’d like additional sections, such as **technical breakdowns, project timelines, or behind-the-scenes photos.**
+By combining generative audio with reactive visuals, I hope to create something that feels alive - something that embodies the hauntological and liminal themes I am currently exploring. This process will likely involve a lot of experimentation, but I'm looking forward to seeing where it leads and what unexpected connections emerge along the way.

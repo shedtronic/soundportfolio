@@ -24,8 +24,8 @@ title = "Sound Portfolio"
 
    links = [
       { soundcloud = "https://soundcloud.com/shedtronic" },
-      { youtube = "https://www.youtube.com/@shedtronic" },
       { spotify = "https://open.spotify.com/artist/3hd3jY357TOCmwGrpDAUeC" },
+      { youtube = "https://www.youtube.com/@shedtronic" },
       { link = "https://pushingtheenvelopegenerator.substack.com/" },
 #     { email = "mailto:hello@your_domain.com" },
 #     { link = "https://linktr.ee/shedtronic" },

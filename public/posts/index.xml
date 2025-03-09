@@ -9,7 +9,17 @@
     <managingEditor>youremail@example.com (Mike Ballard)</managingEditor>
     <webMaster>youremail@example.com (Mike Ballard)</webMaster>
     <copyright>Copyright &amp;copy; 2025 </copyright>
-    <lastBuildDate>Sun, 09 Feb 2025 07:07:07 +0100</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Feb 2025 07:07:07 +0100</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Unreal MetaSound Exploration</title>
+      <link>http://localhost:1313/posts/article1/</link>
+      <pubDate>Fri, 14 Feb 2025 07:07:07 +0100</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/posts/article1/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/article1/featured.png" />
+    </item>
     
     <item>
       <title>Sow In - The Horses of the Gods</title>
@@ -19,6 +29,16 @@
       <guid>http://localhost:1313/posts/music1/</guid>
       <description></description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/music1/featured.jpg" />
+    </item>
+    
+    <item>
+      <title>OsciRender Sound Design with Blender</title>
+      <link>http://localhost:1313/posts/article3/</link>
+      <pubDate>Fri, 07 Feb 2025 07:07:07 +0100</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/posts/article3/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/article3/featured.gif" />
     </item>
     
     <item>
@@ -39,26 +59,6 @@
       <guid>http://localhost:1313/posts/article6/</guid>
       <description></description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/article6/featured.gif" />
-    </item>
-    
-    <item>
-      <title>OsciRender Sound Design with Blender</title>
-      <link>http://localhost:1313/posts/article3/</link>
-      <pubDate>Tue, 14 Jan 2025 07:07:07 +0100</pubDate>
-      <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/posts/article3/</guid>
-      <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/article3/featured.gif" />
-    </item>
-    
-    <item>
-      <title>Unreal MetaSound Exploration</title>
-      <link>http://localhost:1313/posts/article1/</link>
-      <pubDate>Tue, 14 Jan 2025 07:07:07 +0100</pubDate>
-      <author>youremail@example.com (Mike Ballard)</author>
-      <guid>http://localhost:1313/posts/article1/</guid>
-      <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/article1/featured.png" />
     </item>
     
     <item>

@@ -6,50 +6,74 @@ draft = false
 +++
 
 ### Project Overview  
-**Spatial Audio Environments** explores the intersection of sound, space, and interaction in virtual and augmented reality settings. This project aims to create immersive audio landscapes that react to user movement, delivering a rich, 360-degree auditory experience.  
 
-By leveraging **binaural recording techniques, ambisonics, and dynamic sound placement**, this project pushes the boundaries of how audio can drive immersion in virtual worlds.
 
----
+This project explores the use of Sonic Pi as a tool for creating generative soundscapes and live-coded music. Sonic Pi offers a unique opportunity to combine coding with sound design, allowing me to build dynamic audio environments that can evolve in real-time. My goal is to develop a series of experiments using Sonic Pi to create ambient and rhythmic compositions, ultimately leading to live performance opportunities or integration with other interactive media projects.
 
-### Key Features:  
-- **3D Audio Design** – Sound is rendered in full 360 degrees, responding to head tracking and environmental shifts.  
-- **Ambisonic Encoding** – Uses ambisonic audio to provide a sense of height, depth, and width, placing users at the center of a responsive soundscape.  
-- **Interactive Audio Triggers** – Sound objects change based on user proximity, creating evolving soundscapes that respond to interaction.  
-- **Applications in VR** – Designed for VR platforms like **Oculus Quest 2 and Vive**, bringing audio to the forefront of immersive storytelling.
 
----
 
-### Tools and Techniques:  
-- **DAWs:** Logic Pro, Ableton Live  
-- **Spatial Audio Software:** Reaper (Ambisonic Toolkit), Dolby Atmos Renderer  
-- **Engines:** Unity (Spatializer Plugin), Unreal Engine (MetaSound)  
-- **Hardware:** Binaural microphones, field recorders, and VR headset tracking systems  
+Goals and Objectives
 
----
+The main objective of this project is to harness Sonic Pi's capabilities for:
+	-	Generative music creation, where patterns and sequences are generated algorithmically.
+	-	Live coding performance, experimenting with how sound can be manipulated on the fly.
+	-	Integration with external hardware such as MIDI controllers or modular synths.
 
-### Project Goals:  
-- To develop **responsive audio landscapes** for VR storytelling and virtual exhibitions.  
-- Enhance **emotional engagement** by crafting soundscapes that evolve alongside user interaction.  
-- Experiment with **acoustic ecology concepts** to replicate natural environments and create abstract audio-driven worlds.
+A key focus is on creating soundscapes that explore the themes of hauntology, liminality, and the eerie concepts that align with my broader sound design practice.
 
----
 
-### Listen & Experience:  
-🎧 **Headphones Recommended** – Experience a sample ambisonic soundscape demo:  
-🔗 [Listen to Spatial Demo](#) *(Placeholder link – upload an audio file to SoundCloud or Vimeo and link here)*  
 
----
+The Setup: Tools and Techniques
 
-### Gallery:  
-![Spatial Audio Visualization](images/sound2.jpg)  
-*Binaural microphone setup used for recording the initial spatial audio assets.*
+I am using:
+	-	Sonic Pi software, running on a Mac with a MIDI keyboard for real-time input.
+	-	Code-based sequencing to generate evolving patterns and textures.
+	-	Synth and sample manipulation within Sonic Pi, blending organic and synthetic sounds.
 
----
+The initial experiments involve building simple loops and patterns, then gradually introducing randomization and conditional logic to create a sense of unpredictability.
 
-### Outcome:  
-This project has been showcased at several interactive media festivals and used in **indie VR game prototypes**, focusing on enriching player immersion through **sound-first design.**
 
----
 
-Let me know if you’d like additional sections, such as **technical breakdowns, project timelines, or behind-the-scenes photos.**
+Generative Sound Design Approach
+
+Initial Experiments
+
+My first experiments focus on:
+	-	Algorithmic rhythms, using random seeds to vary percussion sequences.
+	-	Evolving melodies, with generative note selection based on predefined scales.
+	-	Ambient textures, using reverb and delay to create a sense of space and depth.
+
+
+
+Taking It Further: Integration and Performance
+
+The next phase involves:
+	-	Connecting Sonic Pi to external hardware, such as a MIDI controller for live manipulation of parameters.
+	-	Exploring OSC (Open Sound Control) integration, potentially linking Sonic Pi to visual applications like  TouchDesigner or OsciRender.
+	-	Building sound-driven visuals, using Sonic Pi as an audio source for reactive animation.
+
+A key experiment will be to create a live-coded performance where visuals and audio are tightly synchronized, allowing audiences to experience a fully immersive and dynamic show.
+
+
+
+Thematic Exploration
+
+This project also offers a chance to explore how generative sound can convey specific themes:
+	-	Hauntological elements, using delay and echo to create ghostly repetitions.
+	-	Urban Wyrd vibes, by layering field recordings with synthesized drones.
+	-	Exploring liminal spaces, using generative audio to represent places that exist on the edge of the known and the unknown.
+
+By experimenting with how different parameters affect the sound output, I aim to develop a workflow that allows for spontaneous yet controlled musical expression.
+
+
+
+Next Steps
+
+In the coming weeks, I will:
+	1.	Refine my Sonic Pi codebase, building a library of reusable functions and patterns.
+	2.	Test integration with external visuals, exploring how sound can drive animations.
+	3.	Record a series of short audio experiments, possibly releasing them as a mini album or sound pack.
+
+I will document this process through blog posts and audio clips, sharing insights into how coding can be used as a creative tool for sound design.
+
+Ultimately, this project is about pushing the boundaries of generative audio, exploring how coding can bring new life to sound design and performance.
