@@ -39,6 +39,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://localhost:1313/posts/article3/</loc>
+    <lastmod>2025-02-07T07:07:07+01:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://localhost:1313/posts/soundtrack2/</loc>
     <lastmod>2025-02-03T07:07:07+01:00</lastmod>
     <changefreq>daily</changefreq>
@@ -58,12 +64,6 @@
   </url>
   <url>
     <loc>http://localhost:1313/posts/article6/</loc>
-    <lastmod>2025-01-14T07:07:07+01:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://localhost:1313/posts/article3/</loc>
     <lastmod>2025-01-14T07:07:07+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>

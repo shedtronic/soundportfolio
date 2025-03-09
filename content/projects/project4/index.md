@@ -7,9 +7,9 @@ draft = false
 
 
 
-We Wish You Health, the debut album that we produced as The Horses of the Gods, is an album that embodies the ethos of resourceful production. We took a long time to record this almost entirely acoustic album, crafted it with minimal equipment and fit it together narratively like a puzzle, and mixed and mastered it on an old laptop. We feel confident that we achieved a sonic depth that has resonated with listeners worldwide. The album captures the raw, sparse and organic essence of The Horses of the Gods, blending traditional elements with an atmospheric, almost hauntologically-infused eerie sound steeped in folklore.
+We Wish You Health is the first album by The Horses of the Gods, is an album that I feel embodies an ethos of resourceful production. We took a long time to record this almost entirely acoustic album, and we crafted it with minimal equipment and fit it together narratively like a puzzle. It was mixed and mastered entirely on an old laptop. We think that that we achieved a sonic depth that has resonated with listeners. The album captures the raw, sparse and organic essence of The Horses of the Gods, blending traditional elements with an atmospheric, almost hauntologically-infused eerie sound steeped in folklore.
 
-The most popular track, John Barleycorn, is steadily growing in reach across streaming platforms and finding an engaged audience.  It a testament to the effectiveness of the subtlety of the mixing and mastering process. Despite working with a pared-down setup, the focus on clarity, balance, and dynamic warmth ensured the final mix sounded rich and immersive.
+Our most popular track, John Barleycorn, is steadily growing in reach across streaming platforms and finding an engaged audience.  We think its a testament to the effectiveness of the subtlety of the mixing and mastering process. Despite working with a pared-down setup, the focus on clarity, balance, and dynamic warmth ensured the final mix sounded rich and immersive.
 
 This project was not only an exercise in DIY audio engineering but also a lesson in how the limitations of technology can shape a distinctive aesthetic. The final master was optimized for Spotify, Apple Music, and Bandcamp, ensuring that the album translated well across streaming platforms while maintaining its organic character.
 
