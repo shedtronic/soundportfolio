@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glitchy VHS Hauntology</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: black;
+      height: 100%;
+    }
+    canvas {
+      display: block;
+      image-rendering: pixelated;
+    }
+    #ui-panel {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: white;
+      font-family: 'Press Start 2P', monospace;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    #ui-panel label,
+    #ui-panel button,
+    #ui-panel select,
+    #ui-panel input[type=range] {
+      font-family: 'Press Start 2P', monospace;
+      text-shadow:
+        1px 0 red,
+        -1px 0 cyan,
+        0 1px lime,
+        0 -1px blue;
+      filter: blur(0.4px);
+    }
+
+    #ui-panel button,
+    #ui-panel select,
+    #ui-panel input[type=range] {
+      width: 120px;
+      padding: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #39ff14;
+      border: 1px solid white;
+      box-sizing: border-box;
+    }
+
+    #ui-panel label {
+      font-size: 12px;
+      color: #39ff14;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js"></script>
+  <script>
+    let glitchBuffer;
+    let audio, audio2, fft;
+    let glitchIntensity = 5;
+    let useColor = true;
+    let reverb;
+    let filter;
+    let glitchErrorText = '';
+    let glitchErrorTimer = 0;
+    let mouseIsHeld = false;
+
+    function preload() {
+      // Replace with your own Web3 or IPFS audio asset if needed
+      soundFormats('mp3', 'ogg');
+      audio = loadSound('shopping.mp3');
+      audio2 = loadSound('funk.mp3'); // second audio
+    }
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight);
+      pixelDensity(1);
+      glitchBuffer = createGraphics(width, height);
+      fft = new p5.FFT();
+      reverb = new p5.Reverb();
+      reverb.process(audio, 6, 4); // More cavernous
+      reverb.process(audio2, 6, 4);
+      filter = new p5.LowPass();
+      audio.disconnect();
+      audio.connect(filter);
+      audio2.disconnect();
+      audio2.connect(filter);
+      filter.connect();
+      // audio.loop(); // REMOVE this line!
+    }
+
+    function draw() {
+      glitchBuffer.background(0);
+      drawVisuals(glitchBuffer);
+
+      if (audio.isPlaying()) {
+        applyGlitch(glitchBuffer);
+      }
+
+      image(glitchBuffer, 0, 0);
+      drawRGBSplit(glitchBuffer);
+
+      // Draw prompt after glitch so it's always visible
+      if (!audio.isPlaying()) {
+        fill(255);
+        textSize(32);
+        text('Click to start audio', 40, 60);
+      }
+      drawScanlines();
+
+      // Read and apply reverb value from slider
+      let reverbSlider = document.getElementById('reverbSlider');
+      let reverbAmount = reverbSlider ? map(Number(reverbSlider.value), 0, 100, 0, 1) : 0;
+      if (reverb) reverb.amp(reverbAmount);
+
+      let filterSlider = document.getElementById('filterSlider');
+      let filterFreq = filterSlider ? map(Number(filterSlider.value), 0, 100, 100, 22050) : 1000;
+      if (filter) filter.freq(filterFreq);
+
+      if (glitchErrorText && millis() - glitchErrorTimer < 3000) {
+        push();
+        textFont('monospace');
+        textSize(32);
+        noFill();
+        textAlign(CENTER, CENTER);
+        strokeWeight(2);
+        for (let i = 0; i < 4; i++) {
+          stroke(random(200, 255), 0, random(200, 255), 80 + random(100));
+          let garbled = glitchErrorText
+            .split('')
+            .map(c => (random() < 0.3 ? String.fromCharCode(33 + int(random(94))) : c))
+            .join('');
+          text(garbled, width / 2 + random(-2, 2), height / 2 + random(-2, 2));
+        }
+        pop();
+      }
+
+      if (mouseIsHeld || mouseIsPressed) {
+        handleMouseControl();
+        push();
+        noFill();
+        strokeWeight(2);
+        stroke(255, 0, 255, 180);
+        for (let i = 0; i < 5; i++) {
+          let radius = 20 + sin(frameCount * 0.3 + i) * 5 + random(-2, 2);
+          stroke(255, 0, 255, 50 + random(100));
+          ellipse(mouseX + random(-1, 1), mouseY + random(-1, 1), radius);
+        }
+        pop();
+      }
+    }
+
+    function drawVisuals(pg) {
+      pg.noStroke();
+      for (let i = 0; i < 100; i++) {
+        let hueShift = (frameCount * 0.5 + mouseX * 0.2) % 360;
+        let saturation = constrain(map(mouseY, 0, height, 0.5, 1), 0, 1);
+        colorMode(HSB, 360, 1, 1, 1);
+        let brightness = random(0.9, 1);
+        let col = color(hueShift, saturation, brightness, 0.8);
+        colorMode(RGB, 255);
+        pg.fill(col);
+        let x = random(pg.width);
+        let y = random(pg.height);
+        let d = map(sin(frameCount * 0.01 + i), -1, 1, 2, 20);
+        pg.ellipse(x + sin(y * 0.01) * 20, y, d);
+      }
+
+      let spectrum = fft.analyze();
+      pg.noFill();
+      let strokeHue = map(mouseX, 0, width, 0, 360);
+      pg.stroke(color(`hsl(${strokeHue}, 100%, 70%)`));
+      pg.beginShape();
+      for (let i = 0; i < spectrum.length; i++) {
+        let x = map(i, 0, spectrum.length, 0, pg.width);
+        let y = map(spectrum[i], 0, 255, pg.height, 0);
+        pg.vertex(x, y);
+      }
+      pg.endShape();
+
+      pg.filter(BLUR, 1.2);
+    }
+
+    function applyGlitch(pg) {
+      pg.loadPixels();
+for (let y = 0; y < pg.height; y += int(random(2, glitchIntensity))) {
+  let bandHeight = int(random(1, 4));
+  let offset = int(random(-20, 20));
+  for (let i = 0; i < bandHeight; i++) {
+    let scanline = y + i;
+    if (scanline >= pg.height) continue;
+    for (let x = 0; x < pg.width; x++) {
+      let index = (x + scanline * pg.width) * 4;
+      let newIndex = ((x + offset + pg.width) % pg.width + scanline * pg.width) * 4;
+      for (let j = 0; j < 4; j++) {
+        pg.pixels[index + j] = pg.pixels[newIndex + j];
+      }
+    }
+  }
+}
+pg.updatePixels();
+    }
+
+    function drawScanlines() {
+      glitchBuffer.stroke(0, 0, 0, 30);
+      for (let y = 0; y < glitchBuffer.height; y += 2) {
+        glitchBuffer.line(0, y, glitchBuffer.width, y);
+      }
+    }
+
+    function handleMouseControl() {
+      let rate = map(mouseX, 0, width, 0.2, 2);
+      let vol = map(mouseY, height, 0, 0, 1.5);
+      audio.rate(rate);
+      audio.setVolume(vol);
+      audio2.rate(rate * 0.8);
+      audio2.setVolume(vol * 0.7);
+
+      glitchIntensity = int(map(mouseY, 0, height, 2, 10));
+
+      let saturation = map(mouseX + mouseY - width / 2 - height / 2, -width / 2 - height / 2, width / 2 + height / 2, 0, 1);
+      saturation = constrain(saturation, 0, 1);
+      useColor = saturation > 0.3;
+    }
+
+    function mouseMoved() {
+      if (mouseIsHeld || mouseIsPressed) handleMouseControl();
+    }
+
+    function mousePressed() {
+      mouseIsHeld = true;
+      if (!audio.isPlaying()) {
+        audio.loop();
+        audio2.loop();
+      }
+    }
+
+    function mouseReleased() {
+      mouseIsHeld = false;
+    }
+
+    function drawRGBSplit(src) {
+      push();
+      blendMode(ADD);
+      let offsetX = random(-3, 3);
+      let offsetY = random(-3, 3);
+      tint(255, 0, 0, 100); // red
+      image(src, 4 + offsetX, offsetY);
+      tint(0, 255, 0, 100); // green
+      image(src, -4 + offsetX, 2 + offsetY);
+      tint(0, 0, 255, 100); // blue
+      image(src, offsetX, -3 + offsetY);
+      noTint();
+      blendMode(BLEND);
+      pop();
+    }
+
+    function toggleGlitch() {
+      glitchIntensity = glitchIntensity > 0 ? 0 : 5;
+    }
+
+    function loadSample(channel, filename) {
+      loadSound(
+        filename,
+        sound => {
+          if (channel === 'A') {
+            if (audio && audio.isPlaying()) audio.stop();
+            audio = sound;
+            audio.disconnect();
+            audio.connect(filter);
+            audio.loop();
+            reverb.process(audio, 6, 4);
+          } else {
+            if (audio2 && audio2.isPlaying()) audio2.stop();
+            audio2 = sound;
+            audio2.disconnect();
+            audio2.connect(filter);
+            audio2.loop();
+            reverb.process(audio2, 6, 4);
+          }
+        },
+        () => {
+          showGlitchError(`✖ FILE ERROR: ${filename}`);
+        }
+      );
+    }
+
+    function showGlitchError(message) {
+      console.error(message);
+      glitchErrorText = message;
+      glitchErrorTimer = millis();
+    }
+  </script>
+</head>
+<body>
+  <div id="ui-panel">
+    <div>
+      <label>&nbsp;</label>
+      <button onclick="toggleGlitch()">Toggle Glitch</button>
+    </div>
+    <div>
+      <label for="reverbSlider">Reverb</label>
+      <input type="range" id="reverbSlider" min="0" max="100" value="50">
+    </div>
+    <div>
+      <label for="filterSlider">Filter Sweep</label>
+      <input type="range" id="filterSlider" min="0" max="100" value="50">
+    </div>
+    <div>
+      <label for="sampleA">Sample A</label>
+      <select id="sampleA" onchange="loadSample('A', this.value)">
+       <option value="shopping.mp3">shopping.mp3</option>
+        <option value="funk.mp3">funk.mp3</option>
+        <option value="ChipTuneRandom.mp3">ChipTune.mp3</option>
+        <option value="ArtEric.mp3">ArtEric.mp3</option>
+        <option value="ElectronicNoisesRange.mp3">ElectronicGlitchNoise.mp3</option>
+        <option value="PianoTrackImprov.mp3">Piano.mp3</option>
+        <option value="thisFileDoesNotExist.mp3">Corrupted Sample</option>
+      </select>
+    </div>
+    <div>
+      <label for="sampleB">Sample B</label>
+      <select id="sampleB" onchange="loadSample('B', this.value)">
+        <option value="shopping.mp3">shopping.mp3</option>
+        <option value="funk.mp3">funk.mp3</option>
+        <option value="ChipTuneRandom.mp3">ChipTune.mp3</option>
+        <option value="ArtEric.mp3">ArtEric.mp3</option>
+        <option value="ElectronicNoisesRange.mp3">ElectronicGlitchNoise.mp3</option>
+        <option value="PianoTrackImprov.mp3">Piano.mp3</option>
+        <option value="thisFileDoesNotExist.mp3">Corrupted Sample</option>
+      </select>
+    </div>
+  </div>
+</body>
+</html>
