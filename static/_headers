@@ -8,3 +8,7 @@
 
 /glitchartpiece/*
   Content-Security-Policy: default-src 'self' blob: data: https:; script-src 'self' 'unsafe-inline' blob: https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;
+
+/unstablememory0_2/*
+ Content-Security-Policy: default-src 'self' blob: data: https:; script-src 'self' 'unsafe-inline' blob: https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;
+
