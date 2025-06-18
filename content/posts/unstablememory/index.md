@@ -32,5 +32,7 @@ Day 1: Project Setup
 <script src="scripts/p5.sound.min.js"></script>
     {{< /highlight >}}
 
+You can access the protoytype at the URL below
 
+<a href="https://mikeballard.netlify.app/unstablememory0_2/">Unstable Memory 0.2</a>
 
