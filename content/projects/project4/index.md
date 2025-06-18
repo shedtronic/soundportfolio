@@ -17,6 +17,14 @@ The production and release of We Wish You Health is an example of how thoughtful
 
 You can listen to this album here
 
-<iframe style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=1180125048/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="https://horsesofthegods.bandcamp.com/album/we-wish-you-health">We Wish You Health by The Horses of the Gods</a></iframe>
+<!-- Bandcamp preview as a link -->
+<a href="https://horsesofthegods.bandcamp.com/album/we-wish-you-health" target="_blank" rel="noopener noreferrer">
+  <img src="/images/we-wish-you-health-cover.jpg" alt="We Wish You Health Album Cover" style="width:100%;max-width:400px;">
+  <p>Listen on Bandcamp</p>
+</a>
 
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/3hd3jY357TOCmwGrpDAUeC?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<!-- Spotify preview as a link -->
+<a href="https://open.spotify.com/artist/3hd3jY357TOCmwGrpDAUeC" target="_blank" rel="noopener noreferrer">
+  <img src="/images/spotify-logo.png" alt="Spotify Logo" style="width:200px;">
+  <p>Listen on Spotify</p>
+</a>
