@@ -6,17 +6,12 @@ tags = ["glitch", "visualisation"]
 draft = false
 +++
 
-+++
-title = "Unstable Memory – Audiovisual Kiosk Progress"
-date = 2025-06-18
-draft = false
-+++
 
 Over the last couple of weeks, I've been developing **Unstable Memory**, an experimental audiovisual project built using **p5.js**, designed to run fullscreen in kiosk mode. Here's a quick development timeline, code highlights, and reflections so far.
 
 ---
 
-## 🧠 Project Goals
+Project Goals
 
 - Create a glitchy, nostalgic sound-reactive visual experience.
 - Allow users to interact via mouse and sliders.
@@ -24,9 +19,9 @@ Over the last couple of weeks, I've been developing **Unstable Memory**, an expe
 
 ---
 
-## 📅 Progress Timeline
+Progress Timeline
 
-### ✅ Day 1: Project Setup
+Day 1: Project Setup
 - Initialized HTML and JavaScript structure.
 - Added `p5.js` and `p5.sound` libraries via CDN.
 - Set up the canvas and fullscreen rendering.
