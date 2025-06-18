@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unstable Memory 0.2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: black;
+      height: 100%;
+    }
+    canvas {
+      display: block;
+      image-rendering: pixelated;
+    }
+    #ui-panel {
+      position: absolute;
+      top: 10px;
+      right: 0; /* changed from 10px */
+      color: white;
+      font-family: 'Press Start 2P', monospace;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: rgba(0, 0, 0, 0.6); /* subtle alpha background */
+      padding: 10px 0 10px 10px; /* removed right padding */
+      border-radius: 8px; /* optional visual polish */
+      pointer-events: auto;
+      max-width: 240px;
+    }
+
+    #ui-panel label,
+    #ui-panel button,
+    #ui-panel select,
+    #ui-panel input[type=range] {
+      font-family: 'Press Start 2P', monospace;
+      text-shadow:
+        1px 0 red,
+        -1px 0 cyan,
+        0 1px lime,
+        0 -1px blue;
+      filter: blur(0.4px);
+    }
+
+    #ui-panel button,
+    #ui-panel select,
+    #ui-panel input[type=range] {
+      width: 100%;
+      padding: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #39ff14;
+      border: 1px solid white;
+      box-sizing: border-box;
+    }
+
+    #ui-panel label {
+      font-size: 12px;
+      color: #39ff14;
+    }
+  </style>
+<script src="scripts/p5.min.js"></script>
+<script src="scripts/p5.sound.min.js"></script>
+  <script>
+    let glitchBuffer;
+    let audio, audio2, fft;
+    let glitchIntensity = 5;
+    let useColor = true;
+    let reverb;
+    let filter;
+    let delay;
+    let rgbSplitAmount = 50;
+    let glitchErrorText = '';
+    let glitchErrorTimer = 0;
+    let mouseIsHeld = false;
+
+    let lastMouseX = 0; //last mouse x position
+    let lastMouseY = 0; // last mouse y position
+
+    let noise, crackleEnv;
+
+    let glitchToggled = true;
+
+
+    let currentVolume = 1.0;
+    let currentPitch = 1.0;
+    let currentGlitch = 5;
+
+    function preload() {
+      // Replace with your own Web3 or IPFS audio asset if needed
+      soundFormats('mp3', 'ogg');
+      audio = loadSound('audio/shopping.mp3');
+      audio2 = loadSound('audio/shopping.mp3'); // second audio
+    }
+
+    function setup() {
+      let cnv = createCanvas(windowWidth, windowHeight);
+      cnv.parent(document.body); // Ensures canvas is correctly attached
+      pixelDensity(1);
+      glitchBuffer = createGraphics(width, height);
+      fft = new p5.FFT(0.5, 128);
+      reverb = new p5.Reverb();
+      reverb.process(audio, 6, 4); // More cavernous
+      reverb.process(audio2, 6, 4);
+      filter = new p5.LowPass();
+      audio.disconnect();
+      audio.connect(filter);
+      audio2.disconnect();
+      audio2.connect(filter);
+      filter.connect();
+
+      delay = new p5.Delay();
+      delay.process(audio, 0.12, 0.1, 2000);
+      delay.process(audio2, 0.12, 0.1, 2000);
+
+      noise = new p5.Noise('white');
+      noise.amp(0); // start silent
+      noise.start();
+
+      crackleEnv = new p5.Envelope();
+      crackleEnv.setADSR(0.001, 0.005, 0, 0.005); // even shorter pop
+      crackleEnv.setRange(1, 0);
+
+      // audio.loop(); // REMOVE this line!
+      frameRate(30);
+      loop();
+    }
+
+    function isMouseOverUIPanel() {
+      const panel = document.getElementById('ui-panel');
+      if (!panel) return false;
+      const rect = panel.getBoundingClientRect();
+      return mouseX >= rect.left && mouseX <= rect.right && mouseY >= rect.top && mouseY <= rect.bottom;
+    }
+
+    function draw() {
+      glitchBuffer.background(0);
+      drawVisuals(glitchBuffer);
+      glitchIntensity = glitchToggled ? currentGlitch : 0;
+      if (audio.isPlaying()) {
+        applyGlitch(glitchBuffer);
+      }
+
+      image(glitchBuffer, 0, 0);
+      drawRGBSplit(glitchBuffer);
+      try {
+        drawStereoMeter();
+      } catch (e) {
+        console.error('Stereo meter error:', e);
+      }
+
+      // Draw glitchy warning and start prompt after glitch so it's always visible
+      if (!audio.isPlaying()) {
+        push();
+        textFont('monospace');
+        textAlign(CENTER, CENTER);
+        textSize(28);
+        for (let i = 0; i < 3; i++) {
+          fill(random(150, 255), random(0, 100), random(150, 255), 180);
+          text('⚠️ WARNING: Flashing Lights & Intense Visuals ⚠️', width / 2 + random(-2, 2), height / 2 - 60 + random(-2, 2));
+          text('▶ CLICK TO START AUDIO ◀', width / 2 + random(-2, 2), height / 2 + random(-2, 2));
+        }
+        pop();
+      }
+      drawScanlines();
+
+      // Read and apply reverb value from slider
+      let reverbSlider = document.getElementById('reverbSlider');
+      let reverbAmount = reverbSlider ? map(Number(reverbSlider.value), 0, 100, 0, 1) : 0;
+      if (reverb) reverb.amp(reverbAmount);
+
+      let filterSlider = document.getElementById('filterSlider');
+      let filterFreq = filterSlider ? map(Number(filterSlider.value), 0, 100, 100, 22050) : 1000;
+      if (filter) filter.freq(filterFreq);
+
+      // --- Delay, RGB Split, Bitcrusher ---
+      let delaySlider = document.getElementById('delaySlider');
+      let delayVal = delaySlider ? map(Number(delaySlider.value), 0, 100, 0, 0.9) : 0;
+      if (delay) delay.feedback(constrain(delayVal, 0, 0.6));
+
+      let rgbSlider = document.getElementById('rgbSplitSlider');
+      rgbSplitAmount = rgbSlider ? map(Number(rgbSlider.value), 0, 100, 0, 30) : 5;
+
+
+      let crackleSlider = document.getElementById('crackleSlider');
+      let crackleAmount = crackleSlider ? map(Number(crackleSlider.value), 0, 100, 0, 0.2) : 0;
+
+      // Set low-level constant crackle volume
+      if (noise) noise.amp(crackleAmount * 0.3); // lower overall background crackle
+
+      // Occasionally trigger pops if above threshold
+      if (random() < crackleAmount * 0.02) {
+        let pop = new p5.Noise('white');
+        pop.amp(crackleAmount * 1.5);
+        pop.start();
+        crackleEnv.play(pop, 0, 0);
+        setTimeout(() => pop.stop(), 20);
+      }
+
+      if (glitchErrorText) {
+        push();
+        textFont('monospace');
+        textSize(32);
+        noFill();
+        textAlign(CENTER, CENTER);
+        strokeWeight(2);
+        for (let i = 0; i < 4; i++) {
+          stroke(random(200, 255), 0, random(200, 255), 80 + random(100));
+          let garbled = glitchErrorText
+            .split('')
+            .map(c => (random() < 0.3 ? String.fromCharCode(33 + int(random(94))) : c))
+            .join('');
+          text(garbled, width / 2 + random(-2, 2), height / 2 + random(-2, 2));
+        }
+        pop();
+      }
+
+      if (mouseIsPressed && !isMouseOverUIPanel()) {
+        handleMouseControl(mouseX, mouseY);
+        push();
+        noFill();
+        strokeWeight(2);
+        stroke(255, 0, 255, 180);
+        for (let i = 0; i < 5; i++) {
+          let radius = 20 + sin(frameCount * 0.3 + i) * 5 + random(-2, 2);
+          stroke(255, 0, 255, 50 + random(100));
+          ellipse(mouseX + random(-1, 1), mouseY + random(-1, 1), radius);
+        }
+        pop();
+      }
+      applyAudioSettings();
+
+      // --- Volume sliders for A and B ---
+      let volumeASlider = document.getElementById('volumeASlider');
+      let volumeBSlider = document.getElementById('volumeBSlider');
+      let volumeA = volumeASlider ? map(Number(volumeASlider.value), 0, 100, 0, 1.5) : 1.0;
+      let volumeB = volumeBSlider ? map(Number(volumeBSlider.value), 0, 100, 0, 1.5) : 1.0;
+
+      if (audio) audio.setVolume(volumeA);
+      if (audio2) audio2.setVolume(volumeB);
+    }
+
+    function drawVisuals(pg) {
+      console.log('Drawing visuals...');
+      pg.noStroke();
+      for (let i = 0; i < 60; i++) {
+        let hueShift = (frameCount * 0.5 + mouseX * 0.2) % 360;
+        let saturation = constrain(map(mouseY, 0, height, 0.5, 1), 0, 1);
+        colorMode(HSB, 360, 1, 1, 1);
+        let brightness = random(0.9, 1);
+        let col = color(hueShift, saturation, brightness, 0.8);
+        colorMode(RGB, 255);
+        pg.fill(col);
+        let x = random(pg.width);
+        let y = random(pg.height);
+        let d = map(sin(frameCount * 0.01 + i), -1, 1, 2, 20);
+        pg.ellipse(x + sin(y * 0.01) * 20, y, d);
+      }
+
+      let spectrum = fft.analyze();
+      pg.noFill();
+      let strokeHue = map(mouseX, 0, width, 0, 360);
+      pg.stroke(color(`hsl(${strokeHue}, 100%, 70%)`));
+      pg.beginShape();
+      for (let i = 0; i < spectrum.length; i++) {
+        let x = map(i, 0, spectrum.length, 0, pg.width);
+        let y = map(spectrum[i], 0, 255, pg.height * 0.9, 0);
+        pg.vertex(x, y);
+      }
+      pg.endShape();
+
+      //pg.filter(BLUR, 1.2);
+    }
+
+    function applyGlitch(pg) {
+      pg.loadPixels();
+for (let y = 0; y < pg.height; y += int(random(2, glitchIntensity))) {
+  let bandHeight = int(random(1, 4));
+  let offset = int(random(-20, 20));
+  for (let i = 0; i < bandHeight; i++) {
+    let scanline = y + i;
+    if (scanline >= pg.height) continue;
+    for (let x = 0; x < pg.width; x++) {
+      let index = (x + scanline * pg.width) * 4;
+      let newIndex = ((x + offset + pg.width) % pg.width + scanline * pg.width) * 4;
+      for (let j = 0; j < 4; j++) {
+        pg.pixels[index + j] = pg.pixels[newIndex + j];
+      }
+    }
+  }
+}
+pg.updatePixels();
+    }
+
+    function drawScanlines() {
+      glitchBuffer.stroke(0, 0, 0, 30);
+      for (let y = 0; y < glitchBuffer.height; y += 2) {
+        glitchBuffer.line(0, y, glitchBuffer.width, y);
+      }
+    }
+
+    function handleMouseControl(x = mouseX, y = mouseY, triggeredByUser = true) {
+  if (triggeredByUser) {
+    getAudioContext().resume(); // for Chrome autoplay policy
+    mouseIsHeld = true;
+  }
+
+  if (!audio.isPlaying()) {
+    audio.loop();
+    audio2.loop();
+  }
+
+  lastMouseX = x;
+  lastMouseY = y;
+
+  // Volume: top loud, bottom quiet
+  currentVolume = constrain(map(y, height, 0, 0, 1.5), 0, 1.5);
+
+  // Pitch: left low, right high
+  currentPitch = constrain(map(x, 0, width, 0.2, 2), 0.2, 2);
+
+  // Glitch: top intense, bottom mild
+  currentGlitch = int(map(y, height, 0, 2, 10));
+
+  applyAudioSettings();
+
+  // Optional: Update visual effect color
+  let saturation = map(x + y - width / 2 - height / 2, -width / 2 - height / 2, width / 2 + height / 2, 0, 1);
+  useColor = constrain(saturation, 0, 1) > 0.3;
+}
+    function mouseMoved() {
+      if (mouseIsHeld && !isMouseOverUIPanel()) {
+        handleMouseControl(mouseX, mouseY);
+      }
+    }
+
+
+
+    function mouseReleased() {
+      mouseIsHeld = false;
+    }
+
+    function drawRGBSplit(src) {
+      push();
+      blendMode(ADD);
+      let offsetX = random(-rgbSplitAmount / 5, rgbSplitAmount / 5);
+      let offsetY = random(-rgbSplitAmount / 5, rgbSplitAmount / 5);
+      tint(255, 0, 0, 100); // red
+      image(src, 4 + offsetX, offsetY);
+      tint(0, 255, 0, 100); // green
+      image(src, -4 + offsetX, 2 + offsetY);
+      tint(0, 0, 255, 100); // blue
+      image(src, offsetX, -3 + offsetY);
+      noTint();
+      blendMode(BLEND);
+      pop();
+    }
+
+    function toggleGlitch() {
+      glitchToggled = !glitchToggled;
+      console.log('Glitch toggled:', glitchToggled);
+    }
+
+    function loadSample(channel, filename) {
+      loadSound(
+        filename,
+        sound => {
+          if (filename.includes('thisFileDoesNotExist')) {
+            showGlitchError('✖ SYSTEM CORRUPTION DETECTED');
+          } else {
+            glitchErrorText = ''; // Clear any previous glitch errors
+            if (window.glitchLoopInterval) {
+              clearInterval(window.glitchLoopInterval);
+              window.glitchLoopInterval = null;
+            }
+          }
+          if (channel === 'A') {
+            if (audio && audio.isPlaying()) audio.stop();
+            audio = sound;
+            audio.disconnect();
+            audio.connect(filter);
+            audio.loop();
+            reverb.process(audio, 6, 4);
+            handleMouseControl(lastMouseX, lastMouseY);
+          } else {
+            if (audio2 && audio2.isPlaying()) audio2.stop();
+            audio2 = sound;
+            audio2.disconnect();
+            audio2.connect(filter);
+            audio2.loop();
+            reverb.process(audio2, 6, 4);
+            handleMouseControl(lastMouseX, lastMouseY, false);
+          }
+          // Apply current screen-based controls to the newly loaded sound
+          handleMouseControl(lastMouseX, lastMouseY, false);
+          mouseIsHeld = false; // Prevent mouseover from triggering pitch changes
+        },
+        () => {
+          showGlitchError(`✖ FILE ERROR: ${filename}`);
+        }
+      );
+    }
+
+    function showGlitchError(message) {
+      console.error(message);
+      glitchErrorText = message;
+
+      if (!window.glitchLoopInterval) {
+        window.glitchLoopInterval = setInterval(() => {
+          glitchErrorTimer = millis(); // Keeps resetting timer to force redraw
+        }, 3000);
+      }
+    }
+
+function drawStereoMeter() {
+  let levelL = 0;
+  let levelR = 0;
+
+  if (audio && audio.isLoaded() && typeof audio.getLevel === 'function') {
+    const panVal = (typeof audio.pan === 'function' && !isNaN(audio.pan())) ? audio.pan() : 0;
+    const lvl = audio.getLevel();
+    if (isFinite(lvl)) {
+      levelL = lvl * (1 - Math.abs(panVal));
+    } else {
+      levelL = 0;
+    }
+  }
+
+  if (audio2 && audio2.isLoaded() && typeof audio2.getLevel === 'function') {
+    const panVal2 = (typeof audio2.pan === 'function' && !isNaN(audio2.pan())) ? audio2.pan() : 0;
+    const lvl2 = audio2.getLevel();
+    if (isFinite(lvl2)) {
+      levelR = lvl2 * (1 - Math.abs(panVal2));
+    } else {
+      levelR = 0;
+    }
+  }
+
+  // Draw background bars
+  noStroke();
+  fill(0, 0, 0, 150);
+  rect(10, height - 60, 20, 50);
+  rect(40, height - 60, 20, 50);
+
+  // Draw left and right levels
+  fill('#39ff14'); // neon green
+  let lHeight = map(levelL, 0, 1, 0, 50);
+  let rHeight = map(levelR, 0, 1, 0, 50);
+  rect(10, height - 10 - lHeight, 20, lHeight);
+  rect(40, height - 10 - rHeight, 20, rHeight);
+
+  // Optional: label text
+  textSize(8);
+  textAlign(CENTER, CENTER);
+  fill(255);
+  text('L', 20, height - 65);
+  text('R', 50, height - 65);
+}
+
+    function applyAudioSettings() {
+      if (audio) {
+        // audio.setVolume(currentVolume);
+        audio.rate(currentPitch);
+      }
+      if (audio2) {
+        // audio2.setVolume(currentVolume * 0.7);
+        audio2.rate(currentPitch); // Remove the * 0.8 modifier to match Sample A
+      }
+      glitchIntensity = currentGlitch;
+    } 
+
+
+
+
+
+
+  </script>
+</head>
+<body>
+  <div id="ui-panel">
+    <div>
+      <label>&nbsp;</label>
+      <button onclick="toggleGlitch()" style="align-self: flex-start; width: 100%;">Toggle Glitch</button>
+    </div>
+    <div>
+      <label for="reverbSlider">Reverb</label>
+      <input type="range" id="reverbSlider" min="0" max="100" value="50">
+    </div>
+    <div>
+      <label for="filterSlider">Filter Sweep</label>
+      <input type="range" id="filterSlider" min="0" max="100" value="50">
+    </div>
+    <div>
+  <label for="volumeASlider">Volume A</label>
+  <input type="range" id="volumeASlider" min="0" max="100" value="100">
+</div>
+<div>
+  <label for="volumeBSlider">Volume B</label>
+  <input type="range" id="volumeBSlider" min="0" max="100" value="100">
+</div>
+    <div>
+      <label for="sampleA">Sample A</label>
+      <select id="sampleA" onchange="loadSample('A', this.value)">
+        <option value="audio/shopping.mp3">shopping.mp3</option>
+        <option value="audio/funk.mp3">funk.mp3</option>
+        <option value="audio/ChipTuneRandom.mp3">ChipTune.mp3</option>
+        <option value="audio/ArtEric.mp3">ArtEric.mp3</option>
+        <option value="audio/ElectronicNoisesRange.mp3">ElectronicGlitchNoise.mp3</option>
+        <option value="audio/PianoTrackImprov.mp3">Piano.mp3</option>
+        <option value="audio/DroneExperiment.mp3">DroneExperiment</option>
+        <option value="audio/EveningAtmos.mp3">EveningAtmos</option>
+        <option value="audio/thisFileDoesNotExist.mp3">Corrupted Sample</option>
+      </select>
+    </div>
+    <div>
+      <label for="sampleB">Sample B</label>
+      <select id="sampleB" onchange="loadSample('B', this.value)">
+        <option value="audio/shopping.mp3">shopping.mp3</option>
+        <option value="audio/funk.mp3">funk.mp3</option>
+        <option value="audio/ChipTuneRandom.mp3">ChipTune.mp3</option>
+        <option value="audio/ArtEric.mp3">ArtEric.mp3</option>
+        <option value="audio/ElectronicNoisesRange.mp3">ElectronicGlitchNoise.mp3</option>
+        <option value="audio/PianoTrackImprov.mp3">Piano.mp3</option>
+        <option value="audio/DroneExperiment.mp3">DroneExperiment</option>
+        <option value="audio/EveningAtmos.mp3">EveningAtmos</option>
+        <option value="audio/thisFileDoesNotExist.mp3">Corrupted Sample</option>
+      </select>
+    </div>
+    <div>
+      <label for="crackleSlider">Crackle & Pop</label>
+      <input type="range" id="crackleSlider" min="0" max="100" value="0">
+    </div>
+    <!-- New controls: Echo, RGB Pulse -->
+    <div>
+      <label for="delaySlider">Echo</label>
+      <input type="range" id="delaySlider" min="0" max="100" value="0">
+    </div>
+    <div>
+      <label for="rgbSplitSlider">RGB Pulse</label>
+      <input type="range" id="rgbSplitSlider" min="0" max="100" value="50">
+    </div>
+    <div>
+      <label>&nbsp;</label>
+      <button onclick="window.location.reload()" style="align-self: flex-start; width: 100%;">Reset</button>
+    </div>
+  </div>
+  <script>
+  document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+</body>
+</html>
