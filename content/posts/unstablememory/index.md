@@ -26,8 +26,11 @@ Day 1: Project Setup
 - Added `p5.js` and `p5.sound` libraries via CDN.
 - Set up the canvas and fullscreen rendering.
 
-```html
-<script src="scripts/p5.min.js"></script>
+ {{< highlight HTML>}}
+    
+    <script src="scripts/p5.min.js"></script>
 <script src="scripts/p5.sound.min.js"></script>
+    {{< /highlight >}}
+
 
 
