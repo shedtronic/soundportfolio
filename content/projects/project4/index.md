@@ -14,3 +14,9 @@ Our most popular track, John Barleycorn, is steadily growing in reach across str
 This project was not only an exercise in DIY audio engineering but also a lesson in how the limitations of technology can shape a distinctive aesthetic. The final master was optimized for Spotify, Apple Music, and Bandcamp, ensuring that the album translated well across streaming platforms while maintaining its organic character.
 
 The production and release of We Wish You Health is an example of how thoughtful mixing and mastering regardless of equipment can elevate a recording, proving that great sound is as much about technique and vision as it is about equipment. I definitely learned a lot about both mixing and mastering, and having since taken a short course in mastering realise how much I can do to improve the next album which is already in the early stages of recording.
+
+You can listen to this album here
+
+<iframe style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=1180125048/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="https://horsesofthegods.bandcamp.com/album/we-wish-you-health">We Wish You Health by The Horses of the Gods</a></iframe>
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/3hd3jY357TOCmwGrpDAUeC?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
