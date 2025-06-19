@@ -38,19 +38,19 @@ Day 3: Audio & Slider UI
 	- Integrated sample A/B loading via <select>.
 	- Added sliders for volume, reverb, delay, filter sweep, glitch strength, and RGB splitting.
 	- Designed a custom UI using the retro pixel font Press Start 2P with chromatic aberration style.
-
+ ```go {linenos=inline hl_lines=[3,"6-8"] style=emacs}
 <div id="ui-panel">
   <label for="reverbSlider">Reverb</label>
   <input type="range" id="reverbSlider" min="0" max="100" value="50">
 </div>
- {{< /highlight >}}
+```
 
  Day 5: Visual Feedback
 	-	Added FFT-based waveform shapes.
 	-	Integrated drawRGBSplit() to simulate VHS-style channel shifts.
 	-	Wrote a drawScanlines() function to overlay analog TV-style lines.
 
- {{< highlight javascript "linenos=table" >}}
+ ```go {linenos=inline hl_lines=[3,"6-8"] style=emacs}
 
 function drawScanlines() {
   glitchBuffer.stroke(0, 0, 0, 30);
@@ -58,12 +58,12 @@ function drawScanlines() {
     glitchBuffer.line(0, y, glitchBuffer.width, y);
   }
 }
-{{< /highlight >}}
+```
 
 Day 7:Crackle & Pop
 	-	Added white noise with a custom ADSR envelope.
 	-	Randomised micro "pops" for realism based on a crackleSlider.
-{{< highlight javascript "linenos=table" >}}
+```go {linenos=inline hl_lines=[3,"6-8"] style=emacs}
 if (random() < crackleAmount * 0.02) {
   let pop = new p5.Noise('white');
   pop.amp(crackleAmount * 1.5);
@@ -71,7 +71,7 @@ if (random() < crackleAmount * 0.02) {
   crackleEnv.play(pop, 0, 0);
   setTimeout(() => pop.stop(), 20);
 }
-{{< /highlight >}}
+```
 
 
 
