@@ -50,7 +50,7 @@ Day 3: Audio & Slider UI
 	-	Integrated drawRGBSplit() to simulate VHS-style channel shifts.
 	-	Wrote a drawScanlines() function to overlay analog TV-style lines.
 
- {{< highlight JAVASCRIPT>}}
+ {{< highlight javascript "linenos=table" >}}
 
 function drawScanlines() {
   glitchBuffer.stroke(0, 0, 0, 30);
@@ -63,7 +63,7 @@ function drawScanlines() {
 Day 7:Crackle & Pop
 	-	Added white noise with a custom ADSR envelope.
 	-	Randomised micro "pops" for realism based on a crackleSlider.
-{{< highlight JAVASCRIPT>}}
+{{< highlight javascript "linenos=table" >}}
 if (random() < crackleAmount * 0.02) {
   let pop = new p5.Noise('white');
   pop.amp(crackleAmount * 1.5);
