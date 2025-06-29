@@ -22,6 +22,8 @@ Project Origins
 The prototype started with the idea of blending fragmented sound and lost media styled on broken formats and memory. Inspired by glitch art, haunted tapes, and browser-based synthesis
 
 
+{{< youtube natiHz1uN9Y >}}
+
 Goals
 	-	Build an immersive audiovisual canvas with:
 	-	VHS-style glitch effects
