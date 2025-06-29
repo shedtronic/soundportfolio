@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Glitchy VHS Hauntology</title>
+  <title>Unstable Memory</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
     html, body {
@@ -58,8 +58,8 @@
       color: #39ff14;
     }
   </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js"></script>
+  <script src="p5.min.js"></script>
+  <script src="p5.sound.min.js"></script>
   <script>
     let glitchBuffer;
     let audio, audio2, fft;
@@ -71,6 +71,11 @@
     let glitchErrorTimer = 0;
     let mouseIsHeld = false;
 
+    let lastMouseX = 0; //last mouse x position
+    let lastMouseY = 0; // last mouse y position
+
+    let noise, crackleEnv;
+
     function preload() {
       // Replace with your own Web3 or IPFS audio asset if needed
       soundFormats('mp3', 'ogg');
@@ -79,7 +84,8 @@
     }
 
     function setup() {
-      createCanvas(windowWidth, windowHeight);
+      let cnv = createCanvas(windowWidth, windowHeight);
+      cnv.parent(document.body); // Ensures canvas is correctly attached
       pixelDensity(1);
       glitchBuffer = createGraphics(width, height);
       fft = new p5.FFT();
@@ -92,7 +98,25 @@
       audio2.disconnect();
       audio2.connect(filter);
       filter.connect();
+
+      noise = new p5.Noise('white');
+      noise.amp(0); // start silent
+      noise.start();
+
+      crackleEnv = new p5.Envelope();
+      crackleEnv.setADSR(0.001, 0.005, 0, 0.005); // even shorter pop
+      crackleEnv.setRange(1, 0);
+
       // audio.loop(); // REMOVE this line!
+      frameRate(60);
+      loop();
+    }
+
+    function isMouseOverUIPanel() {
+      const panel = document.getElementById('ui-panel');
+      if (!panel) return false;
+      const rect = panel.getBoundingClientRect();
+      return mouseX >= rect.left && mouseX <= rect.right && mouseY >= rect.top && mouseY <= rect.bottom;
     }
 
     function draw() {
@@ -105,12 +129,24 @@
 
       image(glitchBuffer, 0, 0);
       drawRGBSplit(glitchBuffer);
+      try {
+        drawStereoMeter();
+      } catch (e) {
+        console.error('Stereo meter error:', e);
+      }
 
-      // Draw prompt after glitch so it's always visible
+      // Draw glitchy warning and start prompt after glitch so it's always visible
       if (!audio.isPlaying()) {
-        fill(255);
-        textSize(32);
-        text('Click to start audio', 40, 60);
+        push();
+        textFont('monospace');
+        textAlign(CENTER, CENTER);
+        textSize(28);
+        for (let i = 0; i < 3; i++) {
+          fill(random(150, 255), random(0, 100), random(150, 255), 180);
+          text('⚠️ WARNING: Flashing Lights & Intense Visuals ⚠️', width / 2 + random(-2, 2), height / 2 - 60 + random(-2, 2));
+          text('▶ CLICK TO START AUDIO ◀', width / 2 + random(-2, 2), height / 2 + random(-2, 2));
+        }
+        pop();
       }
       drawScanlines();
 
@@ -122,6 +158,36 @@
       let filterSlider = document.getElementById('filterSlider');
       let filterFreq = filterSlider ? map(Number(filterSlider.value), 0, 100, 100, 22050) : 1000;
       if (filter) filter.freq(filterFreq);
+
+      let balanceSlider = document.getElementById('balanceSlider');
+      let balanceValue = balanceSlider ? Number(balanceSlider.value) : 50;
+
+      // Sample A: 100% at 0, 50% at 50, 0% at 100
+      let gainA = balanceValue <= 50 ? map(balanceValue, 0, 50, 1, 0.5) : map(balanceValue, 50, 100, 0.5, 0);
+      // Sample B: 0% at 0, 50% at 50, 100% at 100
+      let gainB = balanceValue <= 50 ? map(balanceValue, 0, 50, 0, 0.5) : map(balanceValue, 50, 100, 0.5, 1);
+
+      if (audio && typeof audio.setVolume === 'function') {
+        audio.setVolume(gainA);
+      }
+      if (audio2 && typeof audio2.setVolume === 'function') {
+        audio2.setVolume(gainB);
+      }
+
+      let crackleSlider = document.getElementById('crackleSlider');
+      let crackleAmount = crackleSlider ? map(Number(crackleSlider.value), 0, 100, 0, 0.2) : 0;
+
+      // Set low-level constant crackle volume
+      if (noise) noise.amp(crackleAmount * 0.3); // lower overall background crackle
+
+      // Occasionally trigger pops if above threshold
+      if (random() < crackleAmount * 0.02) {
+        let pop = new p5.Noise('white');
+        pop.amp(crackleAmount * 1.5);
+        pop.start();
+        crackleEnv.play(pop, 0, 0);
+        setTimeout(() => pop.stop(), 20);
+      }
 
       if (glitchErrorText && millis() - glitchErrorTimer < 3000) {
         push();
@@ -141,8 +207,8 @@
         pop();
       }
 
-      if (mouseIsHeld || mouseIsPressed) {
-        handleMouseControl();
+      if (mouseIsPressed && !isMouseOverUIPanel()) {
+        handleMouseControl(mouseX, mouseY);
         push();
         noFill();
         strokeWeight(2);
@@ -157,6 +223,7 @@
     }
 
     function drawVisuals(pg) {
+      console.log('Drawing visuals...');
       pg.noStroke();
       for (let i = 0; i < 100; i++) {
         let hueShift = (frameCount * 0.5 + mouseX * 0.2) % 360;
@@ -214,32 +281,41 @@ pg.updatePixels();
       }
     }
 
-    function handleMouseControl() {
-      let rate = map(mouseX, 0, width, 0.2, 2);
-      let vol = map(mouseY, height, 0, 0, 1.5);
+    function handleMouseControl(x = mouseX, y = mouseY, triggeredByUser = true) {
+      if (triggeredByUser) {
+        getAudioContext().resume(); // resumes AudioContext for Chrome autoplay policy
+        mouseIsHeld = true;
+      }
+
+      if (!audio.isPlaying()) {
+        audio.loop();
+        audio2.loop();
+      }
+
+      lastMouseX = x;
+      lastMouseY = y;
+
+      let rate = map(x, 0, width, 0.2, 2);
+      let vol = map(y, height, 0, 0, 1.5);
       audio.rate(rate);
       audio.setVolume(vol);
       audio2.rate(rate * 0.8);
       audio2.setVolume(vol * 0.7);
 
-      glitchIntensity = int(map(mouseY, 0, height, 2, 10));
+      glitchIntensity = int(map(y, 0, height, 2, 10));
 
-      let saturation = map(mouseX + mouseY - width / 2 - height / 2, -width / 2 - height / 2, width / 2 + height / 2, 0, 1);
+      let saturation = map(x + y - width / 2 - height / 2, -width / 2 - height / 2, width / 2 + height / 2, 0, 1);
       saturation = constrain(saturation, 0, 1);
       useColor = saturation > 0.3;
     }
 
     function mouseMoved() {
-      if (mouseIsHeld || mouseIsPressed) handleMouseControl();
-    }
-
-    function mousePressed() {
-      mouseIsHeld = true;
-      if (!audio.isPlaying()) {
-        audio.loop();
-        audio2.loop();
+      if (mouseIsHeld && !isMouseOverUIPanel()) {
+        handleMouseControl(mouseX, mouseY);
       }
     }
+
+
 
     function mouseReleased() {
       mouseIsHeld = false;
@@ -283,7 +359,10 @@ pg.updatePixels();
             audio2.connect(filter);
             audio2.loop();
             reverb.process(audio2, 6, 4);
+            handleMouseControl(lastMouseX, lastMouseY, false);
           }
+          // Apply current screen-based controls to the newly loaded sound
+          handleMouseControl(lastMouseX, lastMouseY, false);
         },
         () => {
           showGlitchError(`✖ FILE ERROR: ${filename}`);
@@ -295,6 +374,40 @@ pg.updatePixels();
       console.error(message);
       glitchErrorText = message;
       glitchErrorTimer = millis();
+    }
+
+    function drawStereoMeter() {
+      let levelL = 0;
+      let levelR = 0;
+
+if (audio && typeof audio.getLevel === 'function') {
+  let panVal = (typeof audio.pan === 'function') ? audio.pan() : 0;
+  levelL = audio.getLevel() * (1 - Math.abs(panVal));
+}
+
+if (audio2 && typeof audio2.getLevel === 'function') {
+  let panVal2 = (typeof audio2.pan === 'function') ? audio2.pan() : 0;
+  levelR = audio2.getLevel() * (1 - Math.abs(panVal2));
+}
+      // Draw background bars
+      noStroke();
+      fill(0, 0, 0, 150);
+      rect(10, height - 60, 20, 50);
+      rect(40, height - 60, 20, 50);
+
+      // Draw left and right levels
+      fill('#39ff14'); // neon green
+      let lHeight = map(levelL, 0, 1, 0, 50);
+      let rHeight = map(levelR, 0, 1, 0, 50);
+      rect(10, height - 10 - lHeight, 20, lHeight);
+      rect(40, height - 10 - rHeight, 20, rHeight);
+
+      // Optional: label text
+      textSize(8);
+      textAlign(CENTER, CENTER);
+      fill(255);
+      text('L', 20, height - 65);
+      text('R', 50, height - 65);
     }
   </script>
 </head>
@@ -311,6 +424,10 @@ pg.updatePixels();
     <div>
       <label for="filterSlider">Filter Sweep</label>
       <input type="range" id="filterSlider" min="0" max="100" value="50">
+    </div>
+    <div>
+      <label for="balanceSlider">Balance</label>
+      <input type="range" id="balanceSlider" min="0" max="100" value="50">
     </div>
     <div>
       <label for="sampleA">Sample A</label>
@@ -335,6 +452,10 @@ pg.updatePixels();
         <option value="PianoTrackImprov.mp3">Piano.mp3</option>
         <option value="thisFileDoesNotExist.mp3">Corrupted Sample</option>
       </select>
+    </div>
+    <div>
+      <label for="crackleSlider">Crackle & Pop</label>
+      <input type="range" id="crackleSlider" min="0" max="100" value="0">
     </div>
   </div>
 </body>

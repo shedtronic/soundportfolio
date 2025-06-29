@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Glitch on Sound Portfolio</title>
+    <link>http://localhost:1313/tags/glitch/</link>
+    <description>Recent content in Glitch on Sound Portfolio</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>youremail@example.com (Mike Ballard)</managingEditor>
+    <webMaster>youremail@example.com (Mike Ballard)</webMaster>
+    <copyright>Copyright &amp;copy; 2025 </copyright>
+    <lastBuildDate>Wed, 18 Jun 2025 07:07:07 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/glitch/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Unstable Memory</title>
+      <link>http://localhost:1313/posts/unstablememory/</link>
+      <pubDate>Wed, 18 Jun 2025 07:07:07 +0100</pubDate>
+      <author>youremail@example.com (Mike Ballard)</author>
+      <guid>http://localhost:1313/posts/unstablememory/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/unstablememory/featured.gif" />
+    </item>
+    
+  </channel>
+</rss>
