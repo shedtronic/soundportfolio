@@ -1,3 +1,37 @@
+<!--
+  # Unstable Memory 0.3
+  # Documentation and Changelog
+
+
+## Version 0.3 Updates
+
+### Update: Working User Sample Upload and Selection
+
+- Implemented fully functioning upload and selection system for user-provided audio files.
+- Users can now upload up to 8 different audio samples.
+- Uploaded samples appear in the A/B dropdown selectors under a "User Samples" optgroup.
+- Blob URLs are used for in-memory storage, and entries are cleared upon page unload.
+- Samples are routed through the same effects chain (filter, reverb, delay, bitcrusher).
+- UI updates include:
+  - File input slots laid out in a grid.
+  - Neon styling consistent with the rest of the interface.
+  - Defensive loading and error handling added for failed file operations.
+
+## 🛠 Recent Updates to UI and Logic
+
+- Updated the control panel layout for mobile view:
+  - Removed fixed positioning on `#ui-panel` in mobile layout
+  - Ensured `#ui-panel` fills the `.control-panel-wrapper` on small screens
+  - Preserved fixed positioning in desktop mode
+- Restricted audio uploads to specific file types (`.mp3`, `.ogg`) and max size of 5MB
+- Added animated system-style messages for:
+  - File too large
+  - Invalid file type
+  - Retained the 'System Corruption Detected' glitch style for all alerts
+- CSS cleaned up for mobile compatibility:
+  - Removed redundant `max-width: 600px` block
+  - Ensured proper flexbox scaling of UI elements
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,66 +40,192 @@
   <title>Unstable Memory 0.3</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
   <style>
+  /* =======================================================
+     BASE + DESKTOP STYLES (apply to all sizes by default)
+     ======================================================= */
+  /* ========================
+     Begin: DESKTOP STYLES
+     ======================== */
+
+  html, body {      /* used in both desktop and mobile */
+    margin: 0;
+    padding: 0;
+    background: black;
+    height: 100%;
+    /* Remove or avoid overflow-y: scroll/auto unless specifically needed */
+    /* overflow-y: unset; */
+    overflow: hidden; /* Prevent entire page from scrolling */
+    
+  }
+
+  /* ========================================
+     ========== MOBILE STYLES BELOW ==========
+     ======================================== */
+  @media (max-width: 768px) {
     html, body {
       margin: 0;
       padding: 0;
+      height: 100vh;
       overflow: hidden;
-      background: black;
-      height: 100%;
     }
+
+    /* Optional: ensure inputs are sized nicely */
+    #ui-panel label,
+    #ui-panel button,
+    #ui-panel select,
+    #ui-panel input[type="range"] {
+      font-size: 10px;
+      padding: 2px;
+      width: 100%;
+    }
+
+    /* Ensure bitcrusher/knobs are smaller */
+    #bit-dial, #bitcrusher-dial {
+      width: 40px;
+      height: 40px;
+    }
+
+
+
+    .control-panel-wrapper {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 45vh;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      box-sizing: border-box;
+      z-index: 20;
+      overflow: hidden;
+    }
+
+    #ui-panel {
+      flex: 1;
+      max-width: none !important;   /* ✅ Ensure override */
+    width: 100% !important;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px;
+      box-sizing: border-box;
+      position: relative !important;
+    }
+
+    #ui-panel > div {
+      max-width: none;  
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+
+  /* Responsive system/warning messages for small screens */
+  
+    /* Flashing lights warning and click-to-start text are rendered by p5.js as canvas text,
+       but .temporary-warning and #system-message are DOM overlays for errors and system messages. */
+    .temporary-warning,
+    #system-message {
+      
+      font-size: 4vw !important; /* scale text based on viewport width */
+      padding: 0 5vw !important;
+      word-wrap: break-word;
+      text-align: center;
+      box-sizing: border-box;
+      max-width: 94vw;
+    }
+    /* If you use a dedicated center-screen message element: */
+    #center-screen-message {
+      font-size: 4vw;
+      padding: 0 5vw;
+      word-wrap: break-word;
+      text-align: center;
+      box-sizing: border-box;
+      max-width: 94vw;
+    }
+  
+
+
+
+  
+  #warning-message,
+  #start-audio-button,
+  #system-warning {
+   
+    font-size: 4vw;
+    text-align: center;
+    padding: 0 5vw;
+    word-wrap: break-word;
+    white-space: normal;
+    line-height: 1.2em;
+  }
+}
+
+/* =======================================================
+   END OF MOBILE STYLES
+   ======================================================= */
+/* ========================
+    Begin: DESKTOP STYLES
+    ======================== */
+
+    
     canvas {
       display: block;
       image-rendering: pixelated;
+      position: relative;
+      z-index: 1;
     }
-    #ui-panel {
+    /* --- Begin: Control Panel Scroll Wrapper Styles --- */
+    .control-panel-scroll-wrapper {
+      max-height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
       position: absolute;
+      right: 10px;
+      bottom: 10px;
+      top: auto;
+      left: 10px;
+    }
+
+    
+
+    #ui-panel {
+      position: fixed;
       top: 10px;
       right: 0; /* changed from 10px */
       color: white;
       font-family: 'Press Start 2P', monospace;
-      z-index: 10;
+      z-index: 10000;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 6px;
       background-color: rgba(0, 0, 0, 0.6); /* subtle alpha background */
-      padding: 10px 0 10px 10px; /* removed right padding */
+      padding: 6px;
       border-radius: 8px; /* optional visual polish */
       pointer-events: auto;
       max-width: 240px;
+      max-height: 92vh;
+      overflow-y: auto;
     }
 
-    @media (max-width: 600px) {
-      #ui-panel {
-        top: auto;
-        bottom: 10px;
-        right: 10px;
-        left: 10px;
-        max-width: none;
-        width: calc(100% - 20px);
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 10px;
-      }
-
-      #ui-panel div {
-        flex: 1 1 45%;
-        margin: 5px 0;
-      }
-
-      #ui-panel label,
-      #ui-panel button,
-      #ui-panel select,
-      #ui-panel input[type=range] {
-        font-size: 10px;
-      }
-
-      #ui-panel button,
-      #ui-panel select,
-      #ui-panel input[type=range] {
-        padding: 2px;
-      }
+    #ui-panel, #ui-panel * {
+      pointer-events: auto;
     }
+
+
+    #ui-panel h3 {
+      margin-left: 0;
+      padding-left: 0.25em;
+      font-family: var(--glitch-font);
+      font-size: 1rem;
+      line-height: 1.2;
+      color: #00ffff;
+      text-shadow: 0 0 2px #000;
+
+    }
+    
 
     /* Neon/glitch style for slider and panel fonts */
     #ui-panel label,
@@ -81,43 +241,51 @@
     #ui-panel input[type="range"] {
       -webkit-appearance: none;
       width: 100%;
-      height: 12px;
+      height: 6px;
       background: linear-gradient(to right, #00ffcc, #ff00cc);
       border-radius: 0;
       border: 2px solid #00ffcc;
       box-shadow: 0 0 10px #00ffcc;
-      margin: 4px 0;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      margin-left: 0;
+      margin-right: 0;
+      touch-action: none;
+      font-size: 0.97em;
+    }
+
+    #ui-panel input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      background: #00ffcc;
+      border: 2px solid #ff00cc;
+      box-shadow: 0 0 5px #ff00cc;
+      cursor: pointer;
+      margin-top: -4px;
+      border-radius: 0;
+    }
+
+    #ui-panel input[type="range"]::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      background: #00ffcc;
+      border: 2px solid #ff00cc;
+      box-shadow: 0 0 5px #ff00cc;
+      cursor: pointer;
+      border-radius: 0;
     }
     #ui-panel input[type="range"]:focus {
       outline: none;
     }
-    #ui-panel input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 20px;
-      width: 10px;
-      background: #ff00cc;
-      border: 1px solid #00ffcc;
-      cursor: pointer;
-      box-shadow: 0 0 5px #ff00cc;
-      border-radius: 0;
-    }
-    #ui-panel input[type="range"]::-moz-range-thumb {
-      height: 20px;
-      width: 10px;
-      background: #ff00cc;
-      border: 1px solid #00ffcc;
-      cursor: pointer;
-      box-shadow: 0 0 5px #ff00cc;
-      border-radius: 0;
-    }
     #ui-panel input[type="range"]::-ms-thumb {
-      height: 20px;
-      width: 10px;
-      background: #ff00cc;
-      border: 1px solid #00ffcc;
+      width: 28px;
+      height: 28px;
+      background: #00ffcc;
+      border: 2px solid #333;
+      border-radius: 6px;
       cursor: pointer;
-      box-shadow: 0 0 5px #ff00cc;
-      border-radius: 0;
     }
     #ui-panel input[type="range"]::-ms-fill-lower {
       background: #00ffcc;
@@ -156,23 +324,65 @@
     #ui-panel input[type="range"]::-ms-tooltip {
       display: none;
     }
-    #ui-panel button,
-    #ui-panel select {
+    #ui-panel button {
       font-family: 'VT323', monospace;
       color: #00ffcc;
-      text-shadow: 0 0 5px #ff00cc;
-      background: rgba(0, 0, 0, 0.7);
+      background: #111;
       border: 2px solid #00ffcc;
-      box-shadow: 0 0 10px #00ffcc;
-      padding: 4px;
+      box-shadow: 0 0 6px #00ffcc;
+      text-shadow: none;
+      padding: 4px 0;
       width: 100%;
       font-size: 1.2em;
+      transition: background 0.2s;
+    }
+
+    #ui-panel select {
+      width: 100%;
+      max-width: 160px;
+      font-size: 12px;
+      padding: 2px 8px;
+      background-color: #000;
+      color: #00ffff;
+      border: 1px solid #00ffff;
+      border-radius: 2px;
+      appearance: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-shadow:
+        0 0 2px #0ff,
+        0 0 5px #0ff,
+        0 0 10px #0ff,
+        0 0 2px magenta,
+        0 0 5px magenta;
+      animation: glitchText 1.5s infinite;
+    }
+    #ui-panel button:hover,
+    #ui-panel select:hover {
+      background: #222;
+      color: #ff00cc;
+      border-color: #ff00cc;
+    }
+    #ui-panel button[onclick*="window.location.reload"], #resetBtn {
+      min-height: 48px;
+      font-size: 18px;
+      padding: 12px 20px;
+      touch-action: manipulation;
     }
     #ui-panel label {
       font-size: 1em;
       color: #00ffcc;
       text-shadow: 0 0 5px #ff00cc;
       font-family: 'VT323', monospace;
+    }
+
+    /* Panel class with new neon style */
+    .panel {
+      padding: 12px;
+      background-color: rgba(0, 0, 0, 0.75);
+      border: 1px solid #00ffff;
+      border-radius: 6px;
     }
 
 
@@ -196,13 +406,243 @@
     z-index: 9999;
     mix-blend-mode: overlay;
   }
-  </style>
-  
+
+  /* Ensure NexusUI dials have size and capture touch/drag */
+#bit-dial, #bitcrusher-dial {
+  width: 40px;
+  height: 40px;
+  margin: 8px auto;
+}
+#bit-dial canvas, #bitcrusher-dial canvas {
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* === Panel Section Grouping Styles === */
+.panel-section.group-a,
+.panel-section.group-b,
+.panel-section.group-c,
+.panel-section.group-d,
+.panel-section.group-e {
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 6px;
+  margin-bottom: 6px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.group-label {
+  font-weight: bold;
+  font-size: 0.65em;
+  color: cyan;
+  margin-bottom: 2px;
+}
+
+#ui-panel .group-label {
+  padding-left: 6px;
+}
+
+select,
+input[type="range"],
+input[type="file"] {
+  padding: 2px;
+  height: 20px;
+  font-size: 0.6em;
+}
+
+/* Arrange volume + fine-tune sliders side-by-side */
+.volume-fine-tune-wrapper,
+.slider-group {
+  display: flex;
+  gap: 2px; /* Add a small gap between sliders */
+  margin-bottom: 4px;
+}
+.volume-fine-tune-wrapper .slider-container,
+.slider-group > * {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.bitcrusher-container > * { margin-top: 2px; margin-bottom: 2px; }
+.bitcrusher-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 4px;
+}
+#bitcrusher-dial {
+  margin: 6px;
+  z-index: 10;
+}
+#bitcrusher-slider {
+  width: 100%;
+  height: 14px;
+  background: linear-gradient(to right, #ffcc00, #cc00ff);
+  border: 2px solid #cc00ff;
+  box-shadow: 0 0 10px #cc00ff;
+  margin: 2px 0;
+  touch-action: none;
+}
+
+    /*User Slot styling*/
+
+    #user-slot-grid input[type="file"] {
+      background: black;
+      color: cyan;
+      border: 1px solid cyan;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.6em;
+      padding: 2px 4px;
+      border-radius: 4px;
+      text-align: center;
+      width: 100%;
+    }
+.upload-filename {
+  display: block;
+  font-family: 'VT323', monospace;
+  font-size: 0.8em;
+  color: #ff00cc;
+  text-shadow: 0 0 3px #00ffcc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+#user-slot-grid div {
+  padding: 4px;
+}
+
+.temporary-warning {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 0, 0, 0.95);
+  color: white;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  padding: 12px 20px;
+  border: 2px solid white;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
+  z-index: 99999;
+  animation: warning-pulse 0.3s alternate infinite;
+}
+
+.hidden {
+  display: none;
+}    
+
+
+@keyframes warning-pulse {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.03); }
+}
+
+#system-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: #f0f0f0;
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: 1px solid red;
+  z-index: 9999;
+  text-shadow: 
+    0 0 2px #f00,
+    0 0 4px #0ff,
+    0 0 6px #f0f;
+  pointer-events: none;
+}
+
+#video-overlay-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* So it doesn’t block UI */
+  z-index: 500; /* Ensure it's above background but under UI */
+}
+
+.overlay-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.1;
+  mix-blend-mode: screen; /* Optional: blends with visuals */
+}
+
+/* =====================
+    End: DESKTOP STYLES
+    ===================== */
+
+@keyframes glitchText {
+  0% {
+    text-shadow:
+      0 0 2px #0ff,
+      0 0 5px #0ff,
+      0 0 10px #0ff,
+      0 0 2px magenta,
+      0 0 5px magenta;
+  }
+  20% {
+    text-shadow:
+      1px -1px 2px #0ff,
+      -1px 1px 5px magenta;
+  }
+  40% {
+    text-shadow:
+      -1px 1px 2px magenta,
+      1px -1px 5px #0ff;
+  }
+  60% {
+    text-shadow:
+      1px 1px 2px #0ff,
+      -1px -1px 5px magenta;
+  }
+  80% {
+    text-shadow:
+      -1px -1px 2px magenta,
+      1px 1px 5px #0ff;
+  }
+  100% {
+    text-shadow:
+      0 0 2px #0ff,
+      0 0 5px #0ff,
+      0 0 10px #0ff,
+      0 0 2px magenta,
+      0 0 5px magenta;
+  }
+}
+</style>
+
+
 <script src="scripts/p5.min.js"></script>
 <script src="scripts/p5.sound.min.js"></script>
+<script src="https://unpkg.com/nexusui@2.0.7/dist/NexusUI.min.js"></script>
+<script src="bitcrusher-processor.js" type="text/javascript"></script>
   <script>
+    // --- Global Declarations for Bitcrusher Sample Source ---
+    let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    // --- User interaction flag for Web Audio start compliance ---
+    let userStartedAudio = false;
+
+    // Global variables
+    // --- Variable Declarations to fix initialization errors ---
+    let audio;
+    let finePitchA;
+    let mouseIsHeld = false;
     let glitchBuffer;
-    let audio, audio2, fft;
+
+    let audio2, fft;
     let glitchIntensity = 5;
     let useColor = true;
     let reverb;
@@ -211,24 +651,206 @@
     let rgbSplitAmount = 50;
     let glitchErrorText = '';
     let glitchErrorTimer = 0;
-    let mouseIsHeld = false;
 
     let lastMouseX = 0; //last mouse x position
     let lastMouseY = 0; // last mouse y position
 
     // Fine pitch controls for Sample A and B (as semitone offsets, mapped later)
-    let finePitchA = 0.0; // range: -0.059..0.059 (fractional)
+    finePitchA = 0.0; // range: -0.059..0.059 (fractional)
     let finePitchB = 0.0;
 
     let noise, crackleEnv;
 
     let glitchToggled = true;
 
-
     let currentVolume = 1.0;
     let currentPitch = 1.0;
     let currentGlitch = 5;
 
+    // --- Bitcrusher Node Variables ---
+    let bitcrusherNode = null;
+    // Dry/Wet routing for clean bypass
+    let dryGain, wetGain;
+
+
+
+
+    // Creates a Bitcrusher effect node with specified bit depth and frequency.
+    // Bitcrusher implementation using ScriptProcessorNode
+    function createBitcrusherNode(audioCtx, bits, normFreq) {
+      const bufferSize = 4096;
+      const node = audioCtx.createScriptProcessor(bufferSize, 1, 1);
+      let phaser = 0;
+      let last = 0;
+      node.onaudioprocess = function (e) {
+        const step = Math.pow(0.5, bits);
+        const input = e.inputBuffer.getChannelData(0);
+        const output = e.outputBuffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          phaser += normFreq;
+          if (phaser >= 1.0) {
+            phaser -= 1.0;
+            last = step * Math.floor(input[i] / step + 0.5);
+          }
+          output[i] = last;
+        }
+      };
+      return node;
+    }
+
+// In‑memory slots: { url, name, size } or null
+const userSamples = new Array(8).fill(null);
+
+// Map blob: URL to the original File so loadSound() can decode reliably
+const blobFileMap = new Map();
+
+// Show a system message in a visible element with id="system-message"
+function showSystemMessage(message, duration = 3000) {
+  let msgBox = document.getElementById('system-message');
+  if (!msgBox) {
+    msgBox = document.createElement('div');
+    msgBox.id = 'system-message';
+    msgBox.style.position = 'fixed';
+    msgBox.style.top = '16px';
+    msgBox.style.left = '50%';
+    msgBox.style.transform = 'translateX(-50%)';
+    msgBox.style.background = 'rgba(0,0,0,0.95)';
+    msgBox.style.color = '#fff';
+    msgBox.style.fontFamily = "'VT323', monospace";
+    msgBox.style.fontSize = '18px';
+    msgBox.style.padding = '10px 24px';
+    msgBox.style.border = '2px solid #ff00cc';
+    msgBox.style.borderRadius = '8px';
+    msgBox.style.zIndex = '999999';
+    msgBox.style.boxShadow = '0 0 16px #ff00cc';
+    msgBox.style.textAlign = 'center';
+    msgBox.style.pointerEvents = 'none';
+    document.body.appendChild(msgBox);
+  }
+  msgBox.textContent = message;
+  msgBox.style.display = 'block';
+  clearTimeout(msgBox._hideTimeout);
+  msgBox._hideTimeout = setTimeout(() => {
+    msgBox.style.display = 'none';
+  }, duration);
+}
+
+// Build listeners for the 8 inputs
+function buildUserSlotsUI() {
+  const grid = document.getElementById('user-slot-grid');
+  if (!grid) return;
+  // Attach new validation logic to all file inputs (including user slots)
+  document.querySelectorAll('input[type="file"]').forEach(input => {
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+      const allowedTypes = ['audio/mpeg', 'audio/ogg'];
+      const maxSize = 5 * 1024 * 1024; // 5MB
+
+      if (!file) return;
+
+      if (!allowedTypes.includes(file.type)) {
+        showSystemMessage("Unsupported file type. Please upload an MP3 or OGG file.", 4000);
+        input.value = ''; // Clear the invalid file
+        return;
+      }
+
+      if (file.size > maxSize) {
+        showSystemMessage("File too large. Maximum size is 5MB.", 4000);
+        input.value = ''; // Clear the large file
+        return;
+      }
+
+      // If file is valid, proceed with loading it
+      // User slot inputs have data-slot attribute
+      if (input.hasAttribute('data-slot')) {
+        onUserFileChosen({ target: input });
+      }
+      // If main upload input (id="upload") exists and needs separate handling, add here...
+    });
+  });
+
+  // Cleanup blob URLs when leaving the page
+  window.addEventListener('beforeunload', () => {
+    userSamples.forEach(s => { if (s?.url) URL.revokeObjectURL(s.url); });
+    blobFileMap.clear();
+  });
+}
+
+// When a file is selected for a user slot
+function onUserFileChosen(e) {
+  const slot = parseInt(e.target.getAttribute('data-slot'), 10);
+  const file = e.target.files && e.target.files[0];
+  if (!Number.isInteger(slot) || slot < 0 || slot > 7) return;
+
+  // Clear slot if removed
+  if (!file) {
+    if (userSamples[slot]?.url) {
+      blobFileMap.delete(userSamples[slot].url);
+      URL.revokeObjectURL(userSamples[slot].url);
+    }
+    userSamples[slot] = null;
+    refreshUserSelectOptions();
+    return;
+  }
+
+  // (No need for additional size/type checks here, handled by the new input event)
+
+  // Make a blob URL and store it + the File
+  const url = URL.createObjectURL(file);
+  if (userSamples[slot]?.url) {
+    blobFileMap.delete(userSamples[slot].url);
+    URL.revokeObjectURL(userSamples[slot].url);
+  }
+
+  userSamples[slot] = { url, name: file.name, size: file.size, file };
+  blobFileMap.set(url, file);
+  const labelEl = document.getElementById('filename-' + slot);
+  if (labelEl) {
+    labelEl.textContent = file ? (file.name || 'Sample').slice(0, 12) : '';
+  }
+
+  refreshUserSelectOptions();
+}
+
+// Add/refresh the "User Samples" options in A/B selects
+function refreshUserSelectOptions() {
+  const selA = document.getElementById('sampleA');
+  const selB = document.getElementById('sampleB');
+  if (!selA || !selB) return;
+
+  function ensureGroup(select, label) {
+    let group = select.querySelector(`optgroup[label="${label}"]`);
+    if (!group) {
+      group = document.createElement('optgroup');
+      group.setAttribute('label', label);
+      select.appendChild(group);
+    } else {
+      while (group.firstChild) group.removeChild(group.firstChild);
+    }
+    return group;
+  }
+
+  const groupA = ensureGroup(selA, 'User Samples');
+  const groupB = ensureGroup(selB, 'User Samples');
+
+  // Populate with current slots
+  userSamples.forEach((s, i) => {
+    if (!s) return;
+    const label = (s.name || `User ${i+1}`).slice(0, 32);
+
+    const optA = document.createElement('option');
+    optA.value = s.url;            // <— blob: URL
+    optA.textContent = label;
+    groupA.appendChild(optA);
+
+    const optB = document.createElement('option');
+    optB.value = s.url;
+    optB.textContent = label;
+    groupB.appendChild(optB);
+  });
+}
+
+    // Loads and prepares audio samples for manipulation.
     function preload() {
       // Replace with your own Web3 or IPFS audio asset if needed
       soundFormats('mp3', 'ogg');
@@ -236,27 +858,52 @@
       audio2 = loadSound('audio/EveningAtmos.mp3'); // second audio
     }
 
+    // Initial setup function for p5.js, runs once at the start.
     function setup() {
+      audioCtx = getAudioContext(); // place this inside a p5.js `setup()` or after user interaction
       // Setup fine pitch sliders and event listeners (as semitone offsets mapped to +/- 1 semitone)
       let pitchFineSliderA = document.getElementById('finePitchA');
       let pitchFineSliderB = document.getElementById('finePitchB');
       if (pitchFineSliderA) {
+        // Provide fallback value for slider initialization
+        pitchFineSliderA.value = pitchFineSliderA.value || 0;
         // Slider range -0.5..0.5, map to -0.059..0.059 (fractional change for +/- 1 semitone)
-        finePitchA = map(parseFloat(pitchFineSliderA.value), -0.5, 0.5, -0.059, 0.059);
-        pitchFineSliderA.addEventListener('input', () => {
-          finePitchA = map(parseFloat(pitchFineSliderA.value), -0.5, 0.5, -0.059, 0.059);
+        let valA = parseFloat(pitchFineSliderA.value);
+        if (!isNaN(valA) && isFinite(valA)) {
+          finePitchA = map(valA, -0.5, 0.5, -0.059, 0.059);
+        } else {
+          console.warn("Invalid value for Fine Tune A slider:", valA);
+        }
+        pitchFineSliderA.addEventListener('input', (e) => {
+          const val = parseFloat(e.target.value);
+          if (!isNaN(val) && isFinite(val)) {
+            finePitchA = map(val, -0.5, 0.5, -0.059, 0.059);
+          } else {
+            console.warn("Invalid value for Fine Tune A slider input:", val);
+          }
         });
       }
       if (pitchFineSliderB) {
-        finePitchB = map(parseFloat(pitchFineSliderB.value), -0.5, 0.5, -0.059, 0.059);
-        pitchFineSliderB.addEventListener('input', () => {
-          finePitchB = map(parseFloat(pitchFineSliderB.value), -0.5, 0.5, -0.059, 0.059);
+        pitchFineSliderB.value = pitchFineSliderB.value || 0;
+        let valB = parseFloat(pitchFineSliderB.value);
+        if (!isNaN(valB) && isFinite(valB)) {
+          finePitchB = map(valB, -0.5, 0.5, -0.059, 0.059);
+        } else {
+          console.warn("Invalid value for Fine Tune B slider:", valB);
+        }
+        pitchFineSliderB.addEventListener('input', (e) => {
+          const val = parseFloat(e.target.value);
+          if (!isNaN(val) && isFinite(val)) {
+            finePitchB = map(val, -0.5, 0.5, -0.059, 0.059);
+          } else {
+            console.warn("Invalid value for Fine Tune B slider input:", val);
+          }
         });
       }
       let cnv = createCanvas(windowWidth, windowHeight);
       cnv.parent(document.body); // Ensures canvas is correctly attached
       pixelDensity(1);
-      glitchBuffer = createGraphics(width, height);
+      glitchBuffer = createGraphics(windowWidth, windowHeight);
       fft = new p5.FFT(0.5, 128);
       reverb = new p5.Reverb();
       reverb.process(audio, 6, 4); // More cavernous
@@ -266,7 +913,53 @@
       audio.connect(filter);
       audio2.disconnect();
       audio2.connect(filter);
-      filter.connect();
+      // --- Dry/Wet gains for true bypass of bitcrusher ---
+      dryGain = audioCtx.createGain();
+      wetGain = audioCtx.createGain();
+      // Start fully dry
+      dryGain.gain.value = 1;
+      wetGain.gain.value = 0;
+      // Persistent routing: filter -> dry, dry -> destination, wet -> destination
+      filter.connect(dryGain);
+      dryGain.connect(audioCtx.destination);
+      wetGain.connect(audioCtx.destination);
+      // Wire filter -> (optional) bitcrusher -> destination.
+      // amount: 0..100 where 0 = bypass (no effect), 100 = heaviest crush.
+      function wireBitcrusher(amount) {
+        // Always start by removing any previous wet path
+        if (bitcrusherNode) {
+          try { bitcrusherNode.disconnect(); } catch(_) {}
+          // Help GC and ensure no further processing
+          bitcrusherNode.onaudioprocess = null;
+          bitcrusherNode = null;
+        }
+
+        const amt = Math.max(0, Math.min(100, Number(amount)));
+
+        // 0% = hard bypass (pure dry)
+        if (amt <= 0) {
+          // dry only, no crushed signal
+          if (dryGain)  dryGain.gain.value = 1;
+          if (wetGain)  wetGain.gain.value = 0;
+          return;
+        }
+
+        // Create a fresh bitcrusher node for the wet path
+        const bits     = Math.floor(map(amt, 1, 100, 16, 2)); // higher amt => fewer bits
+        const normFreq = map(amt, 1, 100, 1.0, 0.05);         // higher amt => stronger rate reduction
+        bitcrusherNode = createBitcrusherNode(audioCtx, bits, normFreq);
+
+        // Route: filter -> bitcrusher -> wetGain -> destination
+        try { filter.connect(bitcrusherNode); } catch(_) {}
+        try { bitcrusherNode.connect(wetGain); } catch(_) {}
+
+        // When bitcrusher is active, mute dry path (full-wet). Change these
+        // to crossfade if you prefer blending instead of switching.
+        if (dryGain) dryGain.gain.value = 0;
+        if (wetGain) wetGain.gain.value = 1;
+      }
+      // Start with bypassed bitcrusher (clean audio at 0%)
+      wireBitcrusher(0);
 
       delay = new p5.Delay();
       delay.process(audio, 0.12, 0.1, 2000);
@@ -283,6 +976,39 @@
       // audio.loop(); // REMOVE this line!
       frameRate(30);
       loop();
+
+      // --- Bitcrusher UI Setup: Slider and Dial control ---
+      function setupBitcrusherUI() {
+        const bitcrusherSlider = document.getElementById('bitcrusher-slider');
+        if (bitcrusherSlider) {
+          bitcrusherSlider.value = 0; // start at 0% (no bitcrush)
+          bitcrusherSlider.addEventListener('input', (e) => {
+            const percent = Number(e.target.value);
+            wireBitcrusher(percent);
+            if (window.bitDial) window.bitDial.value = percent;
+          });
+        }
+      }
+
+      // Setup NexusUI Dial for bitcrusher
+      // Creates a rotary dial for bit depth control using NexusUI.
+      const bitDialHost = document.querySelector('#bit-dial');
+      if (bitDialHost && window.Nexus) {
+        window.bitDial = new Nexus.Dial('#bit-dial', {
+          size: [40, 40],
+          min: 0,
+          max: 100,
+          step: 1,
+          value: 0 // 0% bitcrusher (no effect)
+        });
+        window.bitDial.on('change', (percent) => {
+          wireBitcrusher(percent);
+          // keep slider in sync with dial
+          const bitcrusherSlider = document.getElementById('bitcrusher-slider');
+          if (bitcrusherSlider) bitcrusherSlider.value = String(percent);
+        });
+      }
+      setupBitcrusherUI();
     }
 
     function isMouseOverUIPanel() {
@@ -292,7 +1018,24 @@
       return mouseX >= rect.left && mouseX <= rect.right && mouseY >= rect.top && mouseY <= rect.bottom;
     }
 
+    // Main p5.js draw loop, used for visuals (if implemented).
     function draw() {
+      // Panel coordinates and size for mouse exclusion
+      const panel = document.getElementById('ui-panel');
+      let panelX = 0, panelY = 0, panelWidth = 0, panelHeight = 0;
+      if (panel) {
+        const rect = panel.getBoundingClientRect();
+        // p5 mouseX/Y are relative to canvas, but getBoundingClientRect is relative to viewport
+        // So, translate rect to canvas coordinates
+        // canvas is always at (0,0) absolute, so mouseX/Y should match clientX/Y
+        panelX = rect.left;
+        panelY = rect.top;
+        panelWidth = rect.width;
+        panelHeight = rect.height;
+      }
+      const isMouseOverPanel = mouseX > panelX && mouseX < panelX + panelWidth &&
+                               mouseY > panelY && mouseY < panelY + panelHeight;
+
       glitchBuffer.background(0);
       drawVisuals(glitchBuffer);
       glitchIntensity = glitchToggled ? currentGlitch : 0;
@@ -325,24 +1068,70 @@
 
       // Read and apply reverb value from slider
       let reverbSlider = document.getElementById('reverbSlider');
-      let reverbAmount = reverbSlider ? map(Number(reverbSlider.value), 0, 100, 0, 1) : 0;
+      let reverbAmount = 0;
+      if (reverbSlider) {
+        reverbSlider.value = reverbSlider.value || 0.5;
+        const val = parseFloat(reverbSlider.value);
+        if (!isNaN(val) && isFinite(val)) {
+          reverbAmount = map(val, 0, 100, 0, 2); // Doubled upper range
+        } else {
+          console.warn("Invalid value for Reverb slider:", val);
+        }
+      }
       if (reverb) reverb.amp(reverbAmount);
 
       let filterSlider = document.getElementById('filterSlider');
-      let filterFreq = filterSlider ? map(Number(filterSlider.value), 0, 100, 100, 22050) : 1000;
+      let filterFreq = 1000;
+      if (filterSlider) {
+        filterSlider.value = filterSlider.value || 0.5;
+        const val = parseFloat(filterSlider.value);
+        if (!isNaN(val) && isFinite(val)) {
+          filterFreq = map(val, 0, 100, 100, 22050);
+        } else {
+          console.warn("Invalid value for Filter Sweep slider:", val);
+        }
+      }
       if (filter) filter.freq(filterFreq);
 
       // --- Delay, RGB Split, Bitcrusher ---
       let delaySlider = document.getElementById('delaySlider');
-      let delayVal = delaySlider ? map(Number(delaySlider.value), 0, 100, 0, 0.9) : 0;
+      let delayVal = 0;
+      if (delaySlider) {
+        delaySlider.value = delaySlider.value || 0.5;
+        const val = parseFloat(delaySlider.value);
+        if (!isNaN(val) && isFinite(val)) {
+          delayVal = map(val, 0, 100, 0, 0.9);
+        } else {
+          console.warn("Invalid value for Echo slider:", val);
+        }
+      }
       if (delay) delay.feedback(constrain(delayVal, 0, 0.6));
 
       let rgbSlider = document.getElementById('rgbSplitSlider');
-      rgbSplitAmount = rgbSlider ? map(Number(rgbSlider.value), 0, 100, 0, 30) : 5;
-
+      if (rgbSlider) {
+        rgbSlider.value = rgbSlider.value || 0.5;
+        const val = parseFloat(rgbSlider.value);
+        if (!isNaN(val) && isFinite(val)) {
+          rgbSplitAmount = map(val, 0, 100, 0, 30);
+        } else {
+          console.warn("Invalid value for RGB Pulse slider:", val);
+          rgbSplitAmount = 5;
+        }
+      } else {
+        rgbSplitAmount = 5;
+      }
 
       let crackleSlider = document.getElementById('crackleSlider');
-      let crackleAmount = crackleSlider ? map(Number(crackleSlider.value), 0, 100, 0, 0.2) : 0;
+      let crackleAmount = 0;
+      if (crackleSlider) {
+        crackleSlider.value = crackleSlider.value || 0.5;
+        const val = parseFloat(crackleSlider.value);
+        if (!isNaN(val) && isFinite(val)) {
+          crackleAmount = map(val, 0, 100, 0, 0.4); // Doubled range
+        } else {
+          console.warn("Invalid value for Crackle & Pop slider:", val);
+        }
+      }
 
       // Set low-level constant crackle volume
       if (noise) noise.amp(crackleAmount * 0.3); // lower overall background crackle
@@ -374,7 +1163,8 @@
         pop();
       }
 
-      if (mouseIsPressed && !isMouseOverUIPanel()) {
+      // Only allow pitch/volume/glitch mouse control if mouse is pressed and not over panel
+      if (mouseIsPressed && !isMouseOverPanel) {
         handleMouseControl(mouseX, mouseY);
         push();
         noFill();
@@ -387,16 +1177,37 @@
         }
         pop();
       }
+
+
+
+
       applyAudioSettings();
 
       // --- Volume sliders for A and B ---
       let volumeASlider = document.getElementById('volumeASlider');
       let volumeBSlider = document.getElementById('volumeBSlider');
-      let volumeA = volumeASlider ? map(Number(volumeASlider.value), 0, 100, 0, 1.5) : 1.0;
-      let volumeB = volumeBSlider ? map(Number(volumeBSlider.value), 0, 100, 0, 1.5) : 1.0;
+      let volumeA = 1.0, volumeB = 1.0;
+      if (volumeASlider) {
+        volumeASlider.value = volumeASlider.value || 0.5;
+        const val = parseFloat(volumeASlider.value);
+        if (!isNaN(val) && isFinite(val)) {
+          volumeA = map(val, 0, 100, 0, 1.5);
+        } else {
+          console.warn("Invalid value for Volume A slider:", val);
+        }
+      }
+      if (volumeBSlider) {
+        volumeBSlider.value = volumeBSlider.value || 0.5;
+        const val = parseFloat(volumeBSlider.value);
+        if (!isNaN(val) && isFinite(val)) {
+          volumeB = map(val, 0, 100, 0, 1.5);
+        } else {
+          console.warn("Invalid value for Volume B slider:", val);
+        }
+      }
 
-      if (audio) audio.setVolume(volumeA);
-      if (audio2) audio2.setVolume(volumeB);
+      safeSetVolume(audio, volumeA);
+      safeSetVolume(audio2, volumeB);
     }
 
     function drawVisuals(pg) {
@@ -463,8 +1274,8 @@ pg.updatePixels();
         getAudioContext().resume(); // for Chrome autoplay policy
         mouseIsHeld = true;
         // Use finePitchA and finePitchB as fine-tune offsets (+/-1 semitone)
-        if (audio) audio.rate(currentPitch * (1 + finePitchA));
-        if (audio2) audio2.rate(currentPitch * (1 + finePitchB));
+        safeSetRate(audio,  currentPitch * (1 + finePitchA));
+        safeSetRate(audio2, currentPitch * (1 + finePitchB));
       }
 
       if (!audio.isPlaying()) {
@@ -524,44 +1335,67 @@ pg.updatePixels();
     }
 
     function loadSample(channel, filename) {
-      loadSound(
-        filename,
-        sound => {
-          if (filename.includes('thisFileDoesNotExist')) {
-            showGlitchError('✖ SYSTEM CORRUPTION DETECTED');
-          } else {
-            glitchErrorText = ''; // Clear any previous glitch errors
-            if (window.glitchLoopInterval) {
-              clearInterval(window.glitchLoopInterval);
-              window.glitchLoopInterval = null;
-            }
-          }
-          if (channel === 'A') {
-            if (audio && audio.isPlaying()) audio.stop();
-            audio = sound;
-            audio.disconnect();
-            audio.connect(filter);
-            audio.loop();
-            reverb.process(audio, 6, 4);
-            handleMouseControl(lastMouseX, lastMouseY);
-          } else {
-            if (audio2 && audio2.isPlaying()) audio2.stop();
-            audio2 = sound;
-            audio2.disconnect();
-            audio2.connect(filter);
-            audio2.loop();
-            reverb.process(audio2, 6, 4);
-            handleMouseControl(lastMouseX, lastMouseY, false);
-          }
-          // Apply current screen-based controls to the newly loaded sound
-          handleMouseControl(lastMouseX, lastMouseY, false);
-          mouseIsHeld = false; // Prevent mouseover from triggering pitch changes
-        },
-        () => {
-          showGlitchError(`✖ FILE ERROR: ${filename}`);
+  ensureAudioRunning();
+
+  const isBlob = typeof filename === 'string' && filename.startsWith('blob:');
+  const sourceForLoad = isBlob ? (blobFileMap.get(filename) || filename) : filename;
+
+  loadSound(
+    sourceForLoad,
+    sound => {
+      // Glitch text handling
+      if (typeof filename === 'string' && filename.includes('thisFileDoesNotExist')) {
+        showGlitchError('✖ SYSTEM CORRUPTION DETECTED');
+      } else {
+        glitchErrorText = '';
+        if (window.glitchLoopInterval) {
+          clearInterval(window.glitchLoopInterval);
+          window.glitchLoopInterval = null;
         }
-      );
+      }
+
+      // Normalise SoundFile start mode and volume
+      try { sound.playMode('restart'); } catch(_) {}
+
+      // Wire into the FX chain
+      sound.disconnect();
+      sound.connect(filter);
+      try { reverb.process(sound, 6, 4); } catch(_) {}
+      try {
+        const fb = document.getElementById('delaySlider')
+          ? map(Number(document.getElementById('delaySlider').value), 0, 100, 0, 0.6)
+          : 0;
+        delay.process(sound, 0.12, constrain(fb, 0, 0.6), 2000);
+      } catch(_) {}
+
+      // Start looping
+      try { sound.loop(); } catch(_) {}
+
+      // Swap into A/B
+      if (channel === 'A') {
+        if (audio && audio !== sound && audio.isPlaying()) audio.stop();
+        audio = sound;
+      } else {
+        if (audio2 && audio2 !== sound && audio2.isPlaying()) audio2.stop();
+        audio2 = sound;
+      }
+
+      // Apply current screen and panel state (no new click needed)
+      handleMouseControl(lastMouseX, lastMouseY, /*triggeredByUser*/ false);
+
+      const va = document.getElementById('volumeASlider');
+      const vb = document.getElementById('volumeBSlider');
+      if (audio)  safeSetVolume(audio,  va ? map(Number(va.value),0,100,0,1.5) : 1.0);
+      if (audio2) safeSetVolume(audio2, vb ? map(Number(vb.value),0,100,0,1.5) : 1.0);
+
+      // Prevent hover from hijacking controls immediately after change
+      mouseIsHeld = false;
+    },
+    () => {
+      showGlitchError(`✖ FILE ERROR: ${isBlob ? 'User sample' : filename}`);
     }
+  );
+}
 
     function showGlitchError(message) {
       console.error(message);
@@ -574,44 +1408,91 @@ pg.updatePixels();
       }
     }
 
+
+
+function showCenterMessage(message, duration = 3000) {
+  const msgBox = document.getElementById('center-screen-message');
+  msgBox.textContent = message;
+  msgBox.classList.remove('hidden');
+
+  clearTimeout(msgBox._hideTimeout);
+  msgBox._hideTimeout = setTimeout(() => {
+    msgBox.classList.add('hidden');
+  }, duration);
+}
+
+//randon video overlay
+
+function loadRandomOverlayVideo() {
+  const videoFolder = 'video/';
+  const videoFiles = [
+    'glitch_ascii_style.mp4',
+    'glitch_overlay_2.mp4',
+    'glitch_ghost_overlay_3.mp4'
+  ];
+
+  if (videoFiles.length === 0) return;
+
+  const selectedVideo = videoFiles[Math.floor(Math.random() * videoFiles.length)];
+  const videoPath = `${videoFolder}${selectedVideo}`;
+  console.log("Loading video:", videoPath);
+
+  const container = document.getElementById('video-overlay-container');
+  if (!container) return;
+
+  const video = document.createElement('video');
+  video.src = videoPath;
+  video.autoplay = true;
+  video.loop = true;
+  video.muted = true;
+  video.playsInline = true;
+  video.classList.add('overlay-video');
+
+  container.innerHTML = ''; // Clear existing
+  container.appendChild(video);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadRandomOverlayVideo();
+});
+
+
+
+
+
 function drawStereoMeter() {
-  let levelL = 0;
-  let levelR = 0;
+  let levelL = 0, levelR = 0;
 
-  if (audio && audio.isLoaded() && typeof audio.getLevel === 'function') {
-    const panVal = (typeof audio.pan === 'function' && !isNaN(audio.pan())) ? audio.pan() : 0;
-    const lvl = audio.getLevel();
-    if (isFinite(lvl)) {
-      levelL = lvl * (1 - Math.abs(panVal));
-    } else {
-      levelL = 0;
+  // Safely read levels
+  try {
+    if (audio && audio.isLoaded && audio.isLoaded() && typeof audio.getLevel === 'function') {
+      const v = Number(audio.getLevel());
+      if (Number.isFinite(v)) levelL = v;
     }
-  }
+  } catch (_) { levelL = 0; }
 
-  if (audio2 && audio2.isLoaded() && typeof audio2.getLevel === 'function') {
-    const panVal2 = (typeof audio2.pan === 'function' && !isNaN(audio2.pan())) ? audio2.pan() : 0;
-    const lvl2 = audio2.getLevel();
-    if (isFinite(lvl2)) {
-      levelR = lvl2 * (1 - Math.abs(panVal2));
-    } else {
-      levelR = 0;
+  try {
+    if (audio2 && audio2.isLoaded && audio2.isLoaded() && typeof audio2.getLevel === 'function') {
+      const v2 = Number(audio2.getLevel());
+      if (Number.isFinite(v2)) levelR = v2;
     }
-  }
+  } catch (_) { levelR = 0; }
 
-  // Draw background bars
+  // Background bars
   noStroke();
   fill(0, 0, 0, 150);
   rect(10, height - 60, 20, 50);
   rect(40, height - 60, 20, 50);
 
-  // Draw left and right levels
+  // Foreground levels (only if finite)
   fill('#39ff14'); // neon green
-  let lHeight = map(levelL, 0, 1, 0, 50);
-  let rHeight = map(levelR, 0, 1, 0, 50);
-  rect(10, height - 10 - lHeight, 20, lHeight);
-  rect(40, height - 10 - rHeight, 20, rHeight);
+  const lH = Number.isFinite(levelL) ? map(levelL, 0, 1, 0, 50) : 0;
+  const rH = Number.isFinite(levelR) ? map(levelR, 0, 1, 0, 50) : 0;
 
-  // Optional: label text
+  if (Number.isFinite(lH)) rect(10, height - 10 - lH, 20, lH);
+  if (Number.isFinite(rH)) rect(40, height - 10 - rH, 20, rH);
+
+  // Labels
   textSize(8);
   textAlign(CENTER, CENTER);
   fill(255);
@@ -619,15 +1500,37 @@ function drawStereoMeter() {
   text('R', 50, height - 65);
 }
 
+    // ---- Safe number + audio write helpers (single definition at top-level) ----
+    function isFiniteNumber(v){ return typeof v === 'number' && isFinite(v) && !isNaN(v); }
+
+    function safeSetVolume(snd, v){
+      if (!snd || typeof snd.setVolume !== 'function') return;
+      const vol = Number(v);
+      if (!isFiniteNumber(vol)) return;
+      try { snd.setVolume(constrain(vol, 0, 1.5)); } catch {}
+    }
+
+    function safeSetRate(snd, r){
+      if (!snd) return;
+      const rate = Number(r);
+      if (!isFiniteNumber(rate)) return;
+      try {
+        if (typeof snd.rate === 'function') {
+          snd.rate(constrain(rate, 0.05, 4));
+        }
+      } catch {}
+    }
+
     function applyAudioSettings() {
-      if (audio) {
-        // Fine tune: apply as subtle (±1 semitone) multiplier
-        audio.rate(currentPitch * (1 + finePitchA));
-      }
-      if (audio2) {
-        audio2.rate(currentPitch * (1 + finePitchB));
-      }
-      glitchIntensity = currentGlitch;
+      if (audio)  {
+  const rateA = currentPitch * (1 + finePitchA);
+  safeSetRate(audio, rateA);
+}
+if (audio2) {
+  const rateB = currentPitch * (1 + finePitchB);
+  safeSetRate(audio2, rateB);
+}
+glitchIntensity = currentGlitch;
     }
 
 
@@ -636,111 +1539,207 @@ function windowResized() {
   glitchBuffer = createGraphics(windowWidth, windowHeight); // important for matching buffer size
 }
 
+function ensureAudioRunning() {
+  const ctx = getAudioContext ? getAudioContext() : audioCtx;
+  if (ctx && ctx.state !== 'running') {
+    try { ctx.resume(); } catch (_) {}
+  }
+}
+
+// --- User Sample Slots UI Helpers ---
+
+// (duplicate refreshUserSelectOptions removed)
+
+// Provide a global map() function if not already defined (for p5.js or vanilla use)
+    // Maps a value from one range to another. Used for scaling slider inputs.
+    function map(value, inMin, inMax, outMin, outMax) {
+  return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+}
+
+
+/* --- User Sample Slots UI Init (defensive: wait for DOM if needed) ---*/
+(function initUserSlotsWhenReady(){
+  const doInit = () => {
+    try {
+      if (typeof buildUserSlotsUI === 'function') buildUserSlotsUI();
+      if (typeof refreshUserSelectOptions === 'function') refreshUserSelectOptions();
+    } catch(e){ console.warn('User slots init deferred:', e); }
+  };
+  if (document.getElementById('sample-slots')) {
+    doInit();
+  } else {
+    window.addEventListener('DOMContentLoaded', doInit, { once: true });
+    requestAnimationFrame(() => {
+      if (document.getElementById('sample-slots')) doInit();
+    });
+  }
+})();
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildUserSlotsUI();
+  refreshUserSelectOptions();
+});
 
 
   </script>
 </head>
 <body>
-  <div id="ui-panel">
-    <div class="panel-section">
-      <label>&nbsp;</label>
-      <button onclick="toggleGlitch()">Toggle Glitch</button>
-    </div>
-    <div class="panel-section">
-      <label for="reverbSlider">Reverb</label>
-      <input type="range" id="reverbSlider" min="0" max="100" value="50">
-    </div>
-    <div class="panel-section">
-      <label for="filterSlider">Filter Sweep</label>
-      <input type="range" id="filterSlider" min="0" max="100" value="50">
-    </div>
-    <div class="panel-section">
-      <label for="volumeASlider">Volume A</label>
-      <input type="range" id="volumeASlider" min="0" max="100" value="100">
-    </div>
-    <div class="panel-section">
-      <label for="volumeBSlider">Volume B</label>
-      <input type="range" id="volumeBSlider" min="0" max="100" value="100">
-    </div>
-    <div class="panel-section">
-      <label for="sampleA">Sample A</label>
-      <select id="sampleA" onchange="loadSample('A', this.value)">
-        <option value="audio/shopping.mp3">shopping.mp3</option>
-        <option value="audio/funk.mp3">funk.mp3</option>
-        <option value="audio/ChipTuneRandom.mp3">ChipTune.mp3</option>
-        <option value="audio/ArtEric.mp3">ArtEric.mp3</option>
-        <option value="audio/ElectronicNoisesRange.mp3">ElectronicGlitchNoise.mp3</option>
-        <option value="audio/PianoTrackImprov.mp3">Piano.mp3</option>
-        <option value="audio/DroneExperiment.mp3">DroneExperiment</option>
-        <option value="audio/EveningAtmos.mp3">EveningAtmos</option>
-        <option value="audio/thisFileDoesNotExist.mp3">Corrupted Sample</option>
-      </select>
-      <label for="finePitchA">Fine Tune A</label>
-      <input type="range" id="finePitchA" min="-0.5" max="0.5" step="0.01" value="0">
-    </div>
-    <div class="panel-section">
-      <label for="sampleB">Sample B</label>
-      <select id="sampleB" onchange="loadSample('B', this.value)">
-        <option value="audio/shopping.mp3">shopping.mp3</option>
-        <option value="audio/funk.mp3">funk.mp3</option>
-        <option value="audio/ChipTuneRandom.mp3">ChipTune.mp3</option>
-        <option value="audio/ArtEric.mp3">ArtEric.mp3</option>
-        <option value="audio/ElectronicNoisesRange.mp3">ElectronicGlitchNoise.mp3</option>
-        <option value="audio/PianoTrackImprov.mp3">Piano.mp3</option>
-        <option value="audio/DroneExperiment.mp3">DroneExperiment</option>
-        <option value="audio/EveningAtmos.mp3">EveningAtmos</option>
-        <option value="audio/thisFileDoesNotExist.mp3">Corrupted Sample</option>
-      </select>
-      <label for="finePitchB">Fine Tune B</label>
-      <input type="range" id="finePitchB" min="-0.5" max="0.5" step="0.01" value="0">
-    </div>
-    <div class="panel-section">
-      <label for="crackleSlider">Crackle & Pop</label>
-      <input type="range" id="crackleSlider" min="0" max="100" value="0">
-    </div>
-    <div class="panel-section">
-      <label for="delaySlider">Echo</label>
-      <input type="range" id="delaySlider" min="0" max="100" value="0">
-    </div>
-    <div class="panel-section">
-      <label for="rgbSplitSlider">RGB Pulse</label>
-      <input type="range" id="rgbSplitSlider" min="0" max="100" value="50">
-    </div>
-    <div class="panel-section">
-      <label>&nbsp;</label>
-      <button onclick="window.location.reload()">Reset</button>
-    </div>
-  </div>
-  <script>
+  <!--
+    Ensures audio context starts only after user interaction (required by browsers).
+    (This logic should be placed above any code that starts/resumes audio context,
+    e.g., in a 'Start' button or first user interaction event.)
+  -->
+
+
+  
+
+  <div class="control-panel-wrapper">
+    
+    <!--<div class="mobile-scroll-outer-wrapper">-->
+      <!--<div class="mobile-scroll-wrapper">-->
+        
+                  <div id="ui-panel"><!-- Main UI Panel -->
+                          <!-- Group A: Sample A, Volume A, Fine Pitch A -->
+                          <div class="panel-section group-a">
+                    <div class="group-label">Group A – Sample A</div>
+                    <label style="font-weight:bold;">Sample A Controls</label>
+                    <label for="sampleA">Sample A</label>
+                    <select id="sampleA" onchange="loadSample('A', this.value)">
+                      <option value="audio/shopping.mp3">shopping.mp3</option>
+                      <option value="audio/funk.mp3">funk.mp3</option>
+                      <option value="audio/ChipTuneRandom.mp3">ChipTune.mp3</option>
+                      <option value="audio/ArtEric.mp3">ArtEric.mp3</option>
+                      <option value="audio/ElectronicNoisesRange.mp3">ElectronicGlitchNoise.mp3</option>
+                      <option value="audio/PianoTrackImprov.mp3">Piano.mp3</option>
+                      <option value="audio/DroneExperiment.mp3">DroneExperiment</option>
+                      <option value="audio/EveningAtmos.mp3">EveningAtmos</option>
+                      <option value="audio/thisFileDoesNotExist.mp3">Corrupted Sample</option>
+                    </select>
+                    <div class="volume-fine-tune-wrapper">
+                      <div class="slider-container">
+                        <label for="volumeASlider">Volume A</label>
+                        <input type="range" id="volumeASlider" min="0" max="100" value="100">
+                      </div>
+                      <div class="slider-container">
+                        <label for="finePitchA">Fine Tune A</label>
+                        <input type="range" id="finePitchA" min="-0.5" max="0.5" step="0.01" value="0">
+                      </div>
+                  </div>
+                  <!-- Group B: Sample B, Volume B, Fine Pitch B -->
+                  <div class="panel-section group-b">
+                    <div class="group-label">Group B – Sample B</div>
+                    <label style="font-weight:bold;">Sample B Controls</label>
+                    <label for="sampleB">Sample B</label>
+                    <select id="sampleB" onchange="loadSample('B', this.value)">
+                      <option value="audio/shopping.mp3">shopping.mp3</option>
+                      <option value="audio/funk.mp3">funk.mp3</option>
+                      <option value="audio/ChipTuneRandom.mp3">ChipTune.mp3</option>
+                      <option value="audio/ArtEric.mp3">ArtEric.mp3</option>
+                      <option value="audio/ElectronicNoisesRange.mp3">ElectronicGlitchNoise.mp3</option>
+                      <option value="audio/PianoTrackImprov.mp3">Piano.mp3</option>
+                      <option value="audio/DroneExperiment.mp3">DroneExperiment</option>
+                      <option value="audio/EveningAtmos.mp3">EveningAtmos</option>
+                      <option value="audio/thisFileDoesNotExist.mp3">Corrupted Sample</option>
+                    </select>
+                    <div class="volume-fine-tune-wrapper">
+                      <div class="slider-container">
+                        <label for="volumeBSlider">Volume B</label>
+                        <input type="range" id="volumeBSlider" min="0" max="100" value="100">
+                      </div>
+                      <div class="slider-container">
+                        <label for="finePitchB">Fine Tune B</label>
+                        <input type="range" id="finePitchB" min="-0.5" max="0.5" step="0.01" value="0">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Group C: Reverb, Filter Sweep, Delay, Crackle & Pop -->
+                  <div class="panel-section group-c">
+                    <div class="group-label">Group C – FX Controls</div>
+                    <label style="font-weight:bold;">FX Controls</label>
+                    <label for="reverbSlider">Reverb</label>
+                    <input type="range" id="reverbSlider" min="0" max="100" value="50">
+                    <label for="filterSlider">Filter Sweep</label>
+                    <input type="range" id="filterSlider" min="0" max="100" value="50">
+                    <label for="delaySlider">Echo</label>
+                    <input type="range" id="delaySlider" min="0" max="100" value="0">
+                    <label for="crackleSlider">Crackle & Pop</label>
+                    <input type="range" id="crackleSlider" min="0" max="100" value="0">
+                  </div>
+                  <!-- Group D: Bitcrusher (dial and slider) -->
+                  <div class="panel-section group-d">
+                    <div class="group-label">Group D – Degradation</div>
+                    <label style="font-weight:bold;">Bitcrusher</label>
+                    <div id="bit-dial" style="display:block; pointer-events:auto;"></div>
+                    <input type="range" id="bitcrusher-slider" min="0" max="100" value="0">
+                  </div>
+                  <!-- Group E: RGB Pulse and Toggle Glitch -->
+                  <div class="panel-section group-e">
+                    <div class="group-label">Group E – Visual Interference</div>
+                    <label style="font-weight:bold;">Visual FX</label>
+                    <label for="rgbSplitSlider">RGB Pulse</label>
+                    <input type="range" id="rgbSplitSlider" min="0" max="100" value="50">
+                  </div>
+                  <div class="panel-section group-e">
+                    <div class="group-label">Group E – Visual Interference</div>
+                    <label>&nbsp;</label>
+                    <button onclick="toggleGlitch()">Toggle Glitch</button>
+                  </div>
+                  <!-- User Sample Slots: leave outside groupings -->
+                  <div class="panel-section" id="sample-slots">
+                    <label>User Samples (up to 8)</label>
+                    <div id="user-slot-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;">
+                      <div>
+                        <input type="file" accept="audio/*" data-slot="0">
+                        <span class="upload-filename" id="filename-0"></span>
+                      </div>
+                      <div>
+                        <input type="file" accept="audio/*" data-slot="1">
+                        <span class="upload-filename" id="filename-1"></span>
+                      </div>
+                      <div>
+                        <input type="file" accept="audio/*" data-slot="2">
+                        <span class="upload-filename" id="filename-2"></span>
+                      </div>
+                      <div>
+                        <input type="file" accept="audio/*" data-slot="3">
+                        <span class="upload-filename" id="filename-3"></span>
+                      </div>
+                      <div>
+                        <input type="file" accept="audio/*" data-slot="4">
+                        <span class="upload-filename" id="filename-4"></span>
+                      </div>
+                      <div>
+                        <input type="file" accept="audio/*" data-slot="5">
+                        <span class="upload-filename" id="filename-5"></span>
+                      </div>
+                      <div>
+                        <input type="file" accept="audio/*" data-slot="6">
+                        <span class="upload-filename" id="filename-6"></span>
+                      </div>
+                      <div>
+                        <input type="file" accept="audio/*" data-slot="7">
+                        <span class="upload-filename" id="filename-7"></span>
+                      </div>
+                    </div>
+                    <span style="font-size:12px;opacity:.8;">(Files stay in-memory for this session only)</span>
+                  </div>
+                  <!-- Reset Button -->
+                  <div class="panel-section">
+                    <label>&nbsp;</label>
+                    <button onclick="window.location.reload()">Reset</button>
+                  </div>
+                  </div><!-- end ui-panel -->
+      <!--</div>--end mobile scroll wrapper -->
+    <!--</div>-- end mobile scroll outer wrapper -->
+  </div> <!-- end control-panel-wrapper -->
+  <!--<script>
   document.addEventListener('contextmenu', event => event.preventDefault());
-</script>
+</script>-->
+</div>
+
+<div id="video-overlay-container"></div>
 </body>
 </html>
-  <style>
-    /* Responsive panel sections for small screens */
-    @media (max-width: 768px) {
-      .control-panel {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-      }
+  
 
-      .panel-section {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-
-      .panel-section label,
-      .panel-section select,
-      .panel-section input[type="range"] {
-        font-size: 12px;
-        width: 100%;
-      }
-
-      button {
-        width: 100%;
-        font-size: 14px;
-        margin-top: 5px;
-      }
-    }
-  </style>

@@ -1,0 +1,26 @@
+UNSTABLEMEMORY 0_3 – CREATIVE USAGE LICENSE
+
+Copyright © 2025 Mike Ballard
+
+This software, UnstableMemory 0_3, and all included visual and audio assets (hereafter “the software”), are the intellectual property of Mike Ballard.
+
+✅ YOU ARE PERMITTED TO:
+- Use the software locally for personal or performance use.
+- Create recordings, video, and audio works using the software.
+- Share recordings or live captures (e.g., via YouTube, Instagram, TikTok).
+- Use the software in educational or demonstration contexts.
+
+❌ YOU ARE **NOT** PERMITTED TO:
+- Repackage, rehost, or distribute the software or its contents.
+- Sell or redistribute the included sounds, code, or artwork in any form.
+- Modify and rebrand the app for redistribution.
+- Use the source material (audio, UI, code) in commercial sound packs or apps.
+
+All rights to the original audio, visuals, and code remain with Mike Ballard. This is a Creative Experimental Tool, not a commercial audio plugin or soundbank.
+
+For inquiries, licensing requests, or collaborations:
+📧  Subscribe and send a message to https://shedtronic.substack.com/
+
+---
+
+This software is distributed “as is,” without warranty of any kind. By using this software, you agree to the above terms.
